@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import './Reset.scss';
+
+.toggleButtonRight {
+	transform: translateX(0);
+	animation: toggleButtonRight 0.3s forwards;
+	transition: 0.3s ease-in-out;
+}
+@keyframes toggleButtonRight {
+	to {
+		transform: translateX(150%);
+	}
+}
+
+.toggleButtonLeft {
+	transform: translateX(150%);
+	animation: toggleButtonLeft 0.3s forwards;
+	transition: 0.3s ease-in-out;
+}
+@keyframes toggleButtonLeft {
+	to {
+		transform: translateX(0);
+	}
+}
+
+.darkTheme {
+	background-color: var(--main-black) !important;
+	color: white;
+	transition: 0.2s ease-in-out;
+	fill: var(--main-black) !important;
+}
+
+.lightMode {
+	fill: #f1f1f1 !important;
+}
+
+.App {
+	min-height: 100vh;
+}
