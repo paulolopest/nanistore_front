@@ -1,10 +1,10 @@
 import './Header.scss';
 import React from 'react';
-import * as Icon from '@phosphor-icons/react';
-import { darkMode, lightMode } from '../Utils/Extra';
-import Logo from '../Assets/Logo';
+import Logo from '../../Assets/Logo';
 import { Link } from 'react-router-dom';
-import { GlobalContext } from '../Context/GlobalContext';
+import * as Icon from '@phosphor-icons/react';
+import { darkMode, lightMode } from '../../Utils/Extra';
+import { GlobalContext } from '../../Context/GlobalContext';
 
 const Header = () => {
 	const [cartCount, setCartCount] = React.useState(10);
@@ -33,14 +33,12 @@ const Header = () => {
 					</div>
 
 					<div className="hdr-cart-ctr">
-						<Icon.Handbag size={20} />
-						<p>Carrinho</p>
+						<Icon.Handbag size={25} />
 						{cartCount && <span>{cartCount}</span>}
 					</div>
 
 					<div>
-						<Icon.User size={20} />
-						<p>Perfil</p>
+						<Icon.User size={25} />
 					</div>
 				</div>
 			</div>

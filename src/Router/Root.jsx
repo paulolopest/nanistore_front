@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../Components/Header';
 import IndexStorage from '../Context/ContextIndex';
+import Header from '../Components/Header/Header';
 
 const Root = () => {
 	return (
