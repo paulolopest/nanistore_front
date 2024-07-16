@@ -17,8 +17,15 @@
 	}
 }
 
+.mn-pg-crs-ctr {
+	display: flex;
+	width: auto;
+	overflow-x: hidden;
+	padding: 0.5rem 0;
+}
+
 .mn-pg-crs {
 	display: flex;
-	background-color: bisque;
 	gap: 0 1.5rem;
+	width: auto;
 }
