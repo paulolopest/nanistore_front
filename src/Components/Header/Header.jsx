@@ -1,60 +1,67 @@
-import './Header.scss';
-import React from 'react';
-import Logo from '../../Assets/Logo';
-import { Link } from 'react-router-dom';
-import * as Icon from '@phosphor-icons/react';
-import { darkMode, lightMode } from '../../Utils/Extra';
-import { GlobalContext } from '../../Context/GlobalContext';
+import Logo from './../../Assets/Logo'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { tabs } from './../../Utils/Extra'
+import * as Icon from '@phosphor-icons/react'
+import React, { useContext, useState } from 'react'
+import ToggleButton from '../ToggleButton/ToggleButton'
+import { GlobalContext } from '../../Context/GlobalContext'
 
 const Header = () => {
-	const [cartCount, setCartCount] = React.useState(10);
+    const [activeTab, setActiveTab] = useState(null)
+    const { theme, setTheme } = useContext(GlobalContext)
 
-	const { theme, changeTheme } = React.useContext(GlobalContext);
+    const tabMap = tabs.map((tab) => (
+        <div
+            className="flex justify-center items-center relative px-4 py-3"
+            onClick={() => setActiveTab(tab.id)}
+            key={tab.id}
+        >
+            {activeTab === tab.id && (
+                <motion.div
+                    transition={{ type: 'spring', duration: 0.5 }}
+                    key={tab.id}
+                    layoutId="activeTab"
+                    className="absolute top-0 rounded-md h-full w-full bg-red-600"
+                />
+            )}
+            <Link
+                className={`relative w-full h-full z-10 ${tab.id === activeTab ? 'text-white' : 'text-black'}`}
+                to={`products/${tab.id}`}
+            >
+                {tab.label}
+            </Link>
+        </div>
+    ))
 
-	return (
-		<div className={`${theme && 'darkTheme'} hdr-ctr `}>
-			<div className="hdr-fst-ctr ">
-				<div className="hdr-fst-ctr-logo">
-					<Logo />
-				</div>
+    return (
+        <header className="flex-col px-16 mb-8">
+            <section className="flex flex-row justify-between items-center py-2 w-full">
+                <Logo width={70} height={70} />
 
-				<div className={`${theme && 'ctr-src-dkmd'} hdr-fst-ctr-src`}>
-					<Icon.MagnifyingGlass />
-					<input placeholder="Pesquisar" />
-				</div>
+                <div className="relative bg-yellow-200 h-8 w-96 rounded-md ">
+                    <motion.input className=" pl-3 pr-9 relative bg-gray-100 w-full h-full rounded-md" />
+                    <Icon.MagnifyingGlass className="absolute right-2 top-[6px] w-5 h-5 pointer text-gray-500 cursor-pointer" />
+                </div>
 
-				<div className="hdr-fst-ctr-nav">
-					<div style={theme ? lightMode : darkMode} className="hdr-theme-btn" onClick={changeTheme}>
-						{theme ? (
-							<Icon.Moon className="toggleButtonLeft" style={darkMode.svg} />
-						) : (
-							<Icon.Sun className="toggleButtonRight" style={lightMode.svg} />
-						)}
-					</div>
+                <nav className="flex items-center gap-10 [&>svg]:w-6 [&>svg]:h-6 [&>svg]:cursor-pointer">
+                    <ToggleButton
+                        state={theme}
+                        setState={setTheme}
+                        id={'theme'}
+                        firstIcon={<Icon.Moon />}
+                        secondIcon={<Icon.Sun />}
+                    />
+                    <Icon.ShoppingBagOpen />
+                    <Icon.User />
+                </nav>
+            </section>
 
-					<div className="hdr-cart-ctr">
-						<Icon.Handbag size={25} />
-						{cartCount && <span>{cartCount}</span>}
-					</div>
+            <nav className="flex justify-between items-center px-36 h-16 w-full pb-3 border-solid border-b-[1px] border-gray-50000">
+                {tabMap}
+            </nav>
+        </header>
+    )
+}
 
-					<div>
-						<Icon.User size={25} />
-					</div>
-				</div>
-			</div>
-
-			<div className="hdr-scd-ctr">
-				<Link to={'products/oversized-premium'}>Oversized Premium</Link>
-				<Link to={'products/short-compressão'}>Shorts Compressão</Link>
-				<Link to={'products/camisetas'}>Camisetas</Link>
-				<Link to={'products/camiseta-surpresa'}>Camiseta Surpresa</Link>
-				<Link to={'products/moletom'}>Moletom</Link>
-				<Link to={'products/bermudas'}>Bermudas</Link>
-				<Link to={'products/camisetas-dry-fit'}>Camiseta Dry-fit</Link>
-				<Link to={'products/kit-compressão'}>Kit Compressão</Link>
-			</div>
-		</div>
-	);
-};
-
-export default Header;
+export default Header

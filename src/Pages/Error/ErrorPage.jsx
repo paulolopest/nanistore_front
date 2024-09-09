@@ -1,15 +1,15 @@
-import { useRouteError } from 'react-router-dom';
+import { useRouteError } from 'react-router-dom'
 
 const ErrorPage = () => {
-	const error = useRouteError();
+    const error = useRouteError()
 
-	return (
-		<div>
-			<h1>Deu erro</h1>
-			<p>Tu fez alguma merda, ta ai o error:</p>
-			<p>{error.statusText || error.message}</p>
-		</div>
-	);
-};
+    return (
+        <div>
+            <h1>Deu erro</h1>
+            <p>Tu fez alguma merda, ta ai o error:</p>
+            <p>{error.statusText || error.message}</p>
+        </div>
+    )
+}
 
-export default ErrorPage;
+export default ErrorPage
