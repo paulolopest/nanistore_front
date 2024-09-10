@@ -1,6 +1,6 @@
 import React from 'react'
 import './Logo.scss'
-import { GlobalContext } from './../Context/GlobalContext'
+import { GlobalContext } from '../../Context/GlobalContext'
 
 const Logo = ({ width, height }) => {
     const { theme } = React.useContext(GlobalContext)

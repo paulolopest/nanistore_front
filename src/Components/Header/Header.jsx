@@ -1,7 +1,7 @@
-import Logo from './../../Assets/Logo'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { tabs } from './../../Utils/Extra'
+import Logo from './../../Assets/logo/Logo'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
 import ToggleButton from '../ToggleButton/ToggleButton'
@@ -37,7 +37,9 @@ const Header = () => {
     return (
         <header className="flex-col px-16 mb-8">
             <section className="flex flex-row justify-between items-center py-2 w-full">
-                <Logo width={70} height={70} />
+                <Link to={'/'} className="cursor-pointer">
+                    <Logo width={70} height={70} />
+                </Link>
 
                 <div className="relative bg-yellow-200 h-8 w-96 rounded-md ">
                     <motion.input className=" pl-3 pr-9 relative bg-gray-100 w-full h-full rounded-md" />
