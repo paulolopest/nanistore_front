@@ -6,9 +6,12 @@ import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
 import ToggleButton from '../ToggleButton/ToggleButton'
 import { GlobalContext } from '../../Context/GlobalContext'
+import CustomInput from '../CustomForm/CustomInput'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
+    const [searchValue, setSearchValue] = useState('')
+
     const { theme, setTheme } = useContext(GlobalContext)
 
     const tabMap = tabs.map((tab) => (
@@ -41,10 +44,15 @@ const Header = () => {
                     <Logo width={70} height={70} />
                 </Link>
 
-                <div className="relative bg-yellow-200 h-8 w-96 rounded-md ">
-                    <motion.input className=" pl-3 pr-9 relative bg-gray-100 w-full h-full rounded-md" />
-                    <Icon.MagnifyingGlass className="absolute right-2 top-[6px] w-5 h-5 pointer text-gray-500 cursor-pointer" />
-                </div>
+                <CustomInput
+                    bg="#f5f5f5"
+                    h="2rem"
+                    w="20rem"
+                    icon={<Icon.MagnifyingGlass />}
+                    label="Pesquisar"
+                    state={searchValue}
+                    setState={setSearchValue}
+                />
 
                 <nav className="flex items-center gap-10 [&>svg]:w-6 [&>svg]:h-6 [&>svg]:cursor-pointer">
                     <ToggleButton
