@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { tabs } from './../../Utils/Extra'
-import Logo from './../../Assets/logo/Logo'
+import WhiteLogo from '../../Assets/logo/logobranca.png'
+import BlackLogo from '../../Assets/logo/logopreta.webp'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
+import CustomInput from '../CustomForm/CustomInput'
 import ToggleButton from '../ToggleButton/ToggleButton'
 import { GlobalContext } from '../../Context/GlobalContext'
-import CustomInput from '../CustomForm/CustomInput'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
@@ -16,7 +17,7 @@ const Header = () => {
 
     const tabMap = tabs.map((tab) => (
         <div
-            className="flex justify-center items-center relative px-4 py-3"
+            className="relative flex items-center justify-center px-4 py-3"
             onClick={() => setActiveTab(tab.id)}
             key={tab.id}
         >
@@ -25,11 +26,11 @@ const Header = () => {
                     transition={{ type: 'spring', duration: 0.5 }}
                     key={tab.id}
                     layoutId="activeTab"
-                    className="absolute top-0 rounded-md h-full w-full bg-red-600"
+                    className="absolute top-0 size-full rounded-md bg-red-600"
                 />
             )}
             <Link
-                className={`relative w-full h-full z-10 ${tab.id === activeTab ? 'text-white' : 'text-black'}`}
+                className={`relative z-10 size-full ${tab.id === activeTab ? 'text-white' : 'text-black'}`}
                 to={`products/${tab.id}`}
             >
                 {tab.label}
@@ -38,23 +39,27 @@ const Header = () => {
     ))
 
     return (
-        <header className="flex-col px-16 mb-8">
-            <section className="flex flex-row justify-between items-center py-2 w-full">
+        <header className="mb-8 flex-col px-24">
+            <section className="flex w-full flex-row items-center justify-between py-2">
                 <Link to={'/'} className="cursor-pointer">
-                    <Logo width={70} height={70} />
+                    <img
+                        className="w-[70px]"
+                        src={theme === 'start' ? WhiteLogo : BlackLogo}
+                        alt="Site Logo"
+                    />
                 </Link>
 
                 <CustomInput
-                    bg="#f5f5f5"
-                    h="2rem"
-                    w="20rem"
+                    bg="white"
+                    h="2.5rem"
+                    w="25rem"
                     icon={<Icon.MagnifyingGlass />}
                     label="Pesquisar"
                     state={searchValue}
                     setState={setSearchValue}
                 />
 
-                <nav className="flex items-center gap-10 [&>svg]:w-6 [&>svg]:h-6 [&>svg]:cursor-pointer">
+                <nav className="flex items-center gap-10 [&>svg]:size-6 [&>svg]:cursor-pointer">
                     <ToggleButton
                         state={theme}
                         setState={setTheme}
@@ -67,7 +72,7 @@ const Header = () => {
                 </nav>
             </section>
 
-            <nav className="flex justify-between items-center px-36 h-16 w-full pb-3 border-solid border-b-[1px] border-gray-50000">
+            <nav className="flex h-16 w-full items-center justify-between border-b border-solid border-neutral-200 px-24">
                 {tabMap}
             </nav>
         </header>

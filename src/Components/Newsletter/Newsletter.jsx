@@ -14,11 +14,11 @@ const Newsletter = () => {
                 <div className="flex flex-col gap-3 items-center justify-center">
                     <div className="flex flex-col gap-2 justify-center items-center">
                         <p className="text-3xl font-bold">
-                            Receba ofertas e promoções exclusivas e fique por dentro dos lançamentos
+                            Receba ofertas, promoções exclusivas e fique por dentro dos lançamentos
                         </p>
                     </div>
                     <p>
-                        Não se preocupe, não compartilhamos seus dados, você pode saber mais em nossa{' '}
+                        Não se preocupe, seus dados estão seguros, você pode saber mais em nossa{' '}
                         <Link className="underline">política de privacidade</Link>
                     </p>
                 </div>

@@ -13,7 +13,7 @@ const ProductCard = ({ item }) => {
             whileHover={{ boxShadow: '0 3px 10px rgb(0,0,0,0.2)' }}
             onHoverStart={() => setSrcIndex(1)}
             onHoverEnd={() => setSrcIndex(0)}
-            className="flex overflow-hidden flex-col justify-center gap-2 select-none w-72 h-[30rem] p-1 flex-shrink-0 bg-white rounded-md uppercase transition ease-in-out duration-100 cursor-pointer"
+            className="flex overflow-hidden flex-col justify-center gap-2 select-none w-72 h-[30rem] p-1 flex-shrink-0 bg-white rounded-lg uppercase transition ease-in-out duration-100 cursor-pointer"
         >
             <motion.img
                 className="w-full h-80 select-none object-cover rounded-md"

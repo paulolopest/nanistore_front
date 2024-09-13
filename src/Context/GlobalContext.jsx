@@ -6,6 +6,8 @@ export const GlobalContext = React.createContext('')
 const GlobalStorage = ({ children }) => {
     const [theme, setTheme] = React.useState('start')
 
+    console.log(theme)
+
     const changeTheme = () => {
         setTheme(!theme)
         window.localStorage.setItem('theme', theme)
