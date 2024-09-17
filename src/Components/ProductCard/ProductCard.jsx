@@ -5,30 +5,21 @@ const ProductCard = ({ item }) => {
     const [srcIndex, setSrcIndex] = useState(0)
 
     return (
-        <motion.div
-            style={{
-                boxShadow:
-                    '0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)',
-            }}
-            whileHover={{ boxShadow: '0 3px 10px rgb(0,0,0,0.2)' }}
-            onHoverStart={() => setSrcIndex(1)}
-            onHoverEnd={() => setSrcIndex(0)}
-            className="flex overflow-hidden flex-col justify-center gap-2 select-none w-72 h-[30rem] p-1 flex-shrink-0 bg-white rounded-lg uppercase transition ease-in-out duration-100 cursor-pointer"
-        >
+        <motion.div className="flex h-[30rem] w-72 shrink-0 cursor-pointer select-none flex-col justify-center gap-2 overflow-hidden rounded-lg bg-neutral-100 p-1 uppercase shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] transition  duration-100 ease-in-out hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
             <motion.img
-                className="w-full h-80 select-none object-cover rounded-md"
+                className="h-80 w-full select-none rounded-md object-cover"
                 draggable="false"
                 src={item.src[srcIndex]}
                 alt={`Foto do item ${item.name}`}
                 whileHover={{ scale: 1.09 }}
             />
-            <div className="flex flex-col gap-3 items-center">
-                <p className="font-medium text-lg">{item.name}</p>
+            <div className="flex flex-col items-center gap-3">
+                <p className="text-lg font-medium">{item.name}</p>
                 <div className="flex flex-col items-center">
                     <p className="text-xs text-neutral-400">
                         De: <span className="line-through">R$ {item.price - 0.01 + item.price / 10}</span>
                     </p>
-                    <p className="font-bold text-xl">Por: R$ {item.price - 0.01}</p>
+                    <p className="text-xl font-bold">Por: R$ {item.price - 0.01}</p>
                     <p className="text-xs text-zinc-500">6x de R$ {(item.price / 6).toFixed(2)} sem juros</p>
                 </div>
             </div>

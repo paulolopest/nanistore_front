@@ -9,10 +9,10 @@ import Newsletter from '../../Components/Newsletter/Newsletter'
 
 const MainPage = () => {
     return (
-        <div className="flex flex-col gap-16 bg-neutral-100">
+        <div className="flex flex-col gap-16">
             <div>
                 <BannerBig img={Banner1} footer={true} />
-                <footer className="flex w-full h-12 items-center bg-white justify-between px-36 [&>div]:flex [&>div]:items-center [&>div]:gap-2 text-gray-700 text-sm">
+                <footer className="flex h-12 w-full items-center justify-between bg-neutral-50 px-36 text-sm font-medium text-gray-700 [&>div]:flex [&>div]:items-center [&>div]:gap-2">
                     <div>
                         <CreditCard />
                         <p>Parcelamento em até 10x sem juros</p>

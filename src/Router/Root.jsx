@@ -8,7 +8,7 @@ const Root = () => {
         <IndexStorage>
             <Header />
             <Outlet />
-            <Footer/>
+            <Footer />
         </IndexStorage>
     )
 }

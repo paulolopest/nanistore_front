@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { tabs } from './../../Utils/Extra'
-import WhiteLogo from '../../Assets/logo/logobranca.png'
-import BlackLogo from '../../Assets/logo/logopreta.webp'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
 import CustomInput from '../CustomForm/CustomInput'
 import ToggleButton from '../ToggleButton/ToggleButton'
+import WhiteLogo from '../../Assets/logo/logobranca.png'
+import BlackLogo from '../../Assets/logo/logopreta.webp'
 import { GlobalContext } from '../../Context/GlobalContext'
 
 const Header = () => {
@@ -29,17 +29,14 @@ const Header = () => {
                     className="absolute top-0 size-full rounded-md bg-red-600"
                 />
             )}
-            <Link
-                className={`relative z-10 size-full ${tab.id === activeTab ? 'text-white' : 'text-black'}`}
-                to={`products/${tab.id}`}
-            >
+            <Link className={`relative z-10 size-full ${tab.id === activeTab ? 'text-white' : 'text-black'}`}>
                 {tab.label}
             </Link>
         </div>
     ))
 
     return (
-        <header className="mb-8 flex-col px-24">
+        <header className="flex-col px-24">
             <section className="flex w-full flex-row items-center justify-between py-2">
                 <Link to={'/'} className="cursor-pointer">
                     <img
@@ -50,7 +47,7 @@ const Header = () => {
                 </Link>
 
                 <CustomInput
-                    bg="white"
+                    bg="#f5f5f5"
                     h="2.5rem"
                     w="25rem"
                     icon={<Icon.MagnifyingGlass />}
@@ -72,9 +69,7 @@ const Header = () => {
                 </nav>
             </section>
 
-            <nav className="flex h-16 w-full items-center justify-between border-b border-solid border-neutral-200 px-24">
-                {tabMap}
-            </nav>
+            <nav className="flex h-16 w-full items-center justify-between px-24 max-sm:hidden">{tabMap}</nav>
         </header>
     )
 }
