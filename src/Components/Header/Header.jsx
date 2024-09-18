@@ -24,19 +24,20 @@ const Header = () => {
             {activeTab === tab.id && (
                 <motion.div
                     transition={{ type: 'spring', duration: 0.5 }}
-                    key={tab.id}
-                    layoutId="activeTab"
+                    layoutId="headerActiveTab"
                     className="absolute top-0 size-full rounded-md bg-red-600"
                 />
             )}
-            <Link className={`relative z-10 size-full ${tab.id === activeTab ? 'text-white' : 'text-black'}`}>
+            <Link
+                className={`relative z-10 size-full text-sm font-medium ${tab.id === activeTab ? 'text-white' : 'text-neutral-800'}`}
+            >
                 {tab.label}
             </Link>
         </div>
     ))
 
     return (
-        <header className="flex-col px-24">
+        <header className="flex-col px-24 uppercase">
             <section className="flex w-full flex-row items-center justify-between py-2">
                 <Link to={'/'} className="cursor-pointer">
                     <img

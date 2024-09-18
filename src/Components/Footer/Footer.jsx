@@ -1,17 +1,8 @@
 import React from 'react'
 import ListLinks from './ListLinks'
-import { helperFooterList, institutionalFooterList, policiesFooterList } from '../../Utils/Extra'
-import {
-    EnvelopeSimple,
-    GithubLogo,
-    InstagramLogo,
-    LinkedinLogo,
-    PinterestLogo,
-    TiktokLogo,
-    XLogo,
-    YoutubeLogo,
-} from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
+import * as Icon from '@phosphor-icons/react'
+import { helperFooterList, institutionalFooterList, policiesFooterList } from '../../Utils/Extra'
 
 const Footer = () => {
     return (
@@ -39,13 +30,13 @@ const Footer = () => {
 
                             <div className="flex gap-2">
                                 <Link className="size-6">
-                                    <GithubLogo className="size-full" />
+                                    <Icon.GithubLogo className="size-full" />
                                 </Link>
                                 <Link className="size-6">
-                                    <LinkedinLogo className="size-full" />
+                                    <Icon.LinkedinLogo className="size-full" />
                                 </Link>
                                 <Link className="size-6">
-                                    <EnvelopeSimple className="size-full" />
+                                    <Icon.EnvelopeSimple className="size-full" />
                                 </Link>
                             </div>
                         </div>
@@ -54,19 +45,19 @@ const Footer = () => {
 
                 <div className="flex gap-5 ">
                     <Link className="size-8">
-                        <InstagramLogo className="size-full" />
+                        <Icon.InstagramLogo className="size-full" />
                     </Link>
                     <Link className="size-8">
-                        <YoutubeLogo className="size-full" />
+                        <Icon.YoutubeLogo className="size-full" />
                     </Link>
                     <Link className="size-8">
-                        <PinterestLogo className="size-full" />
+                        <Icon.PinterestLogo className="size-full" />
                     </Link>
                     <Link className="size-8">
-                        <XLogo className="size-full" />
+                        <Icon.XLogo className="size-full" />
                     </Link>
                     <Link className="size-8">
-                        <TiktokLogo className="size-full" />
+                        <Icon.TiktokLogo className="size-full" />
                     </Link>
                 </div>
             </div>

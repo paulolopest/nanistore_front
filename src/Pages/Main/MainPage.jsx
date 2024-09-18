@@ -12,7 +12,7 @@ const MainPage = () => {
         <div className="flex flex-col gap-16">
             <div>
                 <BannerBig img={Banner1} footer={true} />
-                <footer className="flex h-12 w-full items-center justify-between bg-neutral-50 px-36 text-sm font-medium text-gray-700 [&>div]:flex [&>div]:items-center [&>div]:gap-2">
+                <footer className="flex h-12 w-full items-center justify-between bg-neutral-50 px-36 text-sm font-medium uppercase text-gray-700 [&>div]:flex [&>div]:items-center [&>div]:gap-2">
                     <div>
                         <CreditCard />
                         <p>Parcelamento em até 10x sem juros</p>

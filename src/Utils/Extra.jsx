@@ -14,6 +14,14 @@ export const tabs = [
     { id: 'kit-compressao', label: 'Kit Compressão' },
 ]
 
+export const sizes = [
+    { id: 'p', label: 'P' },
+    { id: 'm', label: 'M' },
+    { id: 'g', label: 'G' },
+    { id: 'gg', label: 'GG' },
+    { id: 'egg', label: 'EGG' },
+]
+
 export const institutionalFooterList = [
     { id: 4, name: 'Segurança', link: '' },
     { id: 2, name: 'Quem somos', link: '' },
@@ -37,66 +45,72 @@ export const helperFooterList = [
 export const items = [
     {
         id: 1,
-        name: 'Dry Fit - Berserk Logo',
+        name: 'Berserk Logo',
         src: [image1, image5],
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 2,
-        name: 'Dry Fit - KON CSM',
+        name: 'KON CSM',
         src: [image2, image4],
-
+        type: 'Oversized',
         price: 50,
     },
     {
         id: 3,
-        name: 'Dry Fit - SNK Logo',
+        name: 'SNK Logo',
         src: [image3, image3],
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 4,
-        name: 'CAMISETA OVERSIZED PRETA - REI AYANAMA EVANGELION',
-        src: [image4, image2, image3, image4],
+        name: 'REI AYANAMA EVANGELION',
+        src: [image1, image2, image3, image4],
+        type: 'Oversized',
         price: 50,
     },
     {
         id: 5,
-        name: 'Dry Fit - FMA',
+        name: 'FMA',
         src: [image5, image1],
-
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 6,
-        name: 'Dry Fit - Hanafuda',
+        name: 'Hanafuda',
         src: [image1, image5],
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 7,
-        name: 'Dry Fit - Kon',
+        name: 'Kon',
         src: [image2, image4],
-
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 8,
-        name: 'Dry Fit - Katana Flower',
+        name: 'Katana Flower',
         src: [image5, image3],
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 9,
-        name: 'Dry Fit - Gengar Gym',
+        name: 'Gengar Gym',
         src: [image4, image2],
+        type: 'Dry Fit',
         price: 50,
     },
     {
         id: 10,
-        name: 'Dry Fit - DBZ Logo',
+        name: 'DBZ Logo',
         src: [image5, image1],
-
+        type: 'Dry Fit',
         price: 50,
     },
 ]

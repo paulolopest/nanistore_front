@@ -9,10 +9,10 @@ const Newsletter = () => {
     const [whats, setWhats] = useState('')
 
     return (
-        <div className="px-28">
-            <div className="py-12 rounded-xl w-full bg-neutral-200 flex flex-col justify-center items-center gap-10">
-                <div className="flex flex-col gap-3 items-center justify-center">
-                    <div className="flex flex-col gap-2 justify-center items-center">
+        <div className="px-28 text-white">
+            <div className="flex w-full flex-col items-center justify-center gap-10 rounded-xl bg-neutral-800 py-12">
+                <div className="flex flex-col items-center justify-center gap-3">
+                    <div className="flex flex-col items-center justify-center gap-2">
                         <p className="text-3xl font-bold">
                             Receba ofertas, promoções exclusivas e fique por dentro dos lançamentos
                         </p>
@@ -27,7 +27,7 @@ const Newsletter = () => {
                     <CustomInput
                         w="22rem"
                         h="3rem"
-                        icon={<EnvelopeSimple className="w-[1.3rem] h-[1.3rem]" />}
+                        icon={<EnvelopeSimple className="size-[1.3rem]" />}
                         state={email}
                         setState={setEmail}
                         label={'Seu melhor email:'}
@@ -35,7 +35,7 @@ const Newsletter = () => {
                     <CustomInput
                         w="22rem"
                         h="3rem"
-                        icon={<WhatsappLogo className="w-[1.3rem] h-[1.3rem]" />}
+                        icon={<WhatsappLogo className="size-[1.3rem]" />}
                         state={whats}
                         setState={setWhats}
                         label={'Seu número de Whatsapp:'}
@@ -43,7 +43,7 @@ const Newsletter = () => {
 
                     <motion.button
                         whileTap={{ backgroundColor: '#b91c1c', scale: 0.9 }}
-                        className="px-5 py-2 bg-red-500 text-neutral-50 rounded-md"
+                        className="rounded-md bg-red-500 px-5 py-2 text-white"
                     >
                         Enviar
                     </motion.button>
