@@ -6,8 +6,8 @@ import { CaretDown, CaretUp, Ruler, SealCheck } from '@phosphor-icons/react'
 
 const ProductPage = () => {
     const { productId } = useParams()
-    const [showedImage, setShowedImage] = useState(0)
     const [quantity, setQuantity] = useState(1)
+    const [showedImage, setShowedImage] = useState(0)
     const [size, setSize] = useState({ activeSize: '', sizeId: '' })
 
     const item = items.filter((item) => item.id === Number(productId))

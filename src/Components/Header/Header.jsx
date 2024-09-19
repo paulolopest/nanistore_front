@@ -48,7 +48,7 @@ const Header = () => {
                 </Link>
 
                 <CustomInput
-                    bg="#f5f5f5"
+                    bg="white"
                     h="2.5rem"
                     w="25rem"
                     icon={<Icon.MagnifyingGlass />}

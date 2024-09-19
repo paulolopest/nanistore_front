@@ -5,7 +5,7 @@ const ProductCard = ({ item }) => {
     const [srcIndex, setSrcIndex] = useState(0)
 
     return (
-        <motion.div className="flex h-[30rem] w-72 shrink-0 cursor-pointer select-none flex-col justify-center gap-3 overflow-hidden rounded-lg bg-neutral-100 uppercase shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] transition  duration-100 ease-in-out hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
+        <motion.div className="flex h-[30rem] w-72 shrink-0 cursor-pointer select-none flex-col justify-center gap-3 overflow-hidden rounded-lg bg-white uppercase shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] transition  duration-100 ease-in-out hover:shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
             <div className="flex h-80 w-full items-center justify-center ">
                 <motion.img
                     className="select-none  rounded-md object-cover"
