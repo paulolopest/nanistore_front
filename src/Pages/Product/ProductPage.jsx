@@ -10,6 +10,8 @@ const ProductPage = () => {
     const [showedImage, setShowedImage] = useState(0)
     const [size, setSize] = useState({ activeSize: '', sizeId: '' })
 
+    console.log('tenis')
+
     const item = items.filter((item) => item.id === Number(productId))
 
     const srcMap = item[0].src.map((item, index) => (
