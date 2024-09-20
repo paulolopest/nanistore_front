@@ -9,7 +9,7 @@ const Newsletter = () => {
     const [whats, setWhats] = useState('')
 
     return (
-        <div className="px-28 text-white">
+        <div className=" text-white">
             <div className="flex w-full flex-col items-center justify-center gap-10 rounded-xl bg-neutral-800 py-12">
                 <div className="flex flex-col items-center justify-center gap-3">
                     <div className="flex flex-col items-center justify-center gap-2">
@@ -27,6 +27,7 @@ const Newsletter = () => {
                     <CustomInput
                         w="22rem"
                         h="3rem"
+                        bg={'#f5f5f5'}
                         icon={<EnvelopeSimple className="size-[1.3rem]" />}
                         state={email}
                         setState={setEmail}
@@ -35,6 +36,7 @@ const Newsletter = () => {
                     <CustomInput
                         w="22rem"
                         h="3rem"
+                        bg={'#f5f5f5'}
                         icon={<WhatsappLogo className="size-[1.3rem]" />}
                         state={whats}
                         setState={setWhats}

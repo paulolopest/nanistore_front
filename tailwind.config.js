@@ -10,6 +10,11 @@ export default {
                 bgBlack: '#171717',
             },
 
+            boxShadow: {
+                default: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                hover: '0 4px 16px rgba(0, 0, 0, 0.2)',
+            },
+
             fontFamily: {},
 
             backgroundImage: {

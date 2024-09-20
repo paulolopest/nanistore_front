@@ -26,9 +26,9 @@ const Carousel = ({ title }) => {
     ))
 
     return (
-        <div className="flex w-full flex-col gap-y-1 px-28">
-            <h1 className="px-5 text-2xl font-semibold uppercase">{title}</h1>
-            <div className="w-full overflow-hidden p-5">
+        <div className="flex w-full flex-col gap-y-1 ">
+            <h1 className="text-2xl font-semibold uppercase tracking-wide">{title}</h1>
+            <div className="w-full overflow-hidden py-5">
                 <motion.div
                     drag="x"
                     onDragEnd={dragEnd}
