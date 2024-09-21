@@ -25,7 +25,7 @@ const Newsletter = () => {
 
                 <div className="flex gap-3 [&>div]:flex [&>div]:flex-col [&>div]:gap-1">
                     <CustomInput
-                        w="22rem"
+                        w="40%"
                         h="3rem"
                         bg={'#f5f5f5'}
                         icon={<EnvelopeSimple className="size-[1.3rem]" />}
