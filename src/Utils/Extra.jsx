@@ -19,7 +19,7 @@ export const sizes = [
     { id: 'm', label: 'M' },
     { id: 'g', label: 'G' },
     { id: 'gg', label: 'GG' },
-    { id: 'egg', label: 'EGG' },
+    { id: 'xgg', label: 'XGG' },
 ]
 
 export const institutionalFooterList = [
