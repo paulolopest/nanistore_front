@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import Wrapper from '../Wrapper/Wrapper'
 import { tabs } from './../../Utils/Extra'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
@@ -8,7 +9,6 @@ import ToggleButton from '../ToggleButton/ToggleButton'
 import WhiteLogo from '../../Assets/logo/logobranca.png'
 import BlackLogo from '../../Assets/logo/logopreta.webp'
 import { GlobalContext } from '../../Context/GlobalContext'
-import Wrapper from '../Wrapper/Wrapper'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
@@ -33,7 +33,7 @@ const Header = () => {
             )}
             <Link
                 draggable={false}
-                className={`relative z-10 size-full text-sm font-light leading-none tracking-wider ${tab.id === activeTab ? 'text-white' : 'text-neutral-700'}`}
+                className={`relative z-10 size-full text-center text-sm font-light leading-none tracking-wider ${tab.id === activeTab ? 'text-white' : 'text-neutral-700'}`}
             >
                 {tab.label}
             </Link>

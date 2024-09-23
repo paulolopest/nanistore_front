@@ -1,6 +1,5 @@
 import './index.css'
 import React from 'react'
-import './Styles/Reset.scss'
 import ReactDOM from 'react-dom/client'
 import { RouterConfig } from './Router/RouterConfig.jsx'
 

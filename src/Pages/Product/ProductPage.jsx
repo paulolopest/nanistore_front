@@ -2,16 +2,15 @@ import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { items, sizes } from './../../Utils/Extra'
 import { useParams } from 'react-router-dom'
-import { CaretDown, CaretUp, Ruler, SealCheck } from '@phosphor-icons/react'
+import * as Icon from '@phosphor-icons/react'
 import Wrapper from '../../Components/Wrapper/Wrapper'
+import SizeTable from './../../Components/SizeTable/SizeTable'
 
 const ProductPage = () => {
     const { productId } = useParams()
     const [quantity, setQuantity] = useState(1)
     const [showedImage, setShowedImage] = useState(0)
     const [size, setSize] = useState({ activeSize: '', sizeId: '' })
-
-    console.log('tenis')
 
     const item = items.filter((item) => item.id === Number(productId))
 
@@ -62,23 +61,23 @@ const ProductPage = () => {
     return (
         <Wrapper>
             <div className="flex w-full flex-col gap-12 py-36">
-                <div className="flex w-full justify-between gap-10">
-                    <div className="flex h-[48rem] w-[65%] items-center justify-between gap-10 rounded-xl bg-white p-8 shadow-default">
+                <div className="flex w-full justify-between  max-lg:flex-col">
+                    <div className="flex h-[48rem] w-[60.5rem] items-center justify-between gap-10 rounded-xl bg-white p-8 shadow-default max-lg:h-[40rem] max-lg:w-full">
                         <div className="flex h-full flex-col gap-y-10">{srcMap}</div>
 
-                        <div className="size-full rounded-xl bg-neutral-50">
+                        <div className="flex size-full items-center justify-center rounded-xl">
                             <motion.img
                                 key={showedImage}
                                 initial={{ opacity: 0, x: -30 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className="size-full cursor-zoom-in object-contain  "
+                                className="size-[90%] cursor-zoom-in object-cover"
                                 src={item[0].src[showedImage]}
                                 alt="Imagem do Produto"
                             />
                         </div>
                     </div>
 
-                    <div className="flex h-[48rem] w-[35%] flex-col justify-between rounded-xl bg-white p-8 shadow-default">
+                    <div className="flex h-[48rem] w-[32rem] flex-col justify-between rounded-xl bg-white p-8 shadow-default">
                         <div className="flex flex-col gap-5">
                             <span className="w-fit border-b border-solid border-b-neutral-200 pb-1 pr-3 text-sm font-semibold uppercase text-neutral-400">
                                 Novo | 120389 vendidos
@@ -91,7 +90,7 @@ const ProductPage = () => {
 
                             <div className="flex cursor-pointer items-center gap-1 text-sm uppercase text-green-400 hover:underline">
                                 <p>Tabela de medidas</p>
-                                <Ruler className="text-xl" />
+                                <Icon.Ruler className="text-xl" />
                             </div>
 
                             <div className="flex gap-5">{sizeMap}</div>
@@ -100,10 +99,10 @@ const ProductPage = () => {
                                 <p className="text-lg text-neutral-400 line-through">
                                     De: R$ {(item[0].price - 0.01).toFixed(2).replace('.', ',')}
                                 </p>
-                                <p className="flex items-center gap-3 text-5xl font-extrabold">
+                                <p className="relative flex shrink-0 items-center gap-3 text-5xl font-extrabold">
                                     Por: R${' '}
                                     {(item[0].price - 0.01 - item[0].price / 10).toFixed(2).replace('.', ',')}{' '}
-                                    <span className="rounded-md bg-green-500 px-2 py-1 text-lg text-white">
+                                    <span className="absolute right-0 rounded-md bg-green-500 px-2 py-1 text-lg text-white">
                                         -10%
                                     </span>
                                 </p>
@@ -118,11 +117,11 @@ const ProductPage = () => {
 
                             <div className="flex h-10 w-32 items-center justify-between rounded-md border border-solid border-neutral-200 px-1 transition duration-200 ease-linear hover:border-neutral-700 [&>div]:flex [&>div]:h-full [&>div]:w-1/5 [&>div]:cursor-pointer [&>div]:items-center [&>div]:justify-center">
                                 <div onClick={() => modifyQuantity('decrease')}>
-                                    <CaretDown />
+                                    <Icon.CaretDown />
                                 </div>
                                 <p className="text-lg font-semibold">{quantity}</p>
                                 <div onClick={() => modifyQuantity('sum')}>
-                                    <CaretUp />
+                                    <Icon.CaretUp />
                                 </div>
                             </div>
                         </div>
@@ -138,60 +137,66 @@ const ProductPage = () => {
                     </div>
                 </div>
 
-                <div className="flex w-full flex-col gap-5 rounded-xl bg-white p-8 shadow-default ">
-                    <h1 className="place-self-center text-2xl font-extrabold uppercase">Descrição</h1>
-                    <div className="flex w-fit justify-between gap-2 rounded-xl bg-neutral-800 p-4 text-center font-normal text-white">
-                        <div className="h-full w-56">
-                            <img
-                                className="size-full"
-                                src={item[0].src[1]}
-                                alt="Imagem para comparação de tamanho"
-                            />
+                <div className="flex w-full justify-between rounded-xl">
+                    <div className="h-[48rem] w-[60.5rem] rounded-xl bg-white shadow-default" />
+
+                    <div className="flex w-[32rem] flex-col gap-8">
+                        <div className="flex w-full flex-col gap-2 rounded-xl bg-white p-4 text-base font-light text-neutral-500 shadow-default">
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <img
+                                        src="https://cdn.shopify.com/s/files/1/0611/1471/2252/files/correios-logo_1.svg?v=1648167047"
+                                        alt="correios logo"
+                                    />
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <p>Entrega via Correios©</p>
+                                    <p className="text-green-500">
+                                        Envio para{' '}
+                                        <span className="font-semibold">São Gonçalo, RJ e Região</span>
+                                    </p>
+                                </div>
+
+                                <p className="font-semibold text-green-500">Frete Grátis</p>
+                            </div>
+
+                            <div className="flex flex-col gap-4 rounded-xl bg-neutral-100 p-2">
+                                <div className="flex w-fit flex-col gap-1">
+                                    <div className="flex items-center gap-1 text-green-500">
+                                        <Icon.Package />
+                                        <p className="flex items-center gap-1">
+                                            Frete Grátis <Icon.Lightning />{' '}
+                                            <span className="text-sm font-bold uppercase italic text-green-500">
+                                                Full
+                                            </span>{' '}
+                                            • <span className="text-blue-500">Disponível</span>
+                                        </p>
+                                    </div>
+                                    <p className="text-sm text-neutral-400">Enviado pelos Correios©</p>
+                                </div>
+
+                                <div className="flex items-center gap-1">
+                                    <Icon.SealCheck color="#3b82f6" />
+                                    <p>
+                                        <span className="text-blue-500">Compra Garantida.</span> Saia
+                                        satisfeito ou devolvemos o dinheiro
+                                    </p>
+                                </div>
+
+                                <div className="flex items-center gap-1">
+                                    <Icon.Ranking />
+                                    <p>
+                                        <span className="text-blue-500">Mais vendido</span> entre os produtos
+                                        da coleção
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex h-full text-lg uppercase">
-                            <div className="flex flex-col font-semibold [&>p]:border-b [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1 className="p-5 text-transparent">a</h1>
-                                <p className="text-white">Altura</p>
-                                <p className="text-white">Largura</p>
-                                <p className="text-white">Mangas</p>
-                            </div>
-                            <div className="flex flex-col [&>p]:border-b [&>p]:border-r [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1 className="p-5">PP</h1>
-                                <p>63</p>
-                                <p>47</p>
-                                <p>17</p>
-                            </div>
-                            <div className="flex flex-col [&>h1]:p-5 [&>h1]:font-semibold [&>h1]:text-white [&>p]:border-b [&>p]:border-r [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1>P</h1>
-                                <p>65</p>
-                                <p>49</p>
-                                <p>19</p>
-                            </div>
-                            <div className="flex flex-col [&>h1]:p-5 [&>h1]:font-semibold [&>h1]:text-white [&>p]:border-b [&>p]:border-r [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1>M</h1>
-                                <p>67</p>
-                                <p>51</p>
-                                <p>21</p>
-                            </div>
-                            <div className="flex flex-col [&>h1]:p-5 [&>h1]:font-semibold [&>h1]:text-white [&>p]:border-b [&>p]:border-r [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1>G</h1>
-                                <p>70</p>
-                                <p>54</p>
-                                <p>22</p>
-                            </div>
-                            <div className="flex flex-col [&>h1]:p-5 [&>h1]:font-semibold [&>h1]:text-white [&>p]:border-b [&>p]:border-r [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1>GG</h1>
-                                <p>74</p>
-                                <p>56</p>
-                                <p>23</p>
-                            </div>
-                            <div className="flex flex-col [&>h1]:p-5 [&>h1]:font-semibold [&>h1]:text-white [&>p]:border-b [&>p]:border-r [&>p]:border-solid [&>p]:border-neutral-400 [&>p]:p-5">
-                                <h1>XG</h1>
-                                <p>76</p>
-                                <p>58</p>
-                                <p>25</p>
-                            </div>
-                        </div>
+
+                        <SizeTable item={item} />
+
+                        <div className="h-[60rem] w-full rounded-xl bg-white p-4 shadow-default" />
                     </div>
                 </div>
             </div>
