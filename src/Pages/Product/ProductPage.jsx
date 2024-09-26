@@ -5,6 +5,7 @@ import * as Icon from '@phosphor-icons/react'
 import { items, sizes } from './../../Utils/Extra'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import BodyExample from '../../Assets/images/women-body-measurments.png'
+import Carousel from '../../Components/Carousel/Carousel'
 
 const ProductPage = () => {
     const { productId } = useParams()
@@ -63,23 +64,212 @@ const ProductPage = () => {
     return (
         <Wrapper>
             <div className="flex w-full flex-col gap-12 py-36">
-                <div className="flex w-full justify-between  max-lg:flex-col">
-                    <div className="flex h-[48rem] w-[60.5rem] items-center justify-between gap-10 rounded-xl bg-white p-8 shadow-default max-lg:h-[40rem] max-lg:w-full">
-                        <div className="flex h-full flex-col gap-y-10">{srcMap}</div>
+                <div className="flex w-full justify-between">
+                    <div className="flex flex-col gap-10">
+                        <div className="flex h-[48rem] w-[60.5rem] items-center justify-between gap-10 rounded-xl bg-white p-8 shadow-default max-lg:h-[40rem] max-lg:w-full">
+                            <div className="flex h-full flex-col gap-y-10">{srcMap}</div>
 
-                        <div className="flex size-full items-center justify-center rounded-xl">
-                            <motion.img
-                                key={showedImage}
-                                initial={{ opacity: 0, x: -30 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="size-[90%] cursor-zoom-in object-cover"
-                                src={item[0].src[showedImage]}
-                                alt="Imagem do Produto"
-                            />
+                            <div className="flex size-full items-center justify-center rounded-xl p-2">
+                                <motion.img
+                                    key={showedImage}
+                                    initial={{ opacity: 0, x: -30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="size-full cursor-zoom-in object-contain"
+                                    src={item[0].src[showedImage]}
+                                    alt="Imagem do Produto"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex w-[60.5rem] flex-col gap-4 rounded-xl bg-white p-8 shadow-default">
+                            <h1 className="text-3xl font-extrabold uppercase">Descrição</h1>
+
+                            <p className="font-light leading-tight text-neutral-500">
+                                A camiseta {item[0].type} combina estilo e funcionalidade de um jeito leve e
+                                prático. Feita 100% algodão, essa camiseta oferece a proteção solar que você
+                                precisa, com fator de proteção FPS50+ (aplicado diretamente na peça). Possui
+                                gola redonda e mangas longas, que protegem os seus braços e te deixam mais à
+                                vontade. É ideal para os dias ensolarados em que você quer se proteger e
+                                evitar a exposição aos raios solares. É uma ótima opção para quem tem pele
+                                sensível e não quer se expor ao sol.{' '}
+                            </p>
+                        </div>
+
+                        <div className="flex w-full justify-between rounded-xl">
+                            <motion.div className="flex w-[60.5rem] flex-col gap-5 rounded-xl bg-white p-8 shadow-default">
+                                <div className="flex w-full justify-between">
+                                    <h1 className="text-3xl font-extrabold uppercase">Tabela de medidas</h1>
+                                    <Icon.CaretDown
+                                        className="cursor-pointer text-3xl"
+                                        onClick={() => setSizeTable(!sizeTable)}
+                                    />
+                                </div>
+
+                                {sizeTable && (
+                                    <>
+                                        <div className="flex gap-10 border-y border-solid border-neutral-200 py-4 text-lg font-bold uppercase">
+                                            <p className="text-red-500">Homens</p>
+                                            <p>Mulheres</p>
+                                        </div>
+
+                                        <div className="flex flex-col justify-center gap-16">
+                                            <div className="flex flex-col gap-6">
+                                                <h1 className="font-bold uppercase text-neutral-400">
+                                                    Tabela de medidas masculinas
+                                                </h1>
+
+                                                <div className="flex w-[40.75rem] gap-20 font-light [&>div]:flex [&>div]:flex-col  [&>div]:items-center [&>div]:gap-10">
+                                                    <div className="flex flex-col uppercase">
+                                                        <h1 className=" font-bold">Tamanho</h1>
+                                                        <p>pp</p>
+                                                        <p>p</p>
+                                                        <p>m</p>
+                                                        <p>g</p>
+                                                        <p>gg</p>
+                                                        <p>xgg</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">Busto</h1>
+                                                        <p>79-86</p>
+                                                        <p>87-94</p>
+                                                        <p>95-102</p>
+                                                        <p>103-110</p>
+                                                        <p>111-118</p>
+                                                        <p>119-126</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">Cintura</h1>
+                                                        <p>73-78</p>
+                                                        <p>79-84</p>
+                                                        <p>85-90</p>
+                                                        <p>91-98</p>
+                                                        <p>99-106</p>
+                                                        <p>107-116</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">Quadril</h1>
+                                                        <p>84-89</p>
+                                                        <p>91-97</p>
+                                                        <p>98-104</p>
+                                                        <p>105-112</p>
+                                                        <p>113-120</p>
+                                                        <p>121-128</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">Entrepernas</h1>
+                                                        <p>79</p>
+                                                        <p>80</p>
+                                                        <p>81</p>
+                                                        <p>82</p>
+                                                        <p>83</p>
+                                                        <p>84</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex w-[40.75rem] flex-col gap-2 font-normal uppercase">
+                                                <h1 className="font-bold text-neutral-400">Como medir?</h1>
+                                                <p className="text-sm text-neutral-400">
+                                                    Meça sempre em pé, com roupas leves. Utilize sempre uma
+                                                    fita métrica mantendo na horizontal, contornando por
+                                                    completo a área desejada, sem pressionar. Após a medição,
+                                                    verifique na tabela o tamanho correspondente.
+                                                </p>
+                                            </div>
+
+                                            <div className="flex gap-10">
+                                                <div className="flex w-[30.50rem] flex-col justify-between text-lg font-light text-neutral-700">
+                                                    <p>
+                                                        <span className="font-bold">Busto:</span> Meça a volta
+                                                        total do busto (a parte mais volumosa do tronco).
+                                                    </p>
+                                                    <p>
+                                                        <span className="font-bold">Cintura:</span> Meça a
+                                                        volta total da cintura (a parte mais estreita do
+                                                        tronco), cerca de dois dedos acima do umbigo.
+                                                    </p>
+                                                    <p>
+                                                        <span className="font-bold">Quadril:</span> Meça a
+                                                        volta total do quadril (a parte mais larga do tronco),
+                                                        pouco abaixo da cintura.
+                                                    </p>
+
+                                                    <p>
+                                                        <span className="font-bold">Entrepernas:</span>Meça a
+                                                        distância total entre o início da parte da coxa e o
+                                                        calcanhar.
+                                                    </p>
+                                                </div>
+
+                                                <div>
+                                                    <img src={BodyExample} alt="Exemplo de corpo" />
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col gap-6">
+                                                <h1 className="font-bold uppercase text-neutral-400">
+                                                    Tabela de conversão masculina
+                                                </h1>
+
+                                                <div className="flex w-[40.75rem] gap-20 font-light [&>div]:flex [&>div]:flex-col [&>div]:items-center [&>div]:gap-8">
+                                                    <div className="flex flex-col uppercase">
+                                                        <h1 className=" font-bold">br</h1>
+                                                        <p>pp</p>
+                                                        <p>p</p>
+                                                        <p>m</p>
+                                                        <p>g</p>
+                                                        <p>gg</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">US</h1>
+                                                        <p>XS</p>
+                                                        <p>S</p>
+                                                        <p>M</p>
+                                                        <p>L</p>
+                                                        <p>XL</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">UK</h1>
+                                                        <p>8</p>
+                                                        <p>10</p>
+                                                        <p>12</p>
+                                                        <p>14</p>
+                                                        <p>16</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">FR</h1>
+                                                        <p>36</p>
+                                                        <p>38</p>
+                                                        <p>40</p>
+                                                        <p>42</p>
+                                                        <p>44</p>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 className=" font-bold">IT</h1>
+                                                        <p>40</p>
+                                                        <p>42</p>
+                                                        <p>44</p>
+                                                        <p>46</p>
+                                                        <p>48</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
+                            </motion.div>
                         </div>
                     </div>
 
-                    <div className="sticky top-36 flex w-[32rem] flex-col justify-between rounded-xl bg-white p-8 shadow-default">
+                    <div className="sticky top-36 flex h-[48rem] w-[32rem] flex-col justify-between rounded-xl bg-white p-8 shadow-default">
                         <div className="flex flex-col gap-5">
                             <span className="w-fit border-b border-solid border-b-neutral-200 pb-1 pr-3 text-sm font-semibold uppercase text-neutral-400">
                                 Novo | 120389 vendidos
@@ -139,226 +329,9 @@ const ProductPage = () => {
                     </div>
                 </div>
 
-                <div className="flex w-full justify-between rounded-xl">
-                    <motion.div className="flex w-[60.5rem] flex-col gap-5 rounded-xl bg-white p-8 shadow-default">
-                        <div className="flex w-full justify-between">
-                            <h1 className="text-4xl font-extrabold uppercase">Tabela de medidas</h1>
-                            <Icon.CaretDown
-                                className="cursor-pointer text-3xl"
-                                onClick={() => setSizeTable(!sizeTable)}
-                            />
-                        </div>
+                <Carousel title={'Vistos por último'} />
 
-                        {sizeTable && (
-                            <>
-                                <div className="flex gap-10 border-y border-solid border-neutral-200 py-4 text-lg font-bold uppercase">
-                                    <p className="text-red-500">Homens</p>
-                                    <p>Mulheres</p>
-                                </div>
-
-                                <div className="flex flex-col justify-center gap-16">
-                                    <div className="flex flex-col gap-6">
-                                        <h1 className="font-bold uppercase text-neutral-400">
-                                            Tabela de medidas masculinas
-                                        </h1>
-
-                                        <div className="flex w-[40.75rem] gap-20 font-light [&>div]:flex [&>div]:flex-col  [&>div]:items-center [&>div]:gap-10">
-                                            <div className="flex flex-col uppercase">
-                                                <h1 className=" font-bold">Tamanho</h1>
-                                                <p>pp</p>
-                                                <p>p</p>
-                                                <p>m</p>
-                                                <p>g</p>
-                                                <p>gg</p>
-                                                <p>xgg</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">Busto</h1>
-                                                <p>79-86</p>
-                                                <p>87-94</p>
-                                                <p>95-102</p>
-                                                <p>103-110</p>
-                                                <p>111-118</p>
-                                                <p>119-126</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">Cintura</h1>
-                                                <p>73-78</p>
-                                                <p>79-84</p>
-                                                <p>85-90</p>
-                                                <p>91-98</p>
-                                                <p>99-106</p>
-                                                <p>107-116</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">Quadril</h1>
-                                                <p>84-89</p>
-                                                <p>91-97</p>
-                                                <p>98-104</p>
-                                                <p>105-112</p>
-                                                <p>113-120</p>
-                                                <p>121-128</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">Entrepernas</h1>
-                                                <p>79</p>
-                                                <p>80</p>
-                                                <p>81</p>
-                                                <p>82</p>
-                                                <p>83</p>
-                                                <p>84</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex w-[40.75rem] flex-col gap-2 font-normal uppercase">
-                                        <h1 className="font-bold text-neutral-400">Como medir?</h1>
-                                        <p className="text-sm text-neutral-400">
-                                            Meça sempre em pé, com roupas leves. Utilize sempre uma fita
-                                            métrica mantendo na horizontal, contornando por completo a área
-                                            desejada, sem pressionar. Após a medição, verifique na tabela o
-                                            tamanho correspondente.
-                                        </p>
-                                    </div>
-
-                                    <div className="flex gap-10">
-                                        <div className="flex w-[30.50rem] flex-col justify-between text-lg font-light text-neutral-700">
-                                            <p>
-                                                <span className="font-bold">Busto:</span> Meça a volta total
-                                                do busto (a parte mais volumosa do tronco).
-                                            </p>
-                                            <p>
-                                                <span className="font-bold">Cintura:</span> Meça a volta total
-                                                da cintura (a parte mais estreita do tronco), cerca de dois
-                                                dedos acima do umbigo.
-                                            </p>
-                                            <p>
-                                                <span className="font-bold">Quadril:</span> Meça a volta total
-                                                do quadril (a parte mais larga do tronco), pouco abaixo da
-                                                cintura.
-                                            </p>
-
-                                            <p>
-                                                <span className="font-bold">Entrepernas:</span>Meça a
-                                                distância total entre o início da parte da coxa e o calcanhar.
-                                            </p>
-                                        </div>
-
-                                        <div>
-                                            <img src={BodyExample} alt="Exemplo de corpo" />
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-col gap-6">
-                                        <h1 className="font-bold uppercase text-neutral-400">
-                                            Tabela de conversão masculina
-                                        </h1>
-
-                                        <div className="flex w-[40.75rem] gap-20 font-light [&>div]:flex [&>div]:flex-col [&>div]:items-center [&>div]:gap-8">
-                                            <div className="flex flex-col uppercase">
-                                                <h1 className=" font-bold">br</h1>
-                                                <p>pp</p>
-                                                <p>p</p>
-                                                <p>m</p>
-                                                <p>g</p>
-                                                <p>gg</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">US</h1>
-                                                <p>XS</p>
-                                                <p>S</p>
-                                                <p>M</p>
-                                                <p>L</p>
-                                                <p>XL</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">UK</h1>
-                                                <p>8</p>
-                                                <p>10</p>
-                                                <p>12</p>
-                                                <p>14</p>
-                                                <p>16</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">FR</h1>
-                                                <p>36</p>
-                                                <p>38</p>
-                                                <p>40</p>
-                                                <p>42</p>
-                                                <p>44</p>
-                                            </div>
-
-                                            <div>
-                                                <h1 className=" font-bold">IT</h1>
-                                                <p>40</p>
-                                                <p>42</p>
-                                                <p>44</p>
-                                                <p>46</p>
-                                                <p>48</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </motion.div>
-
-                    {/* <div className="flex h-fit w-[32rem] flex-col gap-8">
-                        <motion.div className=" flex w-full flex-col gap-2 rounded-xl bg-white p-4 text-base font-light text-neutral-500 shadow-default">
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <img
-                                        src="https://cdn.shopify.com/s/files/1/0611/1471/2252/files/correios-logo_1.svg?v=1648167047"
-                                        alt="correios logo"
-                                    />
-
-                                    <div className="flex flex-col">
-                                        <p>Entrega via Correios©</p>
-                                        <p className="text-sm text-green-500">
-                                            Envio para{' '}
-                                            <span className="font-semibold">São Gonçalo, RJ e Região</span>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <p className="font-semibold text-green-500">Frete Grátis</p>
-                            </div>
-
-                            <div className="flex flex-col gap-4 rounded-xl p-4 leading-none">
-                                <div className="flex w-fit flex-col gap-1">
-                                    <div className="flex items-center gap-1 text-green-500">
-                                        <Icon.Package />
-                                        <p className="flex items-center gap-1">
-                                            Frete Grátis <Icon.Lightning />{' '}
-                                            <span className="text-sm font-bold uppercase italic text-green-500">
-                                                Full
-                                            </span>{' '}
-                                            • <span className="text-blue-500">Disponível</span>
-                                        </p>
-                                    </div>
-                                    <p className="text-sm text-neutral-400">Enviado pelos Correios©</p>
-                                </div>
-
-                                <div className="flex items-center gap-1">
-                                    <Icon.SealCheck color="#3b82f6" />
-                                    <p>Compra Garantida. Saia satisfeito ou devolvemos o dinheiro</p>
-                                </div>
-
-                                <div className="flex items-center gap-1">
-                                    <Icon.Medal color="#3b82f6" />
-                                    <p>Mais vendido entre os produtos da coleção</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div> */}
-                </div>
+                <Carousel title={'Talvez você goste'} />
             </div>
         </Wrapper>
     )

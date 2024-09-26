@@ -1,121 +1,121 @@
-import axios from 'axios';
-import React from 'react';
+import axios from 'axios'
+import React from 'react'
 
 const useAxios = () => {
-	const [data, setData] = React.useState(null);
-	const [error, setError] = React.useState(null);
-	const [loading, setLoading] = React.useState(null);
+    const [data, setData] = React.useState(null)
+    const [error, setError] = React.useState(null)
+    const [loading, setLoading] = React.useState(null)
 
-	const get = React.useCallback(async (url, config) => {
-		try {
-			setError(null);
-			setLoading(true);
+    const get = React.useCallback(async (url, config) => {
+        try {
+            setError(null)
+            setLoading(true)
 
-			let res = await axios.get(url, config);
+            const res = await axios.get(url, config)
 
-			setData(res.data);
-		} catch (err) {
-			setData(null);
-			setError(err.data);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
+            setData(res.data)
+        } catch (err) {
+            setData(null)
+            setError(err.data)
+            setLoading(false)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
-	const post = React.useCallback(async (url, body, config) => {
-		try {
-			setError(null);
-			setLoading(true);
+    const post = React.useCallback(async (url, body, config) => {
+        try {
+            setError(null)
+            setLoading(true)
 
-			await axios.post(url, body, config);
-		} catch (err) {
-			setData(null);
-			setError(err.data);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
+            await axios.post(url, body, config)
+        } catch (err) {
+            setData(null)
+            setError(err.data)
+            setLoading(false)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
-	const postWithRes = React.useCallback(async (url, body, config) => {
-		try {
-			setError(null);
-			setLoading(true);
+    const postWithRes = React.useCallback(async (url, body, config) => {
+        try {
+            setError(null)
+            setLoading(true)
 
-			let res = await axios.post(url, body, config);
+            const res = await axios.post(url, body, config)
 
-			setData(res.data);
-		} catch (err) {
-			setData(null);
-			setError(err.data);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
+            setData(res.data)
+        } catch (err) {
+            setData(null)
+            setError(err.data)
+            setLoading(false)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
-	const put = React.useCallback(async (url, body, config) => {
-		try {
-			setError(null);
-			setLoading(true);
+    const put = React.useCallback(async (url, body, config) => {
+        try {
+            setError(null)
+            setLoading(true)
 
-			await axios.put(url, body, config);
-		} catch (err) {
-			setData(null);
-			setError(err.data);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
+            await axios.put(url, body, config)
+        } catch (err) {
+            setData(null)
+            setError(err.data)
+            setLoading(false)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
-	const putWithRes = React.useCallback(async (url, body, config) => {
-		try {
-			setError(null);
-			setLoading(true);
+    const putWithRes = React.useCallback(async (url, body, config) => {
+        try {
+            setError(null)
+            setLoading(true)
 
-			let res = await axios.put(url, body, config);
+            const res = await axios.put(url, body, config)
 
-			setData(res.data);
-		} catch (err) {
-			setData(null);
-			setError(err.data);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
+            setData(res.data)
+        } catch (err) {
+            setData(null)
+            setError(err.data)
+            setLoading(false)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
-	const deleteReq = React.useCallback(async (url, body, config) => {
-		try {
-			setError(null);
-			setLoading(true);
+    const deleteReq = React.useCallback(async (url, body, config) => {
+        try {
+            setError(null)
+            setLoading(true)
 
-			await axios.delete(url, config);
-		} catch (err) {
-			setData(null);
-			setError(err.data);
-			setLoading(false);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
+            await axios.delete(url, config)
+        } catch (err) {
+            setData(null)
+            setError(err.data)
+            setLoading(false)
+        } finally {
+            setLoading(false)
+        }
+    }, [])
 
-	return {
-		data,
-		error,
-		loading,
-		setData,
-		setError,
-		setLoading,
-		get,
-		post,
-		postWithRes,
-		put,
-		putWithRes,
-		deleteReq,
-	};
-};
+    return {
+        data,
+        error,
+        loading,
+        setData,
+        setError,
+        setLoading,
+        get,
+        post,
+        postWithRes,
+        put,
+        putWithRes,
+        deleteReq,
+    }
+}
 
-export default useAxios;
+export default useAxios
