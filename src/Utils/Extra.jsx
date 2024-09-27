@@ -17,25 +17,51 @@ export const tabs = [
 ]
 
 export const sizes = [
-    { id: 'p', label: 'P' },
-    { id: 'm', label: 'M' },
-    { id: 'g', label: 'G' },
-    { id: 'gg', label: 'GG' },
-    { id: 'xgg', label: 'XGG' },
+    {
+        id: 'p',
+        label: 'P',
+        man: { busto: '87-94', cintura: '79-84', quadril: '91-97', entrepernas: '80' },
+        woman: { busto: '84-88', cintura: '68-72', quadril: '93-97', entrepernas: '77,5' },
+    },
+    {
+        id: 'm',
+        label: 'M',
+        man: { busto: '95-102', cintura: '85-90', quadril: '98-104', entrepernas: '81' },
+        woman: { busto: '89-95', cintura: '73-79', quadril: '96-102	', entrepernas: '77,5' },
+    },
+    {
+        id: 'g',
+        label: 'G',
+        man: { busto: '103-110', cintura: '91-98', quadril: '105-112', entrepernas: '82' },
+        woman: { busto: '96-103	', cintura: '80-87', quadril: '103-110', entrepernas: '77,5' },
+    },
+    {
+        id: 'gg',
+        label: 'GG',
+        man: { busto: '111-118', cintura: '99-106', quadril: '113-120', entrepernas: '83' },
+        woman: { busto: '104-111', cintura: '88-96', quadril: '111-119', entrepernas: '77,5' },
+    },
+    {
+        id: 'xgg',
+        label: 'XGG',
+        man: { busto: '119-126', cintura: '107-116', quadril: '121-128', entrepernas: '84' },
+        woman: { busto: '112-119', cintura: '97-105	', quadril: '120-127', entrepernas: '77,5' },
+    },
 ]
 export const productDetails = [
-    { title: 'p', description: 'P' },
-    { title: 'm', description: 'M' },
-    { title: 'g', description: 'G' },
-    { title: 'gg', description: 'GG' },
-    { title: 'xgg', description: 'XGG' },
+    { title: 'Material', description: 'Dry Fit' },
+    { title: 'Tipo', description: 'Esportiva' },
+    { title: 'Translúcido', description: 'Não' },
+    { title: 'Cor', description: 'Branca' },
+    { title: 'Caimento', description: 'Ajusta ao corpo' },
+    { title: 'Elasticidade', description: 'Média' },
 ]
 
 export const institutionalFooterList = [
     { id: 4, name: 'Segurança', link: '' },
+    { id: 3, name: 'Fale conosco', link: '' },
     { id: 2, name: 'Quem somos', link: '' },
     { id: 1, name: 'Onde estamos', link: '' },
-    { id: 3, name: 'Fale conosco', link: '' },
 ]
 
 export const policiesFooterList = [
@@ -68,7 +94,7 @@ export const items = [
     },
     {
         id: 2,
-        name: 'TOJI Fushiguru',
+        name: 'Fushiguru TOJI',
         src: [image2, image4],
         type: 'Oversized Premium',
         price: 50,

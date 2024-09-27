@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ListLinks = ({ list, title }) => {
     const listMap = list.map((item) => (
-        <Link className="cursor-pointer hover:underline" key={item.id}>
+        <Link className="cursor-pointer text-sm text-body hover:text-white hover:underline" key={item.id}>
             {item.name}
         </Link>
     ))
