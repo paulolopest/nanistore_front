@@ -28,7 +28,7 @@ export default {
             },
 
             textColor: {
-                default: '#262626',
+                default: '#404040',
                 subtitle: '#737373 ',
                 body: '#a3a3a3',
             },

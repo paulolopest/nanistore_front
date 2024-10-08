@@ -5,7 +5,7 @@ const ToggleButton = ({ state, setState, id, firstIcon, secondIcon }) => {
     return (
         <div
             onClick={() => setState((prevValue) => (prevValue === 'end' ? 'start' : 'end'))}
-            className={` flex h-7 w-16 cursor-pointer items-center rounded-full bg-neutral-100 shadow-default ${state === 'start' ? 'justify-start' : 'justify-end'} transition duration-100 ease-in-out`}
+            className={`flex h-6 w-12 cursor-pointer items-center rounded-full bg-neutral-100 px-0.5 shadow-[inset_0px_0px_3px_0px_#d1d1d1] ${state === 'start' ? 'justify-start' : 'justify-end'} transition duration-100 ease-in-out`}
         >
             <motion.div
                 className="relative flex size-6 flex-row items-center justify-center rounded-full text-black"
