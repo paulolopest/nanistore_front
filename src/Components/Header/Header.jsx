@@ -45,7 +45,7 @@ const Header = () => {
         <header className="fixed z-50 w-full  bg-white shadow-default">
             <Wrapper>
                 <header className="flex w-full flex-row items-start justify-between pb-1.5 pt-3">
-                    <Link to={'/'} className="flex h-12 w-[192px] cursor-pointer select-none">
+                    <Link to={'/'} className="flex h-12 w-[88px] cursor-pointer select-none">
                         <img
                             className="size-12 select-none object-contain"
                             src={theme === 'start' ? WhiteLogo : BlackLogo}
@@ -64,7 +64,7 @@ const Header = () => {
                             setState={setSearchValue}
                         />
 
-                        <nav className="flex w-full items-center justify-center gap-8  max-sm:hidden">
+                        <nav className="flex w-full items-center justify-center gap-8 max-sm:hidden">
                             {tabMap}
                         </nav>
                     </div>

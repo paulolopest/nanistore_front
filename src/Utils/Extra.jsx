@@ -108,7 +108,7 @@ export const items = [
     },
     {
         id: 5,
-        name: 'fox devil',
+        name: 'Fox Devil',
         src: [image5, image1],
         type: 'Dry Fit',
         price: 50,

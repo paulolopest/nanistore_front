@@ -7,8 +7,8 @@ export default {
         extend: {
             colors: {},
             boxShadow: {
-                default: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                hover: '0 4px 16px rgba(0, 0, 0, 0.2)',
+                default: '2px 4px 12px #00000014',
+                hover: '2px 4px 16px #00000029',
             },
             fontFamily: {},
             backgroundImage: {},
