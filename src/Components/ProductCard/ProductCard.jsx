@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { formatPrice } from '../../Utils/Extra'
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, className }) => {
     const [srcIndex, setSrcIndex] = useState(0)
 
     return (
         <motion.div
             whileHover={{ y: -8 }}
             onHoverEnd={() => setSrcIndex(0)}
-            className="flex h-[32rem] w-[313px] shrink-0 cursor-pointer select-none flex-col justify-center gap-2 overflow-hidden rounded-2xl bg-white p-2 shadow-default transition-shadow duration-150 ease-linear hover:shadow-hover"
+            className={`flex h-[32rem] w-[313px] shrink-0 cursor-pointer select-none flex-col justify-center gap-2 overflow-hidden rounded-2xl bg-white p-2 shadow-default transition-shadow duration-150 ease-linear hover:shadow-hover ${className}`}
         >
             <div className="relative flex h-80 w-full items-center justify-center">
                 <motion.img

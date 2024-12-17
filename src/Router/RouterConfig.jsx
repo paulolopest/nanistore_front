@@ -1,6 +1,7 @@
 import Root from './Root'
 import MainPage from '../Pages/Main/MainPage'
 import ErrorPage from '../Pages/Error/ErrorPage'
+import SearchPage from '../Pages/Search/SearchPage'
 import ProductPage from './../Pages/Product/ProductPage'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
             {
                 path: '/product/:productId/:productName',
                 element: <ProductPage />,
+            },
+            {
+                path: '/search',
+                element: <SearchPage />,
             },
         ],
     },

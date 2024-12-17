@@ -32,6 +32,9 @@ export default {
                 subtitle: '#737373 ',
                 body: '#a3a3a3',
             },
+            borderWidth: {
+                1: '1px',
+            },
         },
     },
     plugins: [],
