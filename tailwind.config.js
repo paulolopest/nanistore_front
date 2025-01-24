@@ -2,7 +2,6 @@
 
 export default {
     content: ['./index.html', './src/**/*.jsx', '!./node_modules'],
-    safelist: ['bg-nodeColor', 'bg-framerColor', 'bg-reactColor, bg-test'],
     theme: {
         extend: {
             colors: {},

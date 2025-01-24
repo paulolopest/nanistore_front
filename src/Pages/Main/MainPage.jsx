@@ -1,7 +1,6 @@
 import React from 'react'
-import Banner1 from '../../Assets/images/banner1.webp'
+import Banner1 from '../../Assets/images/banner1.jpg'
 import BannerBig from '../../Components/Banners/BannerBig'
-// import { CreditCard, Gavel, Package } from '@phosphor-icons/react'
 import Carousel from '../../Components/Carousel/Carousel'
 import DoubleBanner from '../../Components/Banners/DoubleBanner'
 import ComboBanner from '../../Components/Banners/ComboBanner'
