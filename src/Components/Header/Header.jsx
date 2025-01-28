@@ -1,23 +1,22 @@
+import CartModal from './CartModal'
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/Wrapper'
 import ProfileModal from './ProfileModal'
 import { tabs } from './../../Utils/Extra'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
-import CustomInput from '../CustomForm/CustomInput'
+import CustomInput from '../CustomForm/CustomInput/CustomInput'
 import { AnimatePresence, motion } from 'framer-motion'
 import WhiteLogo from '../../Assets/logo/logobranca.png'
 import BlackLogo from '../../Assets/logo/logopreta.webp'
 import { GlobalContext } from '../../Context/GlobalContext'
-import CartModal from './CartModal'
+import SearchDropDown from '../CustomForm/CustomInput/SearchDropDown'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
     const [searchValue, setSearchValue] = useState('')
-    const [showCartModal, setShowCartModal] = useState(false)
-    const [showProfileModal, setShowProfileModal] = useState(false)
 
-    const { theme, setTheme } = useContext(GlobalContext)
+    const { theme, openDropDown, profileDropDown, cartDropDown, searchDropDown } = useContext(GlobalContext)
 
     const tabMap = tabs.map((tab) => (
         <div
@@ -31,7 +30,7 @@ const Header = () => {
                     animate={{ opacity: 1 }}
                     transition={{ type: 'spring', duration: 0.5 }}
                     layoutId="headerActiveTab"
-                    className={`absolute top-0 size-full rounded-md  bg-red-600 shadow-hover`}
+                    className={`absolute top-0 size-full rounded-md bg-red-600 shadow-hover`}
                 />
             )}
             <Link
@@ -56,15 +55,19 @@ const Header = () => {
                     </Link>
 
                     <div className="flex flex-col items-center gap-4">
-                        <CustomInput
-                            bg="#f5f5f6"
-                            h="2.5rem"
-                            w="40rem"
-                            icon={<Icon.MagnifyingGlass />}
-                            label="Pesquisar"
-                            state={searchValue}
-                            setState={setSearchValue}
-                        />
+                        <div className="relative w-[40rem]">
+                            <CustomInput
+                                bg="#f5f5f6"
+                                h="2.5rem"
+                                w="40rem"
+                                icon={<Icon.MagnifyingGlass />}
+                                label="Pesquisar"
+                                state={searchValue}
+                                setState={setSearchValue}
+                            />
+
+                            <AnimatePresence>{searchDropDown && <SearchDropDown />}</AnimatePresence>
+                        </div>
 
                         <nav className="flex w-full items-center justify-center gap-8 max-sm:hidden">
                             {tabMap}
@@ -75,19 +78,16 @@ const Header = () => {
                         <div className="relative size-6 cursor-pointer">
                             <Icon.ShoppingBagOpen
                                 className="size-full"
-                                onClick={() => setShowCartModal(!showCartModal)}
+                                onClick={() => openDropDown('cart')}
                             />
 
-                            <AnimatePresence>{showCartModal && <CartModal />}</AnimatePresence>
+                            <AnimatePresence>{cartDropDown && <CartModal />}</AnimatePresence>
                         </div>
 
                         <div className="relative size-6 cursor-pointer">
-                            <Icon.User
-                                className="size-full"
-                                onClick={() => setShowProfileModal(!showProfileModal)}
-                            />
+                            <Icon.User className="size-full" onClick={() => openDropDown('profile')} />
 
-                            <AnimatePresence>{showProfileModal && <ProfileModal />}</AnimatePresence>
+                            <AnimatePresence>{profileDropDown && <ProfileModal />}</AnimatePresence>
                         </div>
                     </nav>
                 </header>

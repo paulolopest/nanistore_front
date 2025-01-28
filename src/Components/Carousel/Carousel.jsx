@@ -13,17 +13,29 @@ const Carousel = ({ title }) => {
         if (isDragging) e.preventDefault()
     }
 
-    const itemMap = items.map((item) => (
-        <Link
-            key={item.id}
-            draggable="false"
-            onClick={preventClick}
-            className="select-none"
-            to={`/product/${item.id}/${item.name.replaceAll(' ', '').toLowerCase()}`}
-        >
-            <ProductCard item={item} />
-        </Link>
-    ))
+    const itemMap =
+        items?.length > 0 ? (
+            items.map((item, index) => (
+                <Link
+                    key={item.id}
+                    draggable="false"
+                    onClick={preventClick}
+                    className="select-none"
+                    to={`/product/${item.id}/${item.name.replaceAll(' ', '').toLowerCase()}`}
+                >
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ delay: index * 0.01 }}
+                    >
+                        <ProductCard item={item} index={index} />
+                    </motion.div>
+                </Link>
+            ))
+        ) : (
+            <div className="text-center text-gray-500">Carregando itens...</div>
+        )
 
     return (
         <div className="flex w-full flex-col gap-y-1 ">
@@ -33,7 +45,7 @@ const Carousel = ({ title }) => {
                     drag="x"
                     onDragEnd={dragEnd}
                     onDragStart={dragStart}
-                    className="flex gap-8"
+                    className="flex gap-6"
                     dragConstraints={{ left: -2000, right: 0 }}
                 >
                     {itemMap}

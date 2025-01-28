@@ -4,7 +4,7 @@ import BannerBig from '../../Components/Banners/BannerBig'
 import Carousel from '../../Components/Carousel/Carousel'
 import DoubleBanner from '../../Components/Banners/DoubleBanner'
 import ComboBanner from '../../Components/Banners/ComboBanner'
-import Newsletter from '../../Components/Newsletter/Newsletter'
+// import Newsletter from '../../Components/Newsletter/Newsletter'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 
 const MainPage = () => {
@@ -23,7 +23,7 @@ const MainPage = () => {
 
                 <Carousel title={'Lançamentos'} />
 
-                <Newsletter />
+                {/* <Newsletter /> */}
             </div>
         </Wrapper>
     )

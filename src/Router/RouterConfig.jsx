@@ -4,6 +4,7 @@ import ErrorPage from '../Pages/Error/ErrorPage'
 import SearchPage from '../Pages/Search/SearchPage'
 import ProductPage from './../Pages/Product/ProductPage'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import CartPage from '../Pages/Cart/CartPage'
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: '/search',
                 element: <SearchPage />,
+            },
+            {
+                path: '/cart',
+                element: <CartPage />,
             },
         ],
     },

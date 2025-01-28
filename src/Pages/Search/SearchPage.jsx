@@ -1,8 +1,8 @@
 import React from 'react'
+import { items } from '../../Utils/Extra'
+import * as Icon from '@phosphor-icons/react'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import Sorter from './../../Components/SearchPage/Sorter'
-import * as Icon from '@phosphor-icons/react'
-import { items } from '../../Utils/Extra'
 import ProductCard from '../../Components/ProductCard/ProductCard'
 import CustomSelect from '../../Components/CustomForm/CustomSelect'
 
@@ -39,18 +39,9 @@ const SearchPage = () => {
                                 list={['20 por página', '40 por página', '60 por página', '80 por página']}
                             />
                         </div>
-
-                        <div className="flex items-center gap-16">
-                            <p className="text-neutral-500">9 Produtos</p>
-
-                            <div className="flex gap-6 [&>svg]:size-6">
-                                <Icon.ListBullets />
-                                <Icon.SquaresFour />
-                            </div>
-                        </div>
                     </header>
 
-                    <div className="flex flex-wrap justify-between gap-x-2 gap-y-8">{productMap}</div>
+                    <div className="grid grid-cols-4 gap-x-2 gap-y-8 ">{productMap}</div>
                 </div>
             </div>
         </Wrapper>
