@@ -5,6 +5,7 @@ import SearchPage from '../Pages/Search/SearchPage'
 import ProductPage from './../Pages/Product/ProductPage'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import CartPage from '../Pages/Cart/CartPage'
+import ProfilePage from './../Pages/Profile/ProfilePage'
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/product/:productId/:productName',
                 element: <ProductPage />,
+            },
+            {
+                path: '/profile',
+                element: <ProfilePage />,
             },
             {
                 path: '/search',

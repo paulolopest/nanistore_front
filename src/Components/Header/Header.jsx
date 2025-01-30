@@ -5,12 +5,12 @@ import ProfileModal from './ProfileModal'
 import { tabs } from './../../Utils/Extra'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
-import CustomInput from '../CustomForm/CustomInput/CustomInput'
+import SearchInput from './SearchInput/SearchInput'
 import { AnimatePresence, motion } from 'framer-motion'
 import WhiteLogo from '../../Assets/logo/logobranca.png'
 import BlackLogo from '../../Assets/logo/logopreta.webp'
 import { GlobalContext } from '../../Context/GlobalContext'
-import SearchDropDown from '../CustomForm/CustomInput/SearchDropDown'
+import SearchDropDown from './SearchInput/SearchDropDown'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
@@ -56,7 +56,7 @@ const Header = () => {
 
                     <div className="flex flex-col items-center gap-4">
                         <div className="relative w-[40rem]">
-                            <CustomInput
+                            <SearchInput
                                 bg="#f5f5f6"
                                 h="2.5rem"
                                 w="40rem"

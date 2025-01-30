@@ -14,6 +14,7 @@ const CartPage = () => {
 
                 <section className="flex w-full justify-between">
                     <motion.div
+                        layoutId="cartPage"
                         initial={{ y: 20 }}
                         animate={{ y: 0 }}
                         className="flex max-h-[43rem] w-[64rem] flex-col gap-8 overflow-y-scroll rounded-lg bg-white px-8 py-4 shadow-default"

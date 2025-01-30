@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import React, { useRef, useContext } from 'react'
 import { GlobalContext } from '../../../Context/GlobalContext'
 
-const CustomInput = ({ state, setState, label, icon, w, h, bg, ...props }) => {
+const SearchInput = ({ state, setState, label, icon, w, h, bg, ...props }) => {
     const inputRef = useRef(null)
 
     const { openDropDown, searchDropDown, setSearchDropDown } = useContext(GlobalContext)
@@ -39,4 +39,4 @@ const CustomInput = ({ state, setState, label, icon, w, h, bg, ...props }) => {
     )
 }
 
-export default CustomInput
+export default SearchInput
