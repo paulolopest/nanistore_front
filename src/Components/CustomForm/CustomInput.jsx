@@ -16,8 +16,9 @@ const CustomInput = ({ id, placeholder, register, errors, type }) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
+            // initial={{ opacity: 0, y: -30 }}
+            // animate={{ opacity: 1, y: 0 }}
+            layout
             className={`relative h-11 w-[49%]`}
         >
             <motion.input
@@ -28,7 +29,7 @@ const CustomInput = ({ id, placeholder, register, errors, type }) => {
                 onBlur={handleBlur}
                 onFocus={() => setActive(true)}
                 layoutId={`${[id]}InputAnimation`}
-                className={`size-full rounded-sm border border-solid border-neutral-300 pl-2 ${active && 'border-blue-400'} ${errors[id] && 'border-red-500'}`}
+                className={`size-full rounded-md border border-solid border-neutral-300 pl-2 ${active && 'border-blue-400'} ${errors[id] && 'border-red-500'}`}
             />
 
             <motion.label
