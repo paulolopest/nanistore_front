@@ -2,11 +2,11 @@ import { z } from 'zod'
 import { motion } from 'framer-motion'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { items } from '../../Utils/Extra'
 import * as Icon from '@phosphor-icons/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import CustomInput from '../../Components/CustomForm/CustomInput'
-import { items } from '../../Utils/Extra'
 
 const schema = z.object({
     name: z.string(),
@@ -165,7 +165,7 @@ const ProfilePage = () => {
                                 </p>
 
                                 <Icon.CaretDown
-                                    className={`${showPassForm && 'rotate-180'} transition duration-200 ease-in`}
+                                    className={`${showAddressLayer && 'rotate-180'} transition duration-200 ease-in`}
                                 />
                             </motion.div>
 
@@ -226,7 +226,7 @@ const ProfilePage = () => {
                                 disabled={isSubmitting}
                                 form="basicForm"
                                 type="submit"
-                                className="w-full rounded-md bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
+                                className="w-full rounded-md border border-solid border-neutral-800 bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
                             >
                                 Atualizar dados
                             </button>
@@ -251,7 +251,9 @@ const ProfilePage = () => {
                                 <p className="text-neutral-600">Meus pedidos</p>
                             </motion.div>
 
-                            <Icon.CaretUp />
+                            <Icon.CaretUp
+                                className={`transition ease-in ${showOrdersLayer && 'rotate-180'}`}
+                            />
                         </motion.div>
 
                         {showOrdersLayer && (
@@ -290,8 +292,10 @@ const ProfilePage = () => {
                                                 PEDIDO: 702-9710419-8019454
                                             </h1>
 
-                                            <div className=" size-6 ">
-                                                <Icon.CaretUp />
+                                            <div className="flex-center size-6 ">
+                                                <Icon.CaretUp
+                                                    className={`transition ease-in ${showOrder && 'rotate-180'}`}
+                                                />
                                             </div>
                                         </div>
                                     </motion.div>
@@ -499,7 +503,9 @@ const ProfilePage = () => {
                                 <p className="text-neutral-600">Histórico de compras</p>
                             </motion.div>
 
-                            <Icon.CaretUp />
+                            <Icon.CaretUp
+                                className={`transition ease-in ${showHistoryLayer && 'rotate-180'}`}
+                            />
                         </motion.div>
 
                         {showHistoryLayer && (
