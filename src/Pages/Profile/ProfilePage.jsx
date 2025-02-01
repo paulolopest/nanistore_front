@@ -6,6 +6,7 @@ import * as Icon from '@phosphor-icons/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import CustomInput from '../../Components/CustomForm/CustomInput'
+import { items } from '../../Utils/Extra'
 
 const schema = z.object({
     name: z.string(),
@@ -19,6 +20,9 @@ const schema = z.object({
 const ProfilePage = () => {
     const [showPassForm, setShowPassForm] = useState(false)
     const [showAddressLayer, setShowAddressLayer] = useState(false)
+    const [showHistoryLayer, setShowHistoryLayer] = useState(false)
+    const [showOrdersLayer, setShowOrdersLayer] = useState(true)
+    const [showOrder, setShowOrder] = useState(false)
 
     const {
         register,
@@ -35,7 +39,7 @@ const ProfilePage = () => {
     return (
         <Wrapper className={'pb-[30rem] pt-40'}>
             <div className="flex w-full justify-between gap-8">
-                <motion.div layout className="h-fit min-w-[40rem] rounded-lg bg-white shadow-md">
+                <motion.div layout className="h-fit min-w-[36rem] rounded-lg bg-white shadow-md">
                     <motion.div
                         layout="preserve-aspect"
                         className="flex items-center gap-2 border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
@@ -147,15 +151,15 @@ const ProfilePage = () => {
 
                         <motion.div
                             layout
-                            className={`flex flex-col gap-8 rounded-lg border border-solid border-neutral-200 ${showAddressLayer && 'border-neutral-800'}`}
+                            className={`flex flex-col gap-8 rounded-lg border border-solid border-neutral-200 ${showAddressLayer && 'border-neutral-800'} overflow-hidden`}
                         >
                             <motion.div
-                                layout="size"
+                                layout
                                 onClick={() => setShowAddressLayer(!showAddressLayer)}
                                 className="flex size-full cursor-pointer items-center justify-between p-4"
                             >
                                 <p
-                                    className={`select-none text-neutral-400 ${showPassForm && 'text-neutral-800'}`}
+                                    className={`select-none text-neutral-400 ${showAddressLayer && 'text-neutral-800'}`}
                                 >
                                     Endereços
                                 </p>
@@ -167,6 +171,7 @@ const ProfilePage = () => {
 
                             {showAddressLayer && (
                                 <motion.div
+                                    layout
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     className="flex flex-wrap justify-between gap-y-6 px-4 pb-4"
@@ -233,7 +238,279 @@ const ProfilePage = () => {
                     </div>
                 </motion.div>
 
-                <div className="h-[40rem] w-full rounded-lg bg-white shadow-md" />
+                <div className="flex w-full flex-col gap-4">
+                    <motion.div layout className="h-fit w-full overflow-hidden rounded-md bg-white shadow-md">
+                        <motion.div
+                            layout
+                            onClick={() => setShowOrdersLayer(!showOrdersLayer)}
+                            className="flex cursor-pointer items-center justify-between border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
+                        >
+                            <motion.div className="flex items-center gap-2">
+                                <Icon.Package className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-700" />
+
+                                <p className="text-neutral-600">Meus pedidos</p>
+                            </motion.div>
+
+                            <Icon.CaretUp />
+                        </motion.div>
+
+                        {showOrdersLayer && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="flex flex-col gap-4 p-4"
+                            >
+                                <motion.div layout className="overflow-hidden rounded-md bg-neutral-100">
+                                    <motion.div
+                                        layout
+                                        onClick={() => setShowOrder(!showOrder)}
+                                        className="flex h-fit w-full cursor-pointer justify-between  p-4"
+                                    >
+                                        <div className="flex h-fit gap-12">
+                                            <div>
+                                                <h1 className="text-base text-neutral-700">
+                                                    Pedido realizado
+                                                </h1>
+                                                <p className="text-sm text-neutral-500">
+                                                    1 de fevereiro de 2025
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h1 className="text-base text-neutral-700">Total</h1>
+                                                <p className="text-sm text-neutral-500">R$ 259,21</p>
+                                            </div>
+                                            <div>
+                                                <h1 className="text-base text-neutral-700">Enviar para</h1>
+                                                <p className="text-sm text-blue-400 underline">Casa</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-col items-end justify-between gap-4">
+                                            <h1 className="text-sm text-neutral-700">
+                                                PEDIDO: 702-9710419-8019454
+                                            </h1>
+
+                                            <div className=" size-6 ">
+                                                <Icon.CaretUp />
+                                            </div>
+                                        </div>
+                                    </motion.div>
+
+                                    {showOrder && (
+                                        <>
+                                            <motion.div
+                                                transition={{ duration: 0.5 }}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                layout
+                                            >
+                                                <div className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500">
+                                                    <div className="flex w-full items-center justify-between">
+                                                        <div className="flex h-20 items-center gap-4">
+                                                            <img
+                                                                src={items[2].src[0]}
+                                                                alt=""
+                                                                className="size-14"
+                                                            />
+
+                                                            <div className="flex flex-col text-base">
+                                                                <p>{items[2].type}</p>
+                                                                <p>{items[2].name}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <p>Quantidade</p>
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500">
+                                                    <div className="flex w-full items-center justify-between">
+                                                        <div className="flex h-20 items-center gap-4">
+                                                            <img
+                                                                src={items[3].src[0]}
+                                                                alt=""
+                                                                className="size-14"
+                                                            />
+
+                                                            <div className="flex flex-col text-base">
+                                                                <p>{items[3].type}</p>
+                                                                <p>{items[3].name}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <p>Quantidade</p>
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500">
+                                                    <div className="flex w-full items-center justify-between">
+                                                        <div className="flex h-20 items-center gap-4">
+                                                            <img
+                                                                src={items[4].src[0]}
+                                                                alt=""
+                                                                className="size-14"
+                                                            />
+
+                                                            <div className="flex flex-col text-base">
+                                                                <p>{items[4].type}</p>
+                                                                <p>{items[4].name}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <p>Quantidade</p>
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        </>
+                                    )}
+                                </motion.div>
+
+                                <motion.div layout className="overflow-hidden rounded-md bg-neutral-100">
+                                    <motion.div
+                                        layout
+                                        onClick={() => setShowOrder(!showOrder)}
+                                        className="flex h-fit w-full cursor-pointer justify-between  p-4"
+                                    >
+                                        <div className="flex h-fit gap-12">
+                                            <div>
+                                                <h1 className="text-base text-neutral-700">
+                                                    Pedido realizado
+                                                </h1>
+                                                <p className="text-sm text-neutral-500">
+                                                    1 de fevereiro de 2025
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h1 className="text-base text-neutral-700">Total</h1>
+                                                <p className="text-sm text-neutral-500">R$ 259,21</p>
+                                            </div>
+                                            <div>
+                                                <h1 className="text-base text-neutral-700">Enviar para</h1>
+                                                <p className="text-sm text-blue-400 underline">Casa</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-col items-end justify-between gap-4">
+                                            <h1 className="text-sm text-neutral-700">
+                                                PEDIDO: 702-9710419-8019454
+                                            </h1>
+
+                                            <div className=" size-6 ">
+                                                <Icon.CaretUp />
+                                            </div>
+                                        </div>
+                                    </motion.div>
+
+                                    {showOrder && (
+                                        <>
+                                            <motion.div
+                                                transition={{ duration: 0.5 }}
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                layout
+                                            >
+                                                <div className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500">
+                                                    <div className="flex w-full items-center justify-between">
+                                                        <div className="flex h-20 items-center gap-4">
+                                                            <img
+                                                                src={items[2].src[0]}
+                                                                alt=""
+                                                                className="size-14"
+                                                            />
+
+                                                            <div className="flex flex-col text-base">
+                                                                <p>{items[2].type}</p>
+                                                                <p>{items[2].name}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <p>Quantidade</p>
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500">
+                                                    <div className="flex w-full items-center justify-between">
+                                                        <div className="flex h-20 items-center gap-4">
+                                                            <img
+                                                                src={items[3].src[0]}
+                                                                alt=""
+                                                                className="size-14"
+                                                            />
+
+                                                            <div className="flex flex-col text-base">
+                                                                <p>{items[3].type}</p>
+                                                                <p>{items[3].name}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <p>Quantidade</p>
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500">
+                                                    <div className="flex w-full items-center justify-between">
+                                                        <div className="flex h-20 items-center gap-4">
+                                                            <img
+                                                                src={items[4].src[0]}
+                                                                alt=""
+                                                                className="size-14"
+                                                            />
+
+                                                            <div className="flex flex-col text-base">
+                                                                <p>{items[4].type}</p>
+                                                                <p>{items[4].name}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex flex-col items-center gap-2">
+                                                            <p>Quantidade</p>
+                                                            <p>1</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        </>
+                                    )}
+                                </motion.div>
+                            </motion.div>
+                        )}
+                    </motion.div>
+
+                    <motion.div layout className="h-fit w-full rounded-md bg-white shadow-md">
+                        <motion.div
+                            layout
+                            onClick={() => setShowHistoryLayer(!showHistoryLayer)}
+                            className="flex items-center justify-between border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
+                        >
+                            <motion.div className="flex items-center gap-2">
+                                <Icon.RowsPlusBottom className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-700" />
+
+                                <p className="text-neutral-600">Histórico de compras</p>
+                            </motion.div>
+
+                            <Icon.CaretUp />
+                        </motion.div>
+
+                        {showHistoryLayer && (
+                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-4">
+                                <div className="flex-center h-20 w-full text-neutral-400">
+                                    <p>Nenhum pedido realizado</p>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.div>
+                </div>
             </div>
         </Wrapper>
     )

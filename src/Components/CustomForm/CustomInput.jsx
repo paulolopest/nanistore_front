@@ -15,12 +15,7 @@ const CustomInput = ({ id, placeholder, register, errors, type }) => {
     }
 
     return (
-        <motion.div
-            // initial={{ opacity: 0, y: -30 }}
-            // animate={{ opacity: 1, y: 0 }}
-            layout
-            className={`relative h-11 w-[49%]`}
-        >
+        <motion.div layout className={`relative h-11 w-[49%]`}>
             <motion.input
                 id={id}
                 name={id}
