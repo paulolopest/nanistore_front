@@ -1,11 +1,12 @@
 import Root from './Root'
 import MainPage from '../Pages/Main/MainPage'
+import CartPage from '../Pages/Cart/CartPage'
 import ErrorPage from '../Pages/Error/ErrorPage'
+import LoginPage from '../Pages/Login/LoginPage'
 import SearchPage from '../Pages/Search/SearchPage'
+import ProfilePage from './../Pages/Profile/ProfilePage'
 import ProductPage from './../Pages/Product/ProductPage'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import CartPage from '../Pages/Cart/CartPage'
-import ProfilePage from './../Pages/Profile/ProfilePage'
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <ProfilePage />,
+            },
+            {
+                path: '/login',
+                element: <LoginPage />,
             },
             {
                 path: '/search',

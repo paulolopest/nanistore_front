@@ -7,10 +7,9 @@ import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
 import SearchInput from './SearchInput/SearchInput'
 import { AnimatePresence, motion } from 'framer-motion'
-import WhiteLogo from '../../Assets/logo/logobranca.png'
-import BlackLogo from '../../Assets/logo/logopreta.webp'
-import { GlobalContext } from '../../Context/GlobalContext'
 import SearchDropDown from './SearchInput/SearchDropDown'
+import { GlobalContext } from '../../Context/GlobalContext'
+import Logo from '../../Assets/logo/logo.svg'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
@@ -47,11 +46,7 @@ const Header = () => {
             <Wrapper>
                 <header className="flex w-full flex-row items-start justify-between pb-1.5 pt-3">
                     <Link to={'/'} className="flex h-12 w-[88px] cursor-pointer select-none">
-                        <img
-                            className="size-12 select-none object-contain"
-                            src={theme === 'start' ? WhiteLogo : BlackLogo}
-                            alt="Site Logo"
-                        />
+                        <img className="size-12 select-none object-contain" src={Logo} alt="Site Logo" />
                     </Link>
 
                     <div className="flex flex-col items-center gap-4">

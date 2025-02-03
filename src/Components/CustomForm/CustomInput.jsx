@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const CustomInput = ({ id, placeholder, register, errors, type }) => {
+const CustomInput = ({ id, placeholder, register, errors, type, style, w, h }) => {
     const [active, setActive] = useState(false)
 
     const handleBlur = (e) => {
@@ -15,7 +15,7 @@ const CustomInput = ({ id, placeholder, register, errors, type }) => {
     }
 
     return (
-        <motion.div layout className={`relative h-11 w-[49%]`}>
+        <motion.div layout className={`relative`} style={{ width: w, height: h }}>
             <motion.input
                 id={id}
                 name={id}
@@ -24,7 +24,7 @@ const CustomInput = ({ id, placeholder, register, errors, type }) => {
                 onBlur={handleBlur}
                 onFocus={() => setActive(true)}
                 layoutId={`${[id]}InputAnimation`}
-                className={`size-full rounded-md border border-solid border-neutral-300 pl-2 ${active && 'border-blue-400'} ${errors[id] && 'border-red-500'}`}
+                className={`size-full rounded-md border border-solid border-neutral-300 pl-2 ${active && 'border-blue-400'} ${errors[id] && 'border-red-500'} ${style}`}
             />
 
             <motion.label
