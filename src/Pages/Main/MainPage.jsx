@@ -1,11 +1,12 @@
 import React from 'react'
 import Banner1 from '../../Assets/images/banner1.jpg'
-import BannerBig from '../../Components/Banners/BannerBig'
-import Carousel from '../../Components/Carousel/Carousel'
-import DoubleBanner from '../../Components/Banners/DoubleBanner'
-import ComboBanner from '../../Components/Banners/ComboBanner'
-// import Newsletter from '../../Components/Newsletter/Newsletter'
+import MiniBanner1 from '../../Assets/images/miniBanner1.jpg'
+import MiniBanner2 from '../../Assets/images/miniBanner2.png'
 import Wrapper from '../../Components/Wrapper/Wrapper'
+import Carousel from '../../Components/Carousel/Carousel'
+import BannerBig from '../../Components/Banners/BannerBig'
+import ComboBanner from '../../Components/Banners/ComboBanner'
+import DoubleBanner from '../../Components/Banners/DoubleBanner'
 
 const MainPage = () => {
     return (
@@ -15,13 +16,15 @@ const MainPage = () => {
 
                 <Carousel title={'Vistos por último'} />
 
-                <DoubleBanner />
+                <DoubleBanner img1={MiniBanner1} img2={MiniBanner2} />
 
                 <Carousel title={'Mais vendidos'} />
 
                 <ComboBanner />
 
                 <Carousel title={'Lançamentos'} />
+
+                <Carousel title={'Dry-fit'} />
 
                 {/* <Newsletter /> */}
             </div>

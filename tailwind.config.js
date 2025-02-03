@@ -9,12 +9,16 @@ export default {
                 default: '2px 4px 12px #00000014',
                 hover: '2px 4px 16px #00000029',
             },
+            height: {
+                tiny: '1px',
+            },
+            width: {
+                tiny: '1px',
+            },
             fontFamily: {},
             backgroundImage: {},
             backgroundColor: {},
             borderColor: {},
-            height: {},
-            width: {},
             fontSize: {
                 8: '4rem',
                 7: '3.5rem',

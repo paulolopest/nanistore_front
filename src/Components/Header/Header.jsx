@@ -2,6 +2,7 @@ import CartModal from './CartModal'
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/Wrapper'
 import ProfileModal from './ProfileModal'
+import Logo from '../IconsComponent/Logo'
 import { tabs } from './../../Utils/Extra'
 import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
@@ -9,13 +10,12 @@ import SearchInput from './SearchInput/SearchInput'
 import { AnimatePresence, motion } from 'framer-motion'
 import SearchDropDown from './SearchInput/SearchDropDown'
 import { GlobalContext } from '../../Context/GlobalContext'
-import Logo from '../../Assets/logo/logo.svg'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
     const [searchValue, setSearchValue] = useState('')
 
-    const { theme, openDropDown, profileDropDown, cartDropDown, searchDropDown } = useContext(GlobalContext)
+    const { openDropDown, profileDropDown, cartDropDown, searchDropDown } = useContext(GlobalContext)
 
     const tabMap = tabs.map((tab) => (
         <div
@@ -42,11 +42,15 @@ const Header = () => {
     ))
 
     return (
-        <header className="fixed z-50 w-full  bg-white shadow-default">
+        <motion.header
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="fixed z-50 w-full  bg-white shadow-default"
+        >
             <Wrapper>
                 <header className="flex w-full flex-row items-start justify-between pb-1.5 pt-3">
                     <Link to={'/'} className="flex h-12 w-[88px] cursor-pointer select-none">
-                        <img className="size-12 select-none object-contain" src={Logo} alt="Site Logo" />
+                        <Logo />
                     </Link>
 
                     <div className="flex flex-col items-center gap-4">
@@ -87,7 +91,7 @@ const Header = () => {
                     </nav>
                 </header>
             </Wrapper>
-        </header>
+        </motion.header>
     )
 }
 

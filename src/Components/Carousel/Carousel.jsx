@@ -38,7 +38,12 @@ const Carousel = ({ title }) => {
         )
 
     return (
-        <div className="flex w-full flex-col gap-y-1 ">
+        <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="flex w-full flex-col gap-y-1 "
+        >
             <h1 className="text-2xl font-semibold uppercase tracking-wide">{title}</h1>
             <div className="w-full overflow-hidden py-5">
                 <motion.div
@@ -51,7 +56,7 @@ const Carousel = ({ title }) => {
                     {itemMap}
                 </motion.div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
