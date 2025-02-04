@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { items } from '../../Utils/Extra'
 import * as Icon from '@phosphor-icons/react'
+import { items } from '../../../Utils/Extra'
 
 const CartItem = () => {
     const [quantity, setQuantity] = useState(1)

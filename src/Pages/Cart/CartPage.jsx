@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import CartItem from './components/CartItem'
+import CartInfo from './components/CartInfo'
 import * as Icon from '@phosphor-icons/react'
 import Wrapper from './../../Components/Wrapper/Wrapper'
-import CartItem from '../../Components/CartPage/CartItem'
 import Carousel from './../../Components/Carousel/Carousel'
-import CartInfo from './../../Components/CartPage/CartInfo'
 
 const CartPage = () => {
     return (
