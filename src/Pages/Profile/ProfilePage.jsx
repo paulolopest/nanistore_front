@@ -1,9 +1,9 @@
 import { z } from 'zod'
-import { motion } from 'framer-motion'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import OrderCtr from './Components/OrderCtr'
 import * as Icon from '@phosphor-icons/react'
+import { motion, useAnimate } from 'framer-motion'
 import AddressModal from './Components/AddressModal'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Wrapper from '../../Components/Wrapper/Wrapper'
@@ -19,6 +19,7 @@ const schema = z.object({
 })
 
 const ProfilePage = () => {
+    const [scope, animate] = useAnimate()
     const [addressModal, setAddressModal] = useState(false)
     const [showPassForm, setShowPassForm] = useState(false)
     const [showOrdersLayer, setShowOrdersLayer] = useState(true)
@@ -37,15 +38,25 @@ const ProfilePage = () => {
         console.log(data)
     }
 
+    const handleAnimate = async () => {
+        await animate('#userInfoSection', { opacity: 1, y: 0 }, { duration: 0.1, ease: 'easeInOut' })
+        await animate('#userOrder', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+        animate('#userHistory', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+    }
+
+    useEffect(() => {
+        handleAnimate()
+    }, [])
+
     return (
         <>
             <Wrapper className={'pb-[30rem] pt-40'}>
-                <div className="flex w-full justify-between gap-8">
+                <motion.div ref={scope} className="flex w-full justify-between gap-8">
                     <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
                         layout
-                        className="h-fit min-w-[36rem] rounded-lg bg-white shadow-md"
+                        id="userInfoSection"
+                        initial={{ opacity: 0, y: 20 }}
+                        className="h-fit min-w-[36rem] rounded-xl bg-white shadow-md"
                     >
                         <motion.div
                             layout="preserve-aspect"
@@ -127,8 +138,6 @@ const ProfilePage = () => {
                                 {showPassForm && (
                                     <motion.form
                                         id="passwordForm"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         onSubmit={handleSubmit(onSubmit)}
                                         className="flex w-full flex-col justify-between gap-8 px-4 pb-4"
@@ -155,7 +164,7 @@ const ProfilePage = () => {
                                         <button
                                             form="passwordForm"
                                             type="form"
-                                            className="w-full rounded-md bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
+                                            className="w-full rounded-lg bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
                                         >
                                             Confirmar
                                         </button>
@@ -191,11 +200,9 @@ const ProfilePage = () => {
                                 {showAddressLayer && (
                                     <motion.div
                                         layout
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
                                         className="flex flex-wrap justify-between gap-y-6 px-4 pb-4"
                                     >
-                                        <div className="flex w-[48%] flex-col gap-2 rounded-md bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
+                                        <div className="flex w-[48%] flex-col gap-2 rounded-xl bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
                                             <p className="text-base text-neutral-600">Casa</p>
 
                                             <div>
@@ -214,7 +221,7 @@ const ProfilePage = () => {
                                             </div>
                                         </div>
 
-                                        <div className="flex w-[48%] flex-col gap-2 rounded-md bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
+                                        <div className="flex w-[48%] flex-col gap-2 rounded-lg bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
                                             <p className="text-base text-neutral-600">Trabalho</p>
 
                                             <div>
@@ -235,7 +242,7 @@ const ProfilePage = () => {
 
                                         <button
                                             onClick={() => setAddressModal(true)}
-                                            className="w-full rounded-md bg-neutral-800 py-3 text-neutral-100 hover:bg-neutral-700"
+                                            className="w-full rounded-lg bg-neutral-800 py-3 text-neutral-100 hover:bg-neutral-700"
                                         >
                                             Adicionar endereço
                                         </button>
@@ -248,12 +255,12 @@ const ProfilePage = () => {
                                     disabled={isSubmitting}
                                     form="basicForm"
                                     type="submit"
-                                    className="w-full rounded-md border border-solid border-neutral-800 bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
+                                    className="transitionIn w-full rounded-lg border border-solid border-neutral-800 bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
                                 >
                                     Atualizar dados
                                 </button>
 
-                                <button className="w-full rounded-md border border-solid border-neutral-400 p-3 text-neutral-400 hover:border-red-500 hover:bg-red-500 hover:text-neutral-100">
+                                <button className="transitionIn w-full rounded-lg border border-solid border-neutral-400 p-3 text-neutral-400 hover:border-red-500 hover:bg-red-500 hover:text-neutral-100">
                                     Excluir conta
                                 </button>
                             </div>
@@ -263,10 +270,9 @@ const ProfilePage = () => {
                     <motion.div className="flex w-full flex-col gap-4 overflow-hidden">
                         <motion.div
                             layout
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.1 }}
-                            className="h-fit w-full overflow-hidden rounded-md bg-white shadow-md"
+                            id="userOrder"
+                            initial={{ opacity: 0, y: 20 }}
+                            className="h-fit w-full overflow-hidden rounded-xl bg-white shadow-sm"
                         >
                             <motion.div
                                 layout="preserve-aspect"
@@ -285,12 +291,7 @@ const ProfilePage = () => {
                             </motion.div>
 
                             {showOrdersLayer && (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    className="flex flex-col gap-4 p-4"
-                                >
+                                <motion.div layout className="flex flex-col gap-4 p-4">
                                     <OrderCtr />
                                     <OrderCtr />
                                 </motion.div>
@@ -298,21 +299,20 @@ const ProfilePage = () => {
                         </motion.div>
 
                         <motion.div
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.2 }}
                             layout
-                            className="h-fit w-full rounded-md bg-white shadow-md"
+                            id="userHistory"
+                            initial={{ opacity: 0, y: 20 }}
+                            className="h-fit w-full overflow-hidden rounded-xl bg-white shadow-sm"
                         >
                             <motion.div
                                 layout
                                 onClick={() => setShowHistoryLayer(!showHistoryLayer)}
-                                className="flex items-center justify-between border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
+                                className="flex cursor-pointer items-center justify-between border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
                             >
                                 <motion.div className="flex items-center gap-2">
                                     <Icon.RowsPlusBottom className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-700" />
 
-                                    <p className="text-neutral-600">Histórico de compras</p>
+                                    <p className="select-none text-neutral-600">Histórico de compras</p>
                                 </motion.div>
 
                                 <Icon.CaretUp
@@ -321,7 +321,7 @@ const ProfilePage = () => {
                             </motion.div>
 
                             {showHistoryLayer && (
-                                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-4">
+                                <motion.div layout className="p-4">
                                     <div className="flex-center h-20 w-full text-neutral-400">
                                         <p>Nenhum pedido realizado</p>
                                     </div>
@@ -329,7 +329,7 @@ const ProfilePage = () => {
                             )}
                         </motion.div>
                     </motion.div>
-                </div>
+                </motion.div>
             </Wrapper>
 
             {addressModal && <AddressModal setState={setAddressModal} />}

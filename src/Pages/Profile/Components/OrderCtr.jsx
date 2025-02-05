@@ -7,7 +7,7 @@ const OrderCtr = () => {
     const [showOrder, setShowOrder] = useState(false)
 
     return (
-        <motion.div layout className="overflow-hidden rounded-md bg-neutral-100">
+        <motion.div layout className="overflow-hidden rounded-lg bg-neutral-100">
             <motion.div
                 layout
                 onClick={() => setShowOrder(!showOrder)}

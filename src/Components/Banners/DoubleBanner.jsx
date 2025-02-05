@@ -14,7 +14,7 @@ const DoubleBanner = ({ img1, img2 }) => {
             <motion.img
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true, amount: 1 }}
+                viewport={{ once: true }}
                 src={img2}
                 alt="mini banner"
             />

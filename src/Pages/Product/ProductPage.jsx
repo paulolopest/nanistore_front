@@ -1,45 +1,30 @@
-import { motion } from 'framer-motion'
-import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as Icon from '@phosphor-icons/react'
+import { motion, useAnimate } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
 import Wrapper from '../../Components/Wrapper/Wrapper'
+import MeasuresTable from './components/MeasuresTable'
 import Carousel from '../../Components/Carousel/Carousel'
 import { items, productDetails, sizes } from './../../Utils/Extra'
-import ManBody from '../../Assets/images/men-body-measurments.png'
-import WomanBody from '../../Assets/images/women-body-measurments.png'
 
 const ProductPage = () => {
     const { productId } = useParams()
-
+    const [scope, animate] = useAnimate()
     const [quantity, setQuantity] = useState(1)
-    const [bodyType, setBodyType] = useState('woman')
     const [showedImage, setShowedImage] = useState(0)
-    const [size, setSize] = useState({ activeSize: '', sizeId: '', sizeTable: true })
+    const [size, setSize] = useState({ activeSize: '', sizeId: 'p', sizeTable: true })
 
     const item = items.filter((item) => item.id === Number(productId))
-
-    const modifyQuantity = (modify) => {
-        if (modify === 'sum') {
-            setQuantity(quantity + 1)
-        } else {
-            if (quantity > 1) {
-                setQuantity(quantity - 1)
-            } else {
-                return null
-            }
-        }
-    }
 
     const srcMap = item[0].src.map((item, index) => (
         <div
             onClick={() => setShowedImage(index)}
             key={index}
-            className={`flex h-36 w-32 cursor-pointer justify-between rounded-lg border bg-neutral-100 p-2 ${showedImage === index && 'border-solid border-neutral-300'}`}
+            className={`transitionIn flex h-36 w-32 cursor-pointer justify-between rounded-lg border border-solid border-neutral-100 bg-neutral-100 p-2 ${showedImage === index && 'border-neutral-300'}`}
         >
             <motion.img
-                initial={{ y: 20 }}
-                animate={{ y: 0 }}
-                transition={{ delay: index / 10 }}
+                id="miniProductImg"
+                initial={{ opacity: 0 }}
                 src={item}
                 alt={`Imagem ${index} do produto`}
                 className={`size-full rounded-xl object-contain`}
@@ -58,7 +43,7 @@ const ProductPage = () => {
             )}
             <p
                 onClick={() => setSize({ activeSize: tab.label, sizeId: tab.id })}
-                className={`relative z-10 flex cursor-pointer rounded-md border border-solid p-3 transition duration-200 ease-linear hover:border-neutral-800 ${tab.id === size.sizeId ? 'border-neutral-800 font-bold text-white' : 'border-neutral-200 text-black'}`}
+                className={`relative z-10 flex cursor-pointer select-none rounded-md border border-solid p-3 transition duration-200 ease-linear hover:border-neutral-800 ${tab.id === size.sizeId ? 'border-neutral-800 bg-neutral-800 font-bold text-neutral-100' : 'border-neutral-200 text-neutral-400'}`}
             >
                 {tab.label}
             </p>
@@ -74,35 +59,59 @@ const ProductPage = () => {
         </div>
     ))
 
+    const handleAnimate = async () => {
+        animate('#leftBox', { opacity: 1, y: 0 }, { duration: 0.2, ease: 'easeInOut' })
+        animate('#rightBox', { opacity: 1, y: 0 }, { duration: 0.2, ease: 'easeInOut' })
+
+        animate('#miniProductImg', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+
+        await animate('#productName', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+        animate('#measureTable', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+        await animate('#productPrice', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+        await animate('#buyButton', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+        animate('#cartButton', { opacity: 1, y: 0 }, { duration: 0.15, ease: 'easeInOut' })
+    }
+
+    useEffect(() => {
+        handleAnimate()
+    }, [])
+
     return (
         <Wrapper>
             <div className="flex w-full flex-col gap-12 py-36">
-                <div className="flex w-full justify-between">
-                    <motion.div
-                        initial={{ y: 20 }}
-                        animate={{ y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="flex flex-col gap-10"
-                    >
+                <motion.div ref={scope} className="flex w-full justify-between">
+                    <motion.div id="leftBox" initial={{ opacity: 0, y: 20 }} className="flex flex-col gap-10">
                         <motion.div className="flex h-[48rem] w-[60.5rem] items-center justify-between gap-10 rounded-xl bg-white p-8 shadow-md max-lg:h-[40rem] max-lg:w-full">
                             <div className="flex h-full flex-col gap-y-10">{srcMap}</div>
 
                             <div className="flex size-full items-center justify-center rounded-xl p-2">
                                 <motion.img
+                                    id="activeProductImg"
+                                    initial={{ y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3 }}
                                     key={showedImage}
                                     alt="Imagem do Produto"
-                                    // initial={{ opacity: 0, x: -30 }}
-                                    // animate={{ opacity: 1, x: 0 }}
                                     src={item[0].src[showedImage]}
                                     className="size-full cursor-zoom-in object-contain"
                                 />
                             </div>
                         </motion.div>
 
-                        <div className="flex w-[60.5rem] flex-col gap-6 rounded-xl bg-white p-8 shadow-md">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            className="flex w-[60.5rem] flex-col gap-6 rounded-xl bg-white p-8 shadow-md"
+                        >
                             <h1 className="text-2xl font-bold uppercase leading-none">Descrição</h1>
 
-                            <p className="font-light leading-tight text-body">
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.8 }}
+                                className="font-light leading-tight text-body"
+                            >
                                 A camiseta {item[0].type} combina estilo e funcionalidade de um jeito leve e
                                 prático. Feita 100% algodão, essa camiseta oferece a proteção solar que você
                                 precisa, com fator de proteção FPS50+ (aplicado diretamente na peça). Possui
@@ -110,187 +119,77 @@ const ProductPage = () => {
                                 vontade. É ideal para os dias ensolarados em que você quer se proteger e
                                 evitar a exposição aos raios solares. É uma ótima opção para quem tem pele
                                 sensível e não quer se expor ao sol.{' '}
-                            </p>
+                            </motion.p>
 
-                            <div className="flex w-full flex-wrap justify-between border-r border-t border-solid border-neutral-200">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.8 }}
+                                className="flex w-full flex-wrap justify-between border-r border-t border-solid border-neutral-200"
+                            >
                                 {detailsMap}
-                            </div>
+                            </motion.div>
 
                             <div />
-                        </div>
+                        </motion.div>
 
-                        <div className="flex w-full justify-between rounded-xl">
-                            <motion.div className="flex w-[60.5rem] flex-col gap-5 rounded-xl bg-white p-8 shadow-md">
-                                <div className="flex w-full justify-between">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            className="flex w-full justify-between rounded-xl"
+                        >
+                            <motion.div
+                                layout
+                                className="flex w-[60.5rem] flex-col rounded-xl bg-white p-8 shadow-md"
+                            >
+                                <motion.div
+                                    layout
+                                    className="flex w-full cursor-pointer justify-between"
+                                    onClick={() =>
+                                        setSize((prev) => ({
+                                            activeSize: prev.activeSize,
+                                            sizeId: prev.sizeId,
+                                            sizeTable: !size.sizeTable,
+                                        }))
+                                    }
+                                >
                                     <h1 className="text-2xl font-bold uppercase leading-none">
                                         Tabela de medidas
                                     </h1>
-                                    <Icon.CaretDown
-                                        className="cursor-pointer text-3xl"
-                                        onClick={() =>
-                                            setSize((prev) => ({
-                                                activeSize: prev.activeSize,
-                                                sizeId: prev.sizeId,
-                                                sizeTable: !size.sizeTable,
-                                            }))
-                                        }
+                                    <Icon.CaretUp
+                                        className={`transitionIn cursor-pointer text-3xl ${size.sizeTable && 'rotate-180'}`}
                                     />
-                                </div>
+                                </motion.div>
 
-                                {size.sizeTable && (
-                                    <>
-                                        <div className="flex gap-10 border-y border-solid border-neutral-200 py-4 text-base font-bold uppercase text-subtitle">
-                                            <p
-                                                onClick={() => setBodyType('man')}
-                                                className={`${bodyType === 'man' ? 'text-red-500' : 'text-subtitle'} cursor-pointer`}
-                                            >
-                                                Homens
-                                            </p>
-                                            <p
-                                                onClick={() => setBodyType('woman')}
-                                                className={`${bodyType === 'woman' ? 'text-red-500' : 'text-subtitle'} cursor-pointer`}
-                                            >
-                                                Mulheres
-                                            </p>
-                                        </div>
-
-                                        <div className="flex flex-col justify-center gap-16">
-                                            <div className="flex flex-col gap-6">
-                                                <h1 className="font-bold uppercase text-subtitle">
-                                                    Tabela de medidas masculinas
-                                                </h1>
-
-                                                <div className="flex w-[40.75rem] gap-20 font-light [&>div]:flex [&>div]:flex-col  [&>div]:items-center [&>div]:gap-10">
-                                                    <div className="flex flex-col uppercase">
-                                                        <h1 className=" font-bold">Tamanho</h1>
-                                                        <p>{sizes[0].label}</p>
-                                                        <p>{sizes[1].label}</p>
-                                                        <p>{sizes[2].label}</p>
-                                                        <p>{sizes[3].label}</p>
-                                                        <p>{sizes[4].label}</p>
-                                                    </div>
-
-                                                    <div className="flex flex-col uppercase">
-                                                        <h1 className=" font-bold">Busto</h1>
-                                                        <p>{sizes[0][bodyType].busto}</p>
-                                                        <p>{sizes[1][bodyType].busto}</p>
-                                                        <p>{sizes[2][bodyType].busto}</p>
-                                                        <p>{sizes[3][bodyType].busto}</p>
-                                                        <p>{sizes[4][bodyType].busto}</p>
-                                                    </div>
-
-                                                    <div className="flex flex-col uppercase">
-                                                        <h1 className=" font-bold">Cintura</h1>
-                                                        <p>{sizes[0][bodyType].cintura}</p>
-                                                        <p>{sizes[1][bodyType].cintura}</p>
-                                                        <p>{sizes[2][bodyType].cintura}</p>
-                                                        <p>{sizes[3][bodyType].cintura}</p>
-                                                        <p>{sizes[4][bodyType].cintura}</p>
-                                                    </div>
-
-                                                    <div className="flex flex-col uppercase">
-                                                        <h1 className=" font-bold">Quadril</h1>
-                                                        <p>{sizes[0][bodyType].quadril}</p>
-                                                        <p>{sizes[1][bodyType].quadril}</p>
-                                                        <p>{sizes[2][bodyType].quadril}</p>
-                                                        <p>{sizes[3][bodyType].quadril}</p>
-                                                        <p>{sizes[4][bodyType].quadril}</p>
-                                                    </div>
-
-                                                    <div className="flex flex-col uppercase">
-                                                        <h1 className=" font-bold">Entrepernas</h1>
-                                                        <p>{sizes[0][bodyType].entrepernas}</p>
-                                                        <p>{sizes[1][bodyType].entrepernas}</p>
-                                                        <p>{sizes[2][bodyType].entrepernas}</p>
-                                                        <p>{sizes[3][bodyType].entrepernas}</p>
-                                                        <p>{sizes[4][bodyType].entrepernas}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex w-[40.75rem] flex-col gap-2 font-normal uppercase">
-                                                <h1 className="font-bold text-subtitle">Como medir?</h1>
-                                                <p className="text-sm text-body">
-                                                    Meça sempre em pé, com roupas leves. Utilize sempre uma
-                                                    fita métrica mantendo na horizontal, contornando por
-                                                    completo a área desejada, sem pressionar. Após a medição,
-                                                    verifique na tabela o tamanho correspondente.
-                                                </p>
-                                            </div>
-
-                                            <div className="flex gap-10">
-                                                <div className="flex w-[30.50rem] flex-col justify-between text-lg font-light text-neutral-700">
-                                                    <p className="leading-none text-body">
-                                                        <span className="font-bold text-subtitle">
-                                                            Busto:
-                                                        </span>{' '}
-                                                        Meça a volta total do busto (a parte mais volumosa do
-                                                        tronco).
-                                                    </p>
-                                                    <p className="leading-none text-body">
-                                                        <span className="font-bold text-subtitle">
-                                                            Cintura:
-                                                        </span>{' '}
-                                                        Meça a volta total da cintura (a parte mais estreita
-                                                        do tronco), cerca de dois dedos acima do umbigo.
-                                                    </p>
-                                                    <p className="leading-none text-body">
-                                                        <span className="font-bold text-subtitle">
-                                                            Quadril:
-                                                        </span>{' '}
-                                                        Meça a volta total do quadril (a parte mais larga do
-                                                        tronco), pouco abaixo da cintura.
-                                                    </p>
-
-                                                    <p className="leading-none text-body">
-                                                        <span className="font-bold text-subtitle">
-                                                            Entrepernas:
-                                                        </span>
-                                                        Meça a distância total entre o início da parte da coxa
-                                                        e o calcanhar.
-                                                    </p>
-                                                </div>
-
-                                                <div>
-                                                    <img
-                                                        src={bodyType === 'man' ? ManBody : WomanBody}
-                                                        alt="Exemplo de corpo"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
-                                )}
+                                <MeasuresTable state={size.sizeTable} />
                             </motion.div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     <motion.div
-                        initial={{ y: 20 }}
-                        animate={{ y: 0 }}
-                        transition={{ delay: 0.2 }}
+                        id="rightBox"
+                        initial={{ opacity: 0, y: 20 }}
                         className="sticky top-36 flex h-[48rem] w-[32rem] flex-col justify-between rounded-xl bg-white p-8 shadow-md"
                     >
                         <div className="flex flex-col gap-6">
-                            <span className="w-fit border-b border-solid border-b-neutral-200 pb-1 pr-3 text-sm font-semibold uppercase leading-none text-neutral-400">
+                            <span className="w-fit border-b border-solid border-b-neutral-200 pb-1 pr-3 text-sm font-semibold uppercase leading-none text-neutral-300">
                                 Novo | 120389 vendidos
                             </span>
 
                             <motion.div
-                                initial={{ y: 20 }}
-                                animate={{ y: 0 }}
-                                transition={{ delay: 0.1 }}
+                                id="productName"
+                                initial={{ opacity: 0, y: 20 }}
                                 className="flex flex-col font-extrabold uppercase"
                             >
-                                <p className="relative text-5xl">{item[0].name} </p>
+                                <p className="relative text-5xl text-neutral-700">{item[0].name} </p>
 
-                                <p className="text-2xl font-bold italic text-subtitle">{item[0].type}</p>
+                                <p className="text-2xl font-bold italic text-neutral-500">{item[0].type}</p>
                             </motion.div>
 
                             <motion.div
-                                initial={{ y: 20 }}
-                                animate={{ y: 0 }}
-                                transition={{ delay: 0.15 }}
+                                id="measureTable"
+                                initial={{ opacity: 0, y: 20 }}
                                 className="flex flex-col gap-2"
                             >
                                 <div className="flex cursor-pointer items-center gap-1 text-sm uppercase text-green-500 hover:underline">
@@ -303,12 +202,11 @@ const ProductPage = () => {
                             </motion.div>
 
                             <motion.div
-                                initial={{ y: 20 }}
-                                animate={{ y: 0 }}
-                                transition={{ delay: 0.2 }}
+                                id="productPrice"
+                                initial={{ opacity: 0, y: 20 }}
                                 className="flex flex-col justify-start gap-2 font-semibold uppercase "
                             >
-                                <p className="text-xl leading-none text-body line-through">
+                                <p className="text-xl leading-none text-neutral-800 line-through">
                                     De: R$ {(item[0].price - 0.01).toFixed(2).replace('.', ',')}
                                 </p>
 
@@ -331,39 +229,38 @@ const ProductPage = () => {
                             </motion.div>
 
                             <div className="flex h-10 w-32 cursor-pointer items-center justify-between rounded-md border border-solid border-neutral-400 px-1 text-neutral-400 transition duration-200 ease-linear hover:border-neutral-700 hover:text-neutral-800 [&>div]:flex [&>div]:h-full [&>div]:w-1/5 [&>div]:cursor-pointer [&>div]:items-center [&>div]:justify-center">
-                                <div onClick={() => modifyQuantity('decrease')}>
-                                    <Icon.CaretDown />
+                                <div onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>
+                                    <Icon.Minus />
                                 </div>
 
                                 <p className="text-lg font-semibold">{quantity}</p>
 
-                                <div onClick={() => modifyQuantity('sum')}>
-                                    <Icon.CaretUp />
+                                <div onClick={() => setQuantity((prev) => prev + 1)}>
+                                    <Icon.Plus />
                                 </div>
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-3 [&>button]:py-4">
                             <motion.button
-                                initial={{ y: 20 }}
-                                animate={{ y: 0 }}
-                                transition={{ delay: 0.25 }}
+                                id="buyButton"
+                                initial={{ opacity: 0, y: 20 }}
+                                transition={{ ease: 'easeInOut' }}
                                 className="w-full rounded-lg bg-neutral-800 text-xl font-semibold uppercase text-white hover:bg-neutral-700"
                             >
                                 Comprar agora
                             </motion.button>
 
                             <motion.button
-                                initial={{ y: 20 }}
-                                animate={{ y: 0 }}
-                                transition={{ delay: 0.3 }}
+                                id="cartButton"
+                                initial={{ opacity: 0, y: 20 }}
                                 className="w-full rounded-lg border border-solid border-neutral-800 text-xl font-semibold uppercase hover:border-red-600 hover:bg-red-500 hover:text-white"
                             >
                                 Adicionar ao carrinho
                             </motion.button>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
 
                 <Carousel title={'Vistos por último'} />
 
