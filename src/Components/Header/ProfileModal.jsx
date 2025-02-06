@@ -13,7 +13,7 @@ const ProfileModal = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute -right-2 top-9 z-10 flex h-64 w-60 flex-col justify-between rounded-xl bg-white pt-2 font-light shadow-hover"
+            className="absolute -right-2 top-9 z-50 flex h-64 w-60 flex-col justify-between rounded-xl bg-white pt-2 font-light shadow-hover max-lg:right-0 "
         >
             <div>
                 <ul className="flex flex-col border-b border-solid border-neutral-100 ">

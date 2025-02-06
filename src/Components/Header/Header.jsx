@@ -33,7 +33,7 @@ const Header = () => {
             )}
             <Link
                 draggable={false}
-                className={`relative z-10 size-full text-center text-sm leading-none tracking-wider text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
+                className={`relative size-full text-center text-sm leading-none tracking-wider text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
             >
                 {tab.label}
             </Link>
@@ -47,12 +47,12 @@ const Header = () => {
             className="fixed z-50 w-full bg-white shadow-default "
         >
             <Wrapper className={'flexCol max-844:gap-2'}>
-                <div className="flex w-full flex-row items-center justify-between py-2 max-580:py-3">
-                    <div className="flex h-12 w-[88px] items-center justify-start min-[540px]:hidden">
-                        <Icon.MagnifyingGlass className="size-6" />
+                <div className="flex w-full flex-row items-center justify-between py-2 max-540:py-1">
+                    <div className="flex h-12 w-[88px] items-center justify-start max-540:w-[64px] min-[540px]:hidden">
+                        <Icon.MagnifyingGlass className="size-5 text-neutral-600" />
                     </div>
 
-                    <Link to={'/'} className="flex h-12  cursor-pointer select-none justify-start">
+                    <Link to={'/'} className="flex h-12 cursor-pointer select-none justify-start max-540:h-8">
                         <Logo />
                     </Link>
 
@@ -66,8 +66,8 @@ const Header = () => {
                         />
                     </div>
 
-                    <nav className="flex h-12 items-center gap-10 [&>svg]:size-6 [&>svg]:cursor-pointer">
-                        <div className="relative size-6 cursor-pointer">
+                    <nav className="flex h-12 items-center gap-10 max-540:gap-6 [&>svg]:size-6 [&>svg]:cursor-pointer">
+                        <div className="relative size-6 cursor-pointer max-540:size-5">
                             <Icon.ShoppingBagOpen
                                 className="size-full"
                                 onClick={() => openDropDown('cart')}
@@ -76,7 +76,7 @@ const Header = () => {
                             <AnimatePresence>{cartDropDown && <CartModal />}</AnimatePresence>
                         </div>
 
-                        <div className="relative size-6 cursor-pointer">
+                        <div className="relative size-6 cursor-pointer max-540:size-5">
                             <Icon.User className="size-full" onClick={() => openDropDown('profile')} />
 
                             <AnimatePresence>{profileDropDown && <ProfileModal />}</AnimatePresence>
@@ -84,7 +84,7 @@ const Header = () => {
                     </nav>
                 </div>
 
-                <nav className="flex w-full items-center justify-center gap-8 pb-2 pt-1 max-680:hidden">
+                <nav className="flex w-full items-center justify-center gap-8 bg-white pb-2 pt-1 max-680:hidden">
                     {tabMap}
                 </nav>
             </Wrapper>
