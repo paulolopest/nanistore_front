@@ -17,7 +17,7 @@ const Root = () => {
         <IndexStorage>
             {show && <Header />}
             <Outlet />
-            <Footer />
+            {/* <Footer /> */}
         </IndexStorage>
     )
 }

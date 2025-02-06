@@ -8,14 +8,13 @@ import * as Icon from '@phosphor-icons/react'
 import React, { useContext, useState } from 'react'
 import SearchInput from './SearchInput/SearchInput'
 import { AnimatePresence, motion } from 'framer-motion'
-import SearchDropDown from './SearchInput/SearchDropDown'
 import { GlobalContext } from '../../Context/GlobalContext'
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
     const [searchValue, setSearchValue] = useState('')
 
-    const { openDropDown, profileDropDown, cartDropDown, searchDropDown } = useContext(GlobalContext)
+    const { openDropDown, profileDropDown, cartDropDown } = useContext(GlobalContext)
 
     const tabMap = tabs.map((tab) => (
         <div
@@ -34,7 +33,7 @@ const Header = () => {
             )}
             <Link
                 draggable={false}
-                className={`relative z-10 size-full text-center text-sm font-light leading-none tracking-wider ${tab.id === activeTab && 'text-white'}`}
+                className={`relative z-10 size-full text-center text-sm leading-none tracking-wider text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
             >
                 {tab.label}
             </Link>
@@ -45,32 +44,26 @@ const Header = () => {
         <motion.header
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="fixed z-50 w-full  bg-white shadow-default"
+            className="fixed z-50 w-full bg-white shadow-default "
         >
-            <Wrapper>
-                <header className="flex w-full flex-row items-start justify-between pb-1.5 pt-3">
-                    <Link to={'/'} className="flex h-12 w-[88px] cursor-pointer select-none">
+            <Wrapper className={'flexCol max-844:gap-2'}>
+                <div className="flex w-full flex-row items-center justify-between py-2 max-580:py-3">
+                    <div className="flex h-12 w-[88px] items-center justify-start min-[540px]:hidden">
+                        <Icon.MagnifyingGlass className="size-6" />
+                    </div>
+
+                    <Link to={'/'} className="flex h-12  cursor-pointer select-none justify-start">
                         <Logo />
                     </Link>
 
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="relative w-[40rem]">
-                            <SearchInput
-                                bg="#f5f5f6"
-                                h="2.5rem"
-                                w="40rem"
-                                icon={<Icon.MagnifyingGlass />}
-                                label="Pesquisar"
-                                state={searchValue}
-                                setState={setSearchValue}
-                            />
-
-                            <AnimatePresence>{searchDropDown && <SearchDropDown />}</AnimatePresence>
-                        </div>
-
-                        <nav className="flex w-full items-center justify-center gap-8 max-sm:hidden">
-                            {tabMap}
-                        </nav>
+                    <div className="relative flex size-full items-center justify-center max-540:hidden">
+                        <SearchInput
+                            bg="#f5f5f6"
+                            icon={<Icon.MagnifyingGlass />}
+                            label="Pesquisar"
+                            state={searchValue}
+                            setState={setSearchValue}
+                        />
                     </div>
 
                     <nav className="flex h-12 items-center gap-10 [&>svg]:size-6 [&>svg]:cursor-pointer">
@@ -89,7 +82,11 @@ const Header = () => {
                             <AnimatePresence>{profileDropDown && <ProfileModal />}</AnimatePresence>
                         </div>
                     </nav>
-                </header>
+                </div>
+
+                <nav className="flex w-full items-center justify-center gap-8 pb-2 pt-1 max-680:hidden">
+                    {tabMap}
+                </nav>
             </Wrapper>
         </motion.header>
     )
