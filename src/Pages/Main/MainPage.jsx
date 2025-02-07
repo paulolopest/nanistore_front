@@ -20,13 +20,15 @@ const MainPage = () => {
 
                 <Carousel title={'Mais vendidos'} />
 
-                {/* <ComboBanner /> */}
+                <ComboBanner />
 
                 <Carousel title={'Lançamentos'} />
 
+                <DoubleBanner img1={MiniBanner2} img2={MiniBanner1} />
+
                 <Carousel title={'Dry-fit'} />
 
-                {/* <Newsletter /> */}
+                <Carousel title={'Moletons'} />
             </div>
         </Wrapper>
     )

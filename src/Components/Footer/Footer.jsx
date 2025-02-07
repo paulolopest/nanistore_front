@@ -9,25 +9,46 @@ const Footer = () => {
     return (
         <footer className="w-full bg-neutral-800">
             <Wrapper>
-                <div className="flex w-full grid-rows-2 justify-between gap-32 py-10 text-white">
-                    <div className="flex flex-col justify-between gap-28">
+                <div className="flexCol w-full justify-between gap-y-80 py-8">
+                    <div className="flex w-full flex-wrap justify-between  gap-x-12 gap-y-32 max-420:gap-y-16">
                         <ListLinks list={institutionalFooterList} title={'Institucional'} />
-
-                        <p className="text-xs">
-                            Copyright ATELIER DO SICKO LTDA - 15802576000140 - 2023. Todos os direitos
-                            reservados.
-                        </p>
+                        <ListLinks list={policiesFooterList} title={'Políticas'} />
+                        <ListLinks list={helperFooterList} title={'Ajuda'} />
                     </div>
 
-                    <div className="flex flex-col justify-between gap-28">
-                        <ListLinks list={policiesFooterList} title={'Políticas'} />
+                    <div className="max-912:flexCol flex w-full items-end justify-between gap-16 text-neutral-400 max-912:items-center max-912:gap-8">
+                        <div className="flex justify-end gap-8 ">
+                            <Link className="size-8">
+                                <Icon.InstagramLogo className="size-full" />
+                            </Link>
+                            <Link className="size-8">
+                                <Icon.YoutubeLogo className="size-full" />
+                            </Link>
+                            <Link className="size-8">
+                                <Icon.PinterestLogo className="size-full" />
+                            </Link>
+                            <Link className="size-8">
+                                <Icon.XLogo className="size-full" />
+                            </Link>
+                            <Link className="size-8">
+                                <Icon.TiktokLogo className="size-full" />
+                            </Link>
+                        </div>
+                        <div className="flex flex-col justify-between">
+                            <p className="text-center text-xs">
+                                Copyright ATELIER DO SICKO LTDA - 15802576000140 - 2023. Todos os direitos
+                                reservados.
+                            </p>
+                        </div>
 
                         <div className="flex items-end justify-end text-sm">
                             <div className="flex flex-col justify-end">
                                 <p className="font-semibold uppercase">Site desenvolvido por:</p>
 
-                                <div className="flex items-center gap-2 text-body">
-                                    <p>Paulo Tarso - Desenvolvedor Full Stack</p>
+                                <div className="flex items-center gap-4 text-body ">
+                                    <p className="max-[359px]:text-wrap text-nowrap">
+                                        Paulo Tarso - Desenvolvedor Full Stack
+                                    </p>
 
                                     <div className="flex gap-3">
                                         <Link className="size-6">
@@ -41,30 +62,6 @@ const Footer = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col justify-between gap-28">
-                        <ListLinks list={helperFooterList} title={'Ajuda'} />
-
-                        <div className="flex items-end justify-end">
-                            <div className="flex items-end gap-5">
-                                <Link className="size-8">
-                                    <Icon.InstagramLogo className="size-full" />
-                                </Link>
-                                <Link className="size-8">
-                                    <Icon.YoutubeLogo className="size-full" />
-                                </Link>
-                                <Link className="size-8">
-                                    <Icon.PinterestLogo className="size-full" />
-                                </Link>
-                                <Link className="size-8">
-                                    <Icon.XLogo className="size-full" />
-                                </Link>
-                                <Link className="size-8">
-                                    <Icon.TiktokLogo className="size-full" />
-                                </Link>
                             </div>
                         </div>
                     </div>

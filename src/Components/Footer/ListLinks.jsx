@@ -9,9 +9,9 @@ const ListLinks = ({ list, title }) => {
     ))
 
     return (
-        <ul className="flex flex-col gap-3">
-            <h1 className="text-xl font-bold uppercase underline">{title}</h1>
-            {listMap}
+        <ul className="flex flex-col gap-6">
+            <h1 className="text-xl font-bold uppercase text-neutral-200 underline">{title}</h1>
+            <div className="flexCol gap-3">{listMap}</div>
         </ul>
     )
 }
