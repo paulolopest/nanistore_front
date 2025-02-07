@@ -11,7 +11,7 @@ import DoubleBanner from '../../Components/Banners/DoubleBanner'
 const MainPage = () => {
     return (
         <Wrapper>
-            <div className="flex w-full flex-col gap-16 py-40 max-[1366px]:py-[8.5rem] max-844:py-40 max-680:py-20 max-580:py-20">
+            <div className="flex w-full flex-col gap-16 py-40 max-[1366px]:py-[8.5rem] max-lg:gap-8 max-844:py-40 max-md:gap-6 max-680:py-20 max-580:py-20">
                 <BannerBig img={Banner1} />
 
                 <Carousel title={'Vistos por último'} />

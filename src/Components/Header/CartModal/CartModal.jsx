@@ -12,7 +12,7 @@ const CartModal = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute -right-2 top-9 z-10 flex w-72 flex-col justify-between rounded-xl bg-white font-light shadow-hover max-lg:-right-16"
+            className="absolute -right-2 top-9 z-10 flex w-72 flex-col justify-between rounded-xl bg-white font-light shadow-hover max-lg:-right-16 max-540:-right-12"
         >
             <ul className="flex max-h-[400px] flex-col overflow-scroll">
                 <ItemCartModal />

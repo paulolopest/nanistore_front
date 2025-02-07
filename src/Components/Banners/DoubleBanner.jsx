@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const DoubleBanner = ({ img1, img2 }) => {
     return (
-        <div className="flex justify-between [&>img]:h-60 [&>img]:w-[48%] [&>img]:cursor-pointer [&>img]:rounded-xl">
+        <div className="grid grid-cols-2 justify-between gap-8 max-md:h-52 max-md:grid-cols-1 [&>img]:size-full [&>img]:rounded-xl">
             <motion.img
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -17,6 +17,7 @@ const DoubleBanner = ({ img1, img2 }) => {
                 viewport={{ once: true }}
                 src={img2}
                 alt="mini banner"
+                className="max-md:hidden"
             />
         </div>
     )
