@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import React, { useState } from 'react'
 import { formatPrice } from '../../Utils/Extra'
 
 const ProductCard = ({ item, className }) => {
