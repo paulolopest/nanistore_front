@@ -5,7 +5,7 @@ import Logo from '../IconsComponent/Logo'
 import { tabs } from './../../Utils/Extra'
 import CartModal from './CartModal/CartModal'
 import * as Icon from '@phosphor-icons/react'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SearchInput from './SearchInput/SearchInput'
 import { AnimatePresence, motion } from 'framer-motion'
 import { GlobalContext } from '../../Context/GlobalContext'
@@ -67,6 +67,35 @@ const Header = () => {
             </Link>
         </div>
     ))
+
+    useEffect(() => {
+        if (mobileInput) {
+            const originalState = window.history.state
+
+            // Adiciona um novo estado ao histórico
+            window.history.pushState({ isInputOpen: true }, '')
+
+            const handlePopState = (event) => {
+                // Fecha o input quando o botão de voltar é pressionado
+                if (event.state?.isInputOpen) {
+                    setMobileInput(false)
+                    // Restaura o estado original do histórico
+                    window.history.replaceState(originalState, '')
+                }
+            }
+
+            window.addEventListener('popstate', handlePopState)
+
+            return () => {
+                window.removeEventListener('popstate', handlePopState)
+
+                // Limpa o estado do histórico se o componente desmontar
+                if (window.history.state?.isInputOpen) {
+                    window.history.replaceState(originalState, '')
+                }
+            }
+        }
+    }, [mobileInput])
 
     return (
         <motion.header
