@@ -3,7 +3,7 @@ import React, { useRef, useContext } from 'react'
 import { GlobalContext } from '../../../Context/GlobalContext'
 import SearchDropDown from './SearchDropDown'
 
-const SearchInput = ({ state, setState, label, icon, bg, ...props }) => {
+const SearchInput = ({ state, setState, label, icon, bg, css, ...props }) => {
     const inputRef = useRef(null)
 
     const { openDropDown, searchDropDown, setSearchDropDown } = useContext(GlobalContext)
@@ -17,7 +17,7 @@ const SearchInput = ({ state, setState, label, icon, bg, ...props }) => {
     return (
         <div
             style={{ backgroundColor: bg }}
-            className="relative flex h-10 w-[40rem] flex-col rounded-md shadow-sm max-912:w-[35rem] max-896:w-[33rem] max-md:w-[25rem] max-sm:w-80 max-580:h-12 max-580:w-80"
+            className={`relative flex h-10 w-[40rem] flex-col rounded-md shadow-sm ${css}`}
             onBlur={handleBlur}
         >
             <motion.input
@@ -33,7 +33,9 @@ const SearchInput = ({ state, setState, label, icon, bg, ...props }) => {
                 }}
                 {...props}
             />
-            <div className="absolute z-20 flex h-full cursor-pointer items-center justify-center px-3 text-neutral-400">
+            <div
+                className={`absolute z-20 flex size-[40px] h-full cursor-pointer items-center justify-center px-3 text-neutral-400`}
+            >
                 {icon}
             </div>
 

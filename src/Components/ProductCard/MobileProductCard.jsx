@@ -2,7 +2,6 @@ import React from 'react'
 import { formatPrice } from '../../Utils/Extra'
 
 const MobileProductCard = ({ item }) => {
-    console.log(item)
     return (
         <div className="flexCol flex-center size-[17rem] select-none rounded-xl bg-white p-4 shadow-sm max-640:size-60">
             <img src={item.src[0]} alt="" className="size-44 select-none max-640:size-40" />

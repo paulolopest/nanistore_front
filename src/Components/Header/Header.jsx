@@ -48,7 +48,7 @@ const Header = () => {
         >
             <Wrapper className={'flexCol max-844:gap-2'}>
                 <div className="flex w-full flex-row items-center justify-between py-2 max-540:py-1">
-                    <div className="flex h-12 w-[88px] items-center justify-start max-540:w-[64px] min-[540px]:hidden">
+                    <div className="min-[540px]:hidden flex h-12 w-[88px] items-center justify-start max-540:w-[64px]">
                         <Icon.MagnifyingGlass className="size-5 text-neutral-600" />
                     </div>
 

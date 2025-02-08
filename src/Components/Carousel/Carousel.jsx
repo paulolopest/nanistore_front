@@ -67,7 +67,6 @@ const Carousel = ({ title }) => {
                     onDragStart={dragStart}
                     dragConstraints={{ left: !isMobile ? -2000 : -2200, right: 0 }}
                     className=" flex gap-6   max-md:gap-3 max-md:py-1 "
-                    // max-md:flexCol max-md:h-[35.5rem] max-md:flex-wrap max-640:h-[31.5rem]
                 >
                     {itemMap}
                 </motion.div>
