@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { items } from '../../../Utils/Extra'
 import { GlobalContext } from '../../../Context/GlobalContext'
 
-const SearchDropDown = () => {
+const SearchDropDown = ({ css }) => {
     const { openDropDown } = useContext(GlobalContext)
 
     return (
@@ -13,7 +13,7 @@ const SearchDropDown = () => {
             exit={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             style={{ boxShadow: '0px 16px 20px #00000029' }}
-            className="absolute left-0 top-9 z-20 mt-1 w-full rounded-b-md bg-white pb-1 uppercase"
+            className={`absolute left-0 top-9 z-20 mt-1 w-full rounded-b-md bg-white pb-1 uppercase ${css}`}
         >
             <Link
                 draggable="false"

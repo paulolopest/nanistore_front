@@ -13,6 +13,8 @@ import CustomInput from './../CustomForm/CustomInput'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
+import SearchDropDown from './SearchInput/SearchDropDown'
+import MobileSearchInput from './SearchInput/MobileSearchInput'
 
 const schema = z.object({
     name: z.string(),
@@ -25,8 +27,8 @@ const schema = z.object({
 
 const Header = () => {
     const [activeTab, setActiveTab] = useState(null)
-    const [mobileInput, setMobileInput] = useState(false)
     const [searchValue, setSearchValue] = useState('')
+    const [mobileSearch, setMobileSearch] = useState(false)
 
     const {
         register,
@@ -41,8 +43,6 @@ const Header = () => {
     }
 
     const { openDropDown, profileDropDown, cartDropDown } = useContext(GlobalContext)
-
-    console.log(mobileInput)
 
     const tabMap = tabs.map((tab) => (
         <div
@@ -68,35 +68,6 @@ const Header = () => {
         </div>
     ))
 
-    useEffect(() => {
-        if (mobileInput) {
-            const originalState = window.history.state
-
-            // Adiciona um novo estado ao histórico
-            window.history.pushState({ isInputOpen: true }, '')
-
-            const handlePopState = (event) => {
-                // Fecha o input quando o botão de voltar é pressionado
-                if (event.state?.isInputOpen) {
-                    setMobileInput(false)
-                    // Restaura o estado original do histórico
-                    window.history.replaceState(originalState, '')
-                }
-            }
-
-            window.addEventListener('popstate', handlePopState)
-
-            return () => {
-                window.removeEventListener('popstate', handlePopState)
-
-                // Limpa o estado do histórico se o componente desmontar
-                if (window.history.state?.isInputOpen) {
-                    window.history.replaceState(originalState, '')
-                }
-            }
-        }
-    }, [mobileInput])
-
     return (
         <motion.header
             initial={{ y: -20, opacity: 0 }}
@@ -105,29 +76,8 @@ const Header = () => {
         >
             <Wrapper className={'flexCol max-844:gap-2'}>
                 <div className="flex w-full flex-row items-center justify-between py-2 max-540:py-1">
-                    <div
-                        onClick={() => setMobileInput(true)}
-                        className="relative flex h-12 w-[88px] items-center justify-start max-540:w-[64px] min-[540px]:hidden"
-                    >
-                        <Icon.MagnifyingGlass className="size-5 text-neutral-600" />
-                    </div>
-
                     <AnimatePresence>
-                        {mobileInput && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -20 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="absolute right-0 top-0 z-50 h-14 w-full bg-white px-5 py-3"
-                            >
-                                <motion.input
-                                    autoFocus
-                                    onBlur={() => setMobileInput(false)}
-                                    className="size-full rounded-md border border-solid border-neutral-200 pl-2 shadow-sm"
-                                />
-                                <Icon.MagnifyingGlass className="absolute right-8 top-[35%]" />
-                            </motion.div>
-                        )}
+                        {mobileSearch && <MobileSearchInput setState={setMobileSearch} />}
                     </AnimatePresence>
 
                     <Link to={'/'} className="flex h-12 cursor-pointer select-none justify-start max-540:h-8">
@@ -144,7 +94,13 @@ const Header = () => {
                         />
                     </div>
 
-                    <nav className="flex h-12 items-center gap-10 max-540:gap-6 [&>svg]:size-6 [&>svg]:cursor-pointer">
+                    <nav className="flex h-12 items-center gap-10 text-neutral-600 max-540:gap-6 [&>svg]:size-6 [&>svg]:cursor-pointer">
+                        <div
+                            onClick={() => setMobileSearch(true)}
+                            className="relative flex items-center justify-start  min-[540px]:hidden"
+                        >
+                            <Icon.MagnifyingGlass className="size-5" />
+                        </div>
                         <div className="relative size-6 cursor-pointer max-540:size-5">
                             <Icon.ShoppingBagOpen
                                 className="size-full"
