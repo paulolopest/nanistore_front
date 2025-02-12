@@ -1,23 +1,9 @@
 import { motion } from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import * as Icon from '@phosphor-icons/react'
-import SearchDropDown from './SearchDropDown'
 
 const MobileSearchInput = ({ setState }) => {
     const [searchInput, setSearchInput] = useState('')
-    const [showDropDown, setShowDropDown] = useState(false)
-
-    const handleDropDown = () => {
-        if (searchInput.length > 0) {
-            setTimeout(() => {
-                setShowDropDown(true)
-            }, 1000)
-        }
-    }
-
-    useEffect(() => {
-        handleDropDown()
-    }, [searchInput])
 
     return (
         <motion.div

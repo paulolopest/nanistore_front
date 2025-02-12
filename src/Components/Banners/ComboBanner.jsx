@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { items } from '../../Utils/Extra'
+import React, { useContext, useState } from 'react'
 import ProductCard from '../ProductCard/ProductCard'
-import useMediaQuery from './../../Hooks/useMediaQuery'
 import MobileProductCard from '../ProductCard/MobileProductCard'
+import { GlobalContext } from '../../Context/GlobalContext'
 
 const ComboBanner = () => {
     const [isDragging, setIsDragging] = useState(false)
 
-    const smScreen = useMediaQuery('(max-width: 540px)')
-    const mdScreen = useMediaQuery('(max-width: 768px)')
-    const lgScreen = useMediaQuery('(max-width: 1024px)')
+    const { smScreen, mdScreen, lgScreen } = useContext(GlobalContext)
 
     const dragStart = () => setIsDragging(true)
     const dragEnd = () => setIsDragging(false)

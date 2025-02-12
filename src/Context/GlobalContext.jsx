@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import useMediaQuery from '../Hooks/useMediaQuery'
 
 export const GlobalContext = React.createContext('')
 
@@ -8,6 +9,11 @@ const GlobalStorage = ({ children }) => {
     const [cartDropDown, setCartDropDown] = React.useState(false)
     const [searchDropDown, setSearchDropDown] = React.useState(false)
     const [profileDropDown, setProfileCartDropDown] = React.useState(false)
+
+    const smScreen = useMediaQuery('(max-width: 540px)')
+    const mdScreen = useMediaQuery('(max-width: 768px)')
+    const lgScreen = useMediaQuery('(max-width: 1024px)')
+    const xlScreen = useMediaQuery('(max-width: 1279px)')
 
     const openDropDown = (dropDown) => {
         if (dropDown === 'cart') {
@@ -38,6 +44,10 @@ const GlobalStorage = ({ children }) => {
                 openDropDown,
                 setSearchDropDown,
                 theme,
+                smScreen,
+                mdScreen,
+                lgScreen,
+                xlScreen,
                 cartDropDown,
                 searchDropDown,
                 profileDropDown,

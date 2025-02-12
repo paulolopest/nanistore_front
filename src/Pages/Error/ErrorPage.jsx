@@ -14,7 +14,7 @@ const ErrorPage = () => {
                 <div className="flex-center w-fit gap-2 text-xl font-bold">
                     <p>Error {error.status}</p>
                     <span>-</span>
-                    <p>{error.statusText}</p>
+                    <p>{error.statusText || 500}</p>
                 </div>
 
                 <div className="flexCol text-lg">
