@@ -27,7 +27,7 @@ const ComboBanner = () => {
 
             <div className={`${smScreen && 'overflow-x-hidden'}`}>
                 <motion.div
-                    className="flex w-full justify-between gap-6 max-lg:flex-col max-md:gap-4 max-540:flex-row"
+                    className="flex w-full justify-between gap-6 max-1024:flex-col max-md:gap-4 max-540:flex-row"
                     drag={smScreen && 'x'}
                     onDragEnd={dragEnd}
                     onDragStart={dragStart}

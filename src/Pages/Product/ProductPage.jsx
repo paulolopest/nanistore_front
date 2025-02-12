@@ -1,14 +1,13 @@
 import { useParams } from 'react-router-dom'
 import * as Icon from '@phosphor-icons/react'
 import { motion, useAnimate } from 'framer-motion'
-import React, { useContext, useEffect, useState } from 'react'
+import ProductInfo from './components/ProductInfo'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import MeasuresTable from './components/MeasuresTable'
 import Carousel from '../../Components/Carousel/Carousel'
-import { items, productDetails, sizes } from './../../Utils/Extra'
-import ProductInfo from './components/ProductInfo'
-import useMediaQuery from './../../Hooks/useMediaQuery'
 import { GlobalContext } from '../../Context/GlobalContext'
+import { items, productDetails } from './../../Utils/Extra'
+import React, { useContext, useEffect, useState } from 'react'
 
 const ProductPage = () => {
     const { productId } = useParams()
@@ -17,7 +16,7 @@ const ProductPage = () => {
     const [showedImage, setShowedImage] = useState(0)
     const [size, setSize] = useState({ activeSize: '', sizeId: 'p', sizeTable: true })
 
-    const { xlScreen } = useContext(GlobalContext)
+    const { lgScreen, xlScreen } = useContext(GlobalContext)
 
     const item = items.filter((item) => item.id === Number(productId))
 
@@ -25,7 +24,7 @@ const ProductPage = () => {
         <div
             onClick={() => setShowedImage(index)}
             key={index}
-            className={`transitionIn flex h-36 w-32 cursor-pointer justify-between rounded-lg border border-solid border-neutral-100 bg-neutral-100 p-2 max-1366:h-28 max-1366:w-24 ${showedImage === index && 'border-neutral-300'}`}
+            className={`transitionIn flex h-36 w-32 cursor-pointer justify-between rounded-lg border border-solid border-neutral-100 bg-neutral-100 p-2 max-1366:h-28 max-1366:w-24 max-1280:h-24 max-1280:w-20 ${showedImage === index && 'border-neutral-300'}`}
         >
             <motion.img
                 id="miniProductImg"
@@ -65,18 +64,18 @@ const ProductPage = () => {
 
     return (
         <Wrapper>
-            <div className="flex w-full flex-col gap-12 py-36 max-1440:py-[8.5rem]">
+            <div className="flex w-full flex-col gap-12 py-36 max-1440:py-[8.5rem] max-844:py-40 max-640:py-20">
                 <motion.div ref={scope} className="flex w-full justify-between gap-8">
                     <motion.div
                         id="leftBox"
                         initial={{ opacity: 0, y: 20 }}
-                        className="flex w-2/3 flex-col gap-10"
+                        className="flex w-2/3 flex-col gap-10 max-1280:w-full"
                     >
-                        <motion.div className="flexCol h-[48rem] w-full rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-xl:h-fit max-xl:w-full">
-                            <div className="flex size-full items-center justify-between gap-10">
-                                <div className="flex h-full flex-col gap-y-10">{srcMap}</div>
+                        <motion.div className="flexCol h-[48rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm">
+                            <div className="flex size-full items-center justify-between gap-10 max-1280:justify-normal max-1024:h-fit max-1024:items-start">
+                                <div className="flex h-full flex-col gap-y-10 max-1024:h-fit">{srcMap}</div>
 
-                                <div className="flex size-full items-center justify-center rounded-xl p-2">
+                                <div className="flex size-full items-center justify-center rounded-xl p-2 max-1024:h-[31.5rem]">
                                     <motion.img
                                         id="activeProductImg"
                                         initial={{ y: 20 }}
@@ -90,7 +89,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
 
-                            {xlScreen && (
+                            {lgScreen && (
                                 <ProductInfo
                                     item={item}
                                     size={size}
@@ -105,7 +104,7 @@ const ProductPage = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
-                            className="flex w-full flex-col gap-6 rounded-xl bg-white p-8 shadow-md"
+                            className="flex w-full flex-col gap-6 rounded-xl bg-white p-8 shadow-md max-844:shadow-sm"
                         >
                             <h1 className="text-2xl font-bold uppercase leading-none">Descrição</h1>
 
@@ -144,7 +143,7 @@ const ProductPage = () => {
                         >
                             <motion.div
                                 layout
-                                className="flex w-full flex-col rounded-xl bg-white p-8 shadow-md"
+                                className="flex w-full flex-col rounded-xl bg-white p-8 shadow-md max-844:shadow-sm"
                             >
                                 <motion.div
                                     layout
@@ -170,7 +169,7 @@ const ProductPage = () => {
                         </motion.div>
                     </motion.div>
 
-                    {!xlScreen && (
+                    {!lgScreen && (
                         <ProductInfo
                             item={item}
                             size={size}

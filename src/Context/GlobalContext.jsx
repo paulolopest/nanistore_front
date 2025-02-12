@@ -10,10 +10,10 @@ const GlobalStorage = ({ children }) => {
     const [searchDropDown, setSearchDropDown] = React.useState(false)
     const [profileDropDown, setProfileCartDropDown] = React.useState(false)
 
-    const smScreen = useMediaQuery('(max-width: 540px)')
-    const mdScreen = useMediaQuery('(max-width: 768px)')
-    const lgScreen = useMediaQuery('(max-width: 1024px)')
-    const xlScreen = useMediaQuery('(max-width: 1279px)')
+    const smScreen = useMediaQuery('(max-width: 541px)')
+    const mdScreen = useMediaQuery('(max-width: 769px)')
+    const lgScreen = useMediaQuery('(max-width: 1025px)')
+    const xlScreen = useMediaQuery('(max-width: 1281px)')
 
     const openDropDown = (dropDown) => {
         if (dropDown === 'cart') {

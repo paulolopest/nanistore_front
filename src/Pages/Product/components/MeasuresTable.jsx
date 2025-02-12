@@ -13,7 +13,7 @@ const MeasuresTable = ({ state }) => {
             animate={{ height: state ? 'auto' : 0, opacity: state ? 1 : 0 }}
             className={`flexCol gap-5 pt-5`}
         >
-            <div className="flex gap-10 border-y border-solid border-neutral-200 py-4 text-base font-bold uppercase text-subtitle">
+            <div className="flex gap-10 border-y border-solid border-neutral-200 py-4 text-base font-bold uppercase text-subtitle max-1280:text-sm">
                 <p
                     onClick={() => setBodyType('man')}
                     className={`${bodyType === 'man' ? 'text-red-500' : 'text-subtitle'} cursor-pointer`}
@@ -28,15 +28,15 @@ const MeasuresTable = ({ state }) => {
                 </p>
             </div>
 
-            <div className="flex flex-col justify-center gap-16">
-                <div className="flex flex-col gap-6">
+            <div className="flex flex-col justify-center gap-y-16  max-1280:text-sm">
+                <div className="flex flex-col gap-6 max-1280:gap-4">
                     <h1 className="font-bold uppercase text-subtitle">Tabela de medidas masculinas</h1>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
-                        className="flex w-[40.75rem] gap-20 font-light [&>div]:flex [&>div]:flex-col  [&>div]:items-center [&>div]:gap-10"
+                        className="flex w-[40.75rem] gap-x-20 font-light max-1280:w-full max-1280:justify-between max-1280:gap-x-0 [&>div]:flex [&>div]:flex-col [&>div]:items-center [&>div]:gap-10"
                     >
                         <div className="flex flex-col uppercase">
                             <h1 className=" font-bold">Tamanho</h1>
@@ -89,7 +89,7 @@ const MeasuresTable = ({ state }) => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.8 }}
-                    className="flex w-[40.75rem] flex-col gap-2 font-normal uppercase"
+                    className="flex w-[40.75rem] flex-col font-normal max-1280:w-fit"
                 >
                     <h1 className="font-bold text-subtitle">Como medir?</h1>
                     <p className="text-sm text-body">
@@ -100,7 +100,7 @@ const MeasuresTable = ({ state }) => {
                 </motion.div>
 
                 <div className="flex gap-10">
-                    <div className="flex w-[30.50rem] flex-col justify-between text-lg font-light text-neutral-700">
+                    <div className="flex w-[30.50rem] flex-col justify-between text-lg font-light text-neutral-700 max-1280:w-fit max-1280:text-base">
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}

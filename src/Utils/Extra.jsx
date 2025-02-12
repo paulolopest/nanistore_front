@@ -81,7 +81,7 @@ export const items = [
     {
         id: 1,
         name: 'Gengar',
-        src: [image1, image5],
+        src: [image1, image5, image2, image3],
         type: 'Oversized Premium',
         price: 50,
     },
