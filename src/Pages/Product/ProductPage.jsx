@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import * as Icon from '@phosphor-icons/react'
-import { motion, useAnimate } from 'framer-motion'
+import { motion, useAnimate, useAnimationControls } from 'framer-motion'
 import ProductInfo from './components/ProductInfo'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import MeasuresTable from './components/MeasuresTable'
@@ -16,11 +16,13 @@ const ProductPage = () => {
     const [showedImage, setShowedImage] = useState(0)
     const [size, setSize] = useState({ activeSize: '', sizeId: 'p', sizeTable: true })
 
-    const { lgScreen, xlScreen } = useContext(GlobalContext)
+    const { smScreen, lgScreen } = useContext(GlobalContext)
 
-    const item = items.filter((item) => item.id === Number(productId))
+    const item = items.find((item) => item.id === Number(productId))
 
-    const srcMap = item[0].src.map((item, index) => (
+    console.log(item)
+
+    const srcMap = item.src.map((item, index) => (
         <div
             onClick={() => setShowedImage(index)}
             key={index}
@@ -45,6 +47,21 @@ const ProductPage = () => {
         </div>
     ))
 
+    const DotQuantity = () => {
+        return (
+            <div className="flex gap-2">
+                {Array.from({ length: item.src.length }).map((_, index) => (
+                    <div
+                        key={index}
+                        className={`size-3 rounded-full transition-all duration-300 ${
+                            index === 2 ? 'scale-125 bg-neutral-900' : 'bg-neutral-400'
+                        }`}
+                    />
+                ))}
+            </div>
+        )
+    }
+
     const handleAnimate = async () => {
         animate('#leftBox', { opacity: 1, y: 0 }, { duration: 0.2, ease: 'easeInOut' })
         animate('#rightBox', { opacity: 1, y: 0 }, { duration: 0.2, ease: 'easeInOut' })
@@ -63,19 +80,25 @@ const ProductPage = () => {
     }, [])
 
     return (
-        <Wrapper>
-            <div className="flex w-full flex-col gap-12 py-36 max-1440:py-[8.5rem] max-844:py-40 max-640:py-20">
+        <Wrapper className={'max-640:px-0'}>
+            <div className="flex w-full flex-col gap-12 py-36 max-1440:py-[8.5rem] max-844:py-40 max-680:py-20 max-640:py-14">
                 <motion.div ref={scope} className="flex w-full justify-between gap-8">
                     <motion.div
                         id="leftBox"
                         initial={{ opacity: 0, y: 20 }}
                         className="flex w-2/3 flex-col gap-10 max-1280:w-full"
                     >
-                        <motion.div className="flexCol h-[48rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm">
-                            <div className="flex size-full items-center justify-between gap-10 max-1280:justify-normal max-1024:h-fit max-1024:items-start">
-                                <div className="flex h-full flex-col gap-y-10 max-1024:h-fit">{srcMap}</div>
+                        <motion.div className="flexCol h-[48rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm max-640:p-5">
+                            <div className="flex size-full items-center justify-between gap-10 max-1280:justify-normal max-1024:h-fit max-1024:items-start max-640:flex-col-reverse">
+                                {!smScreen ? (
+                                    <div className="flex h-full flex-col gap-y-10 max-1024:h-fit max-640:w-full max-640:flex-row max-640:justify-between">
+                                        {srcMap}
+                                    </div>
+                                ) : (
+                                    <DotQuantity />
+                                )}
 
-                                <div className="flex size-full items-center justify-center rounded-xl p-2 max-1024:h-[31.5rem]">
+                                <div className="flex size-full items-center justify-center rounded-xl p-2 max-1024:h-[31.5rem] max-640:h-fit max-640:p-0">
                                     <motion.img
                                         id="activeProductImg"
                                         initial={{ y: 20 }}
@@ -83,7 +106,7 @@ const ProductPage = () => {
                                         transition={{ duration: 0.3 }}
                                         key={showedImage}
                                         alt="Imagem do Produto"
-                                        src={item[0].src[showedImage]}
+                                        src={item.src[showedImage]}
                                         className="size-full cursor-zoom-in object-contain"
                                     />
                                 </div>
@@ -114,7 +137,7 @@ const ProductPage = () => {
                                 viewport={{ once: true, amount: 0.8 }}
                                 className="font-light leading-tight text-body"
                             >
-                                A camiseta {item[0].type} combina estilo e funcionalidade de um jeito leve e
+                                A camiseta {item.type} combina estilo e funcionalidade de um jeito leve e
                                 prático. Feita 100% algodão, essa camiseta oferece a proteção solar que você
                                 precisa, com fator de proteção FPS50+ (aplicado diretamente na peça). Possui
                                 gola redonda e mangas longas, que protegem os seus braços e te deixam mais à

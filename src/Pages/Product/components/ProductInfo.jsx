@@ -1,9 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import * as Icon from '@phosphor-icons/react'
 import { sizes } from '../../../Utils/Extra'
+import * as Icon from '@phosphor-icons/react'
 
-const ProductInfo = ({ item, size, setSize, quantity, setQuantity }) => {
+const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) => {
     const sizeMap = sizes.map((tab) => (
         <div className="relative" key={tab.id}>
             {tab.id === size.sizeId && (
@@ -28,17 +28,15 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity }) => {
             initial={{ opacity: 0, y: 20 }}
             className="sticky top-36 flex  h-[48rem] min-w-[29.5rem] flex-col justify-between rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1440:top-32 max-1366:h-[38rem] max-1280:h-[35rem] max-1280:min-w-[25rem] max-1024:w-full max-1024:min-w-0 max-1024:rounded-none max-1024:p-0 max-1024:shadow-none"
         >
-            <div className="flex flex-col gap-y-8 max-1366:gap-y-6">
+            <motion.div animate={controls} className="flex flex-col gap-y-8 max-1366:gap-y-6">
                 <motion.div
                     id="productName"
                     initial={{ opacity: 0, y: 20 }}
                     className="flex flex-col font-extrabold uppercase"
                 >
-                    <p className="relative text-5xl text-neutral-700 max-1366:text-4xl">{item[0].name} </p>
+                    <p className="relative text-5xl text-neutral-700 max-1366:text-4xl">{item.name}</p>
 
-                    <p className="text-2xl font-bold italic text-neutral-500 max-1366:text-xl">
-                        {item[0].type}
-                    </p>
+                    <p className="text-2xl font-bold italic text-neutral-500 max-1366:text-xl">{item.type}</p>
                 </motion.div>
 
                 <motion.div id="measureTable" initial={{ opacity: 0, y: 20 }} className="flex flex-col gap-2">
@@ -57,11 +55,11 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity }) => {
                     className="flex w-full flex-col justify-start gap-2 font-semibold uppercase max-1366:gap-0"
                 >
                     <p className="text-xl text-neutral-400 line-through max-1366:text-lg">
-                        De: R$ {(item[0].price - 0.01).toFixed(2).replace('.', ',')}
+                        De: R$ {(item.price - 0.01).toFixed(2).replace('.', ',')}
                     </p>
 
                     <p className="relative flex shrink-0 items-center text-5xl font-extrabold max-1366:text-4xl">
-                        Por: R$ {(item[0].price - 0.01 - item[0].price / 10).toFixed(2).replace('.', ',')}{' '}
+                        Por: R$ {(item.price - 0.01 - item.price / 10).toFixed(2).replace('.', ',')}{' '}
                         <span className="absolute right-0 rounded-md bg-green-500 px-2 py-1 text-lg text-white max-1440:-top-8">
                             -10%
                         </span>
@@ -70,7 +68,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity }) => {
                     <div className="text-xl leading-none text-subtitle max-1366:text-lg">
                         <p className="text-xs text-neutral-800">À vista ou</p>
 
-                        <p>6x de R${(item[0].price / 6).toFixed(2).replaceAll('.', ',')} sem juros</p>
+                        <p>6x de R${(item.price / 6).toFixed(2).replaceAll('.', ',')} sem juros</p>
                     </div>
                 </motion.div>
 
@@ -85,7 +83,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity }) => {
                         <Icon.Plus />
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             <div className="flex flex-col gap-3 [&>button]:py-4 max-1366:[&>button]:py-3">
                 <motion.button
