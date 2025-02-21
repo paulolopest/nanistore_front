@@ -15,8 +15,6 @@ const GlobalStorage = ({ children }) => {
     const lgScreen = useMediaQuery('(max-width: 1025px)')
     const xlScreen = useMediaQuery('(max-width: 1281px)')
 
-    console.log(smScreen)
-
     const openDropDown = (dropDown) => {
         if (dropDown === 'cart') {
             setCartDropDown(!cartDropDown)

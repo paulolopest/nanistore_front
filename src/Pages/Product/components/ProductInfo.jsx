@@ -26,7 +26,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
         <motion.div
             id="rightBox"
             initial={{ opacity: 0, y: 20 }}
-            className="sticky top-36 flex  h-[48rem] min-w-[29.5rem] flex-col justify-between rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1440:top-32 max-1366:h-[38rem] max-1280:h-[35rem] max-1280:min-w-[25rem] max-1024:w-full max-1024:min-w-0 max-1024:rounded-none max-1024:p-0 max-1024:shadow-none"
+            className="sticky top-36 flex  h-[48rem] min-w-[29.5rem] flex-col justify-between rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1440:top-32 max-1366:h-[38rem] max-1280:h-[35rem] max-1280:min-w-[25rem] max-1024:w-full max-1024:min-w-0 max-1024:rounded-none max-1024:p-0 max-1024:shadow-none max-540:h-[33rem]"
         >
             <motion.div animate={controls} className="flex flex-col gap-y-8 max-1366:gap-y-6">
                 <motion.div
