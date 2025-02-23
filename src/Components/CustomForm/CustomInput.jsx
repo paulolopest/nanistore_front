@@ -15,7 +15,7 @@ const CustomInput = ({ id, placeholder, register, errors, type, style, w, h }) =
     }
 
     return (
-        <motion.div layout className={`relative ${errors[id] && 'mb-2'}`} style={{ width: w, minHeight: h }}>
+        <motion.div layout className={`relative ${errors[id] && 'mb-1'}`} style={{ width: w, height: h }}>
             <motion.input
                 id={id}
                 name={id}
@@ -24,18 +24,18 @@ const CustomInput = ({ id, placeholder, register, errors, type, style, w, h }) =
                 onBlur={handleBlur}
                 onFocus={() => setActive(true)}
                 layoutId={`${[id]}InputAnimation`}
-                className={`size-full rounded-md border border-solid  pl-2 ${active ? 'border-blue-400' : 'border-neutral-300'} ${errors[id] && 'border-red-500'} ${style}`}
+                className={`size-full rounded-md border border-solid pl-2 text-neutral-600 ${active ? 'border-blue-400' : 'border-neutral-300'} ${errors[id] && 'border-red-500'} ${style}`}
             />
 
             <motion.label
                 layoutId={`${[id]}PlaceHolderAnimation`}
                 transition={{ duration: 0.1, ease: 'easeIn' }}
-                className={`pointer-events-none absolute left-3  bg-white text-neutral-400 ${active ? '-top-2 left-4 px-1 text-xs tracking-widest text-neutral-600' : 'top-[33%]'}`}
+                className={`pointer-events-none absolute left-3  bg-white text-neutral-400 ${active ? '-top-2 left-4 px-1 text-xs' : 'top-[33%]'}`}
             >
                 {placeholder}
             </motion.label>
 
-            {errors[id] && <p className="pt-1 text-sm leading-none text-red-500">{errors[id].message}</p>}
+            {errors[id] && <p className="h-fit w-full pb-1 text-sm text-red-500">{errors[id].message}</p>}
         </motion.div>
     )
 }

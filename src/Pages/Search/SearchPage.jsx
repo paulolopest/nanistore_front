@@ -34,7 +34,7 @@ const SearchPage = () => {
 
     return (
         <Wrapper>
-            <motion.div ref={scope} className="flex w-full gap-8 py-40">
+            <motion.div ref={scope} className="flex w-full gap-8 py-40 text-neutral-600">
                 <div className="flex h-full w-60 flex-col gap-4 border ">
                     <motion.div layout id="typeSorte" initial={{ opacity: 0, y: 20 }}>
                         <Sorter title={'Tipo'} list={['Oversized', 'Dry-fit', 'Camiseta']} />
@@ -47,7 +47,7 @@ const SearchPage = () => {
                     <motion.button
                         id="btnApply"
                         initial={{ opacity: 0, y: 20 }}
-                        className="rounded-md bg-neutral-800 py-3 text-white shadow-default hover:bg-neutral-700"
+                        className="rounded-md bg-neutral-800 py-3 text-neutral-100 shadow-default hover:bg-neutral-700"
                     >
                         Aplicar
                     </motion.button>

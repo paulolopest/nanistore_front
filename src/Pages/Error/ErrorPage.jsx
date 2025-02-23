@@ -5,7 +5,7 @@ const ErrorPage = () => {
     const error = useRouteError()
 
     return (
-        <div className="flex-center h-screen w-full gap-4">
+        <div className="flex-center h-screen w-full gap-4 text-neutral-600">
             <div className="size-40">
                 <Logo />
             </div>

@@ -19,7 +19,7 @@ const CustomSelect = ({ icon, name, list }) => {
     return (
         <div
             onClick={() => setShowList(!showList)}
-            className="flex w-full cursor-pointer select-none items-center gap-2 text-neutral-500 "
+            className="flex w-full cursor-pointer select-none items-center gap-2 text-neutral-600 "
         >
             {icon}
 

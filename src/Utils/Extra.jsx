@@ -94,7 +94,7 @@ export const items = [
     },
     {
         id: 3,
-        name: 'Barba Branca',
+        name: 'B. Branca',
         src: [image3, image3],
         type: 'Oversized',
         price: 50,
@@ -122,14 +122,14 @@ export const items = [
     },
     {
         id: 7,
-        name: 'Kon',
+        name: 'JJK - TOJI',
         src: [image2, image4],
         type: 'Dry Fit',
         price: 50,
     },
     {
         id: 8,
-        name: 'Katana Flower',
+        name: 'KON CSM',
         src: [image5, image3],
         type: 'Dry Fit',
         price: 50,

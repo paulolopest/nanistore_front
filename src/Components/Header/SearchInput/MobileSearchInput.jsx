@@ -28,7 +28,7 @@ const MobileSearchInput = ({ setState }) => {
                         // onBlur={() => setState(false)}
                         onChange={(e) => setSearchInput(e.target.value)}
                         type="search"
-                        className="absolute h-12 w-full border border-x-0 border-t-0 border-solid border-neutral-200 pl-10 pt-1 tracking-wider text-neutral-600"
+                        className="absolute h-12 w-full border border-x-0 border-t-0 border-solid border-neutral-200 pl-10 pt-1  r text-neutral-600"
                         placeholder="Pesquisar"
                     />
                     <div

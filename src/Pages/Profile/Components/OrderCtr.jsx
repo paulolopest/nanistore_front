@@ -7,7 +7,7 @@ const OrderCtr = () => {
     const [showOrder, setShowOrder] = useState(false)
 
     return (
-        <motion.div layout className="overflow-hidden rounded-lg bg-neutral-100">
+        <motion.div layout className="overflow-hidden rounded-lg bg-neutral-100 text-neutral-600">
             <motion.div
                 layout
                 onClick={() => setShowOrder(!showOrder)}
@@ -15,24 +15,24 @@ const OrderCtr = () => {
             >
                 <div className="flex h-fit gap-12">
                     <div>
-                        <h1 className="text-base text-neutral-700">Pedido realizado</h1>
-                        <p className="text-sm text-neutral-500">1 de fevereiro de 2025</p>
+                        <h1 className="">Pedido realizado</h1>
+                        <p className="text-sm text-neutral-400">1 de fevereiro de 2025</p>
                     </div>
                     <div>
-                        <h1 className="text-base text-neutral-700">Total</h1>
-                        <p className="text-sm text-neutral-500">R$ 259,21</p>
+                        <h1 className="">Total</h1>
+                        <p className="text-sm text-neutral-400">R$ 259,21</p>
                     </div>
                     <div>
-                        <h1 className="text-base text-neutral-700">Enviar para</h1>
+                        <h1 className="">Enviar para</h1>
                         <p className="text-sm text-blue-400 underline">Casa</p>
                     </div>
                 </div>
 
                 <div className="flex flex-col items-end justify-between gap-4">
-                    <h1 className="text-sm text-neutral-700">PEDIDO: 702-9710419-8019454</h1>
+                    <h1 className="text-sm ">PEDIDO: 702-9710419-8019454</h1>
 
                     <div className="flex-center size-6">
-                        <Icon.CaretUp
+                        <Icon.CaretDown
                             className={`transition-transform ease-in ${showOrder ? 'rotate-180' : ''}`}
                         />
                     </div>
@@ -48,14 +48,14 @@ const OrderCtr = () => {
                 {items.slice(2, 5).map((item, index) => (
                     <div
                         key={index}
-                        className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-500"
+                        className="w-full border border-x-0 border-b-0 border-solid border-neutral-200 p-4 text-neutral-400"
                     >
                         <div className="flex w-full items-center justify-between">
                             <div className="flex h-20 items-center gap-4">
                                 <img src={item.src[0]} alt="" className="size-14" />
-                                <div className="flex flex-col text-base">
-                                    <p>{item.type}</p>
-                                    <p>{item.name}</p>
+                                <div className="flex flex-col">
+                                    <p className="font-semibold text-neutral-600">{item.name}</p>
+                                    <p className="text-sm">{item.type}</p>
                                 </div>
                             </div>
 

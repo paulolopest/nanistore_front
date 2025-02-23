@@ -1,8 +1,8 @@
 import { z } from 'zod'
-import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import OrderCtr from './Components/OrderCtr'
 import * as Icon from '@phosphor-icons/react'
+import React, { useEffect, useState } from 'react'
 import { motion, useAnimate } from 'framer-motion'
 import AddressModal from './Components/AddressModal'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -14,8 +14,8 @@ const schema = z.object({
     lastName: z.string(),
     password: z.string(),
     newPassword: z.string(),
-    email: z.string().email(),
-    number: z.string().max(11).min(11),
+    email: z.string().email({ message: 'E-mail inválido' }),
+    number: z.string().max(11, { message: 'Número inválido' }).min(11, { message: 'Número inválido' }),
 })
 
 const ProfilePage = () => {
@@ -51,7 +51,7 @@ const ProfilePage = () => {
     return (
         <>
             <Wrapper className={'pb-[30rem] pt-40'}>
-                <motion.div ref={scope} className="flex w-full justify-between gap-8">
+                <motion.div ref={scope} className="flex w-full justify-between gap-8 text-neutral-600">
                     <motion.div
                         layout
                         id="userInfoSection"
@@ -62,22 +62,22 @@ const ProfilePage = () => {
                             layout="preserve-aspect"
                             className="flex items-center gap-2 border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
                         >
-                            <Icon.User className="size-12 rounded-full bg-neutral-200 p-2 text-neutral-700" />
+                            <Icon.User className="size-12 rounded-full bg-neutral-200 p-2" />
 
                             <div className="flex flex-col">
-                                <p className="text-lg text-neutral-800">Meus dados</p>
+                                <p className="text-lg">Meus dados</p>
 
-                                <p className="text-sm font-light tracking-wide text-neutral-400">
+                                <p className="text-xs text-neutral-400">
                                     Sempre mantenha seus dados verídicos e atualizados
                                 </p>
                             </div>
                         </motion.div>
 
-                        <div className="flex flex-col gap-8  p-5">
+                        <div className="flex flex-col gap-8 p-5">
                             <form
                                 id="basicForm"
                                 onSubmit={handleSubmit(onSubmit)}
-                                className="flex flex-wrap justify-between gap-y-6"
+                                className="flex flex-wrap justify-between gap-y-6 pb-4"
                             >
                                 <CustomInput
                                     register={register}
@@ -108,7 +108,7 @@ const ProfilePage = () => {
                                     register={register}
                                     errors={errors}
                                     id={'email'}
-                                    placeholder={'Email'}
+                                    placeholder={'E-mail'}
                                     w="48%"
                                     h="3rem"
                                 />
@@ -124,9 +124,7 @@ const ProfilePage = () => {
                                     onClick={() => setShowPassForm(!showPassForm)}
                                     className="flex size-full cursor-pointer items-center justify-between p-4"
                                 >
-                                    <p
-                                        className={`select-none text-neutral-400 ${showPassForm && 'text-neutral-800'}`}
-                                    >
+                                    <p className={`select-none  ${!showPassForm && 'text-neutral-400'}`}>
                                         Alterar senha
                                     </p>
 
@@ -186,9 +184,7 @@ const ProfilePage = () => {
                                     onClick={() => setShowAddressLayer(!showAddressLayer)}
                                     className="flex size-full cursor-pointer items-center justify-between p-4"
                                 >
-                                    <p
-                                        className={`select-none text-neutral-400 ${showAddressLayer && 'text-neutral-800'}`}
-                                    >
+                                    <p className={`select-none  ${!showAddressLayer && 'text-neutral-400'}`}>
                                         Endereços
                                     </p>
 
@@ -203,7 +199,7 @@ const ProfilePage = () => {
                                         className="flex flex-wrap justify-between gap-y-6 px-4 pb-4"
                                     >
                                         <div className="flex w-[48%] flex-col gap-2 rounded-xl bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
-                                            <p className="text-base text-neutral-600">Casa</p>
+                                            <p className="text-base">Casa</p>
 
                                             <div>
                                                 <p>Rua Esmeralda, 421</p>
@@ -212,7 +208,7 @@ const ProfilePage = () => {
                                             </div>
 
                                             <div className="flex w-full items-center justify-between pt-2 text-neutral-300">
-                                                <p className="cursor-pointer hover:text-neutral-700 hover:underline">
+                                                <p className="cursor-pointer hover:text-neutral-600 hover:underline">
                                                     Editar
                                                 </p>
                                                 <p className="cursor-pointer hover:text-red-500 hover:underline">
@@ -231,7 +227,7 @@ const ProfilePage = () => {
                                             </div>
 
                                             <div className="flex w-full items-center justify-between pt-2 text-neutral-300">
-                                                <p className="cursor-pointer hover:text-neutral-700 hover:underline">
+                                                <p className="cursor-pointer hover:text-neutral-600 hover:underline">
                                                     Editar
                                                 </p>
                                                 <p className="cursor-pointer hover:text-red-500 hover:underline">
@@ -280,12 +276,12 @@ const ProfilePage = () => {
                                 className="flex cursor-pointer items-center justify-between border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
                             >
                                 <motion.div className="flex items-center gap-2">
-                                    <Icon.Package className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-700" />
+                                    <Icon.Package className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-600" />
 
                                     <p className="select-none text-neutral-600">Meus pedidos</p>
                                 </motion.div>
 
-                                <Icon.CaretUp
+                                <Icon.CaretDown
                                     className={`transition ease-in ${showOrdersLayer && 'rotate-180'}`}
                                 />
                             </motion.div>
@@ -310,12 +306,12 @@ const ProfilePage = () => {
                                 className="flex cursor-pointer items-center justify-between border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
                             >
                                 <motion.div className="flex items-center gap-2">
-                                    <Icon.RowsPlusBottom className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-700" />
+                                    <Icon.RowsPlusBottom className="size-9 rounded-full bg-neutral-200 p-2 text-neutral-600" />
 
                                     <p className="select-none text-neutral-600">Histórico de compras</p>
                                 </motion.div>
 
-                                <Icon.CaretUp
+                                <Icon.CaretDown
                                     className={`transition ease-in ${showHistoryLayer && 'rotate-180'}`}
                                 />
                             </motion.div>

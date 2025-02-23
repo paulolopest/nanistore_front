@@ -26,7 +26,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
         <motion.div
             id="rightBox"
             initial={{ opacity: 0, y: 20 }}
-            className="sticky top-36 flex  h-[48rem] min-w-[29.5rem] flex-col justify-between rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1440:top-32 max-1366:h-[38rem] max-1280:h-[35rem] max-1280:min-w-[25rem] max-1024:w-full max-1024:min-w-0 max-1024:rounded-none max-1024:p-0 max-1024:shadow-none max-540:h-[33rem]"
+            className="sticky top-36 flex h-[48rem]  min-w-[29.5rem] flex-col justify-between rounded-xl bg-white p-8 text-neutral-600 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1440:top-32 max-1366:h-[38rem] max-1280:h-[35rem] max-1280:min-w-[25rem] max-1024:w-full max-1024:min-w-0 max-1024:rounded-none max-1024:p-0 max-1024:shadow-none max-540:h-[33rem]"
         >
             <motion.div animate={controls} className="flex flex-col gap-y-8 max-1366:gap-y-6">
                 <motion.div
@@ -34,9 +34,9 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                     initial={{ opacity: 0, y: 20 }}
                     className="flex flex-col font-extrabold uppercase"
                 >
-                    <p className="relative text-5xl text-neutral-700 max-1366:text-4xl">{item.name}</p>
+                    <p className="relative text-5xl  max-1366:text-4xl">{item.name}</p>
 
-                    <p className="text-2xl font-bold italic text-neutral-500 max-1366:text-xl">{item.type}</p>
+                    <p className="text-xl font-semibold italic text-neutral-400">{item.type}</p>
                 </motion.div>
 
                 <motion.div id="measureTable" initial={{ opacity: 0, y: 20 }} className="flex flex-col gap-2">
@@ -52,7 +52,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                 <motion.div
                     id="productPrice"
                     initial={{ opacity: 0, y: 20 }}
-                    className="flex w-full flex-col justify-start gap-2 font-semibold uppercase max-1366:gap-0"
+                    className="flex w-full flex-col justify-start gap-1 uppercase max-1366:gap-0"
                 >
                     <p className="text-xl text-neutral-400 line-through max-1366:text-lg">
                         De: R$ {(item.price - 0.01).toFixed(2).replace('.', ',')}
@@ -65,14 +65,14 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                         </span>
                     </p>
 
-                    <div className="text-xl leading-none text-subtitle max-1366:text-lg">
-                        <p className="text-xs text-neutral-800">À vista ou</p>
+                    <div className="text-xl leading-none max-1366:text-lg">
+                        <p className="text-xs">À vista ou</p>
 
                         <p>6x de R${(item.price / 6).toFixed(2).replaceAll('.', ',')} sem juros</p>
                     </div>
                 </motion.div>
 
-                <div className="flex h-10 w-32 cursor-pointer items-center justify-between rounded-md border border-solid border-neutral-400 px-1 text-neutral-400 transition duration-200 ease-linear hover:border-neutral-700 hover:text-neutral-800 max-1366:h-8 max-1366:w-28 [&>div]:flex [&>div]:h-full [&>div]:w-1/5 [&>div]:cursor-pointer [&>div]:items-center [&>div]:justify-center">
+                <div className="flex h-10 w-32 cursor-pointer items-center justify-between rounded-md border border-solid border-neutral-400 px-1 text-neutral-400 transition duration-200 ease-linear hover:border-neutral-700 hover:text-neutral-600 max-1366:h-8 max-1366:w-28 [&>div]:flex [&>div]:h-full [&>div]:w-1/5 [&>div]:cursor-pointer [&>div]:items-center [&>div]:justify-center">
                     <div onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>
                         <Icon.Minus />
                     </div>
@@ -90,7 +90,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                     id="buyButton"
                     initial={{ opacity: 0, y: 20 }}
                     transition={{ ease: 'easeInOut' }}
-                    className="w-full rounded-lg bg-neutral-800 text-xl font-semibold uppercase text-white hover:bg-neutral-700 max-1366:text-lg"
+                    className="w-full rounded-lg bg-neutral-800 text-xl font-semibold uppercase leading-none text-white hover:bg-neutral-700 max-1366:text-lg"
                 >
                     Comprar agora
                 </motion.button>
@@ -98,7 +98,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                 <motion.button
                     id="cartButton"
                     initial={{ opacity: 0, y: 20 }}
-                    className="w-full rounded-lg border border-solid border-neutral-800 text-xl font-semibold uppercase hover:border-red-600 hover:bg-red-500 hover:text-white max-1366:text-lg"
+                    className="w-full rounded-lg border border-solid border-neutral-800 text-xl font-semibold uppercase leading-none hover:border-red-600 hover:bg-red-500 hover:text-white max-1366:text-lg"
                 >
                     Adicionar ao carrinho
                 </motion.button>

@@ -37,8 +37,8 @@ const ProductPage = () => {
     ))
 
     const detailsMap = productDetails.map((item, index) => (
-        <div key={index} className="flex w-1/2  font-light text-body max-540:text-sm max-380:w-full">
-            <p className="w-[7.5rem] shrink-0 border-x border-b border-solid border-neutral-200 bg-neutral-100 p-4 text-subtitle max-540:flex max-540:w-[5.5rem] max-540:items-center max-540:p-2">
+        <div key={index} className="flex w-1/2  font-light text-neutral-400 max-540:text-sm max-380:w-full">
+            <p className="w-[7.5rem] shrink-0 border-x border-b border-solid border-neutral-200 bg-neutral-100 p-4 text-neutral-600 max-540:flex max-540:w-[5.5rem] max-540:items-center max-540:p-2">
                 {item.title}
             </p>
             <p className="w-full border-b border-solid border-neutral-200 p-4 max-540:flex max-540:items-center max-540:p-2 max-380:w-full">
@@ -101,7 +101,7 @@ const ProductPage = () => {
 
     return (
         <Wrapper className={'max-640:px-0'}>
-            <div className="flex w-full flex-col gap-12 py-36 max-1440:py-[8.5rem] max-844:py-40 max-680:py-20 max-640:py-14">
+            <div className="flex w-full flex-col gap-12 py-36 text-neutral-600 max-1440:py-[8.5rem] max-844:py-40 max-680:py-20 max-640:py-14">
                 <motion.div ref={scope} className="flex w-full justify-between gap-8">
                     <motion.div
                         id="leftBox"
@@ -123,8 +123,6 @@ const ProductPage = () => {
                                         onDrag={handleDrag}
                                         dragElastic={0.01}
                                         id="activeProductImg"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
                                         transition={{ duration: 0.3 }}
                                         key={showedImage}
                                         alt="Imagem do Produto"
@@ -159,7 +157,7 @@ const ProductPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.8 }}
-                                className="font-light leading-tight text-body max-460:text-sm"
+                                className="text-neutral-400 max-460:text-sm"
                             >
                                 A camiseta {item.type} combina estilo e funcionalidade de um jeito leve e
                                 prático. Feita 100% algodão, essa camiseta oferece a proteção solar que você
@@ -194,7 +192,7 @@ const ProductPage = () => {
                             >
                                 <motion.div
                                     layout
-                                    className="flex w-full cursor-pointer justify-between"
+                                    className="flex w-full cursor-pointer items-center justify-between"
                                     onClick={() =>
                                         setSize((prev) => ({
                                             activeSize: prev.activeSize,
@@ -203,7 +201,7 @@ const ProductPage = () => {
                                         }))
                                     }
                                 >
-                                    <h1 className="text-2xl font-bold uppercase leading-none max-380:text-xl">
+                                    <h1 className="text-2xl font-bold uppercase max-380:text-xl">
                                         Tabela de medidas
                                     </h1>
                                     <Icon.CaretUp

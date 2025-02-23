@@ -1,19 +1,17 @@
+import { z } from 'zod'
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/Wrapper'
 import ProfileModal from './ProfileModal'
 import Logo from '../IconsComponent/Logo'
+import { useForm } from 'react-hook-form'
 import { tabs } from './../../Utils/Extra'
 import CartModal from './CartModal/CartModal'
 import * as Icon from '@phosphor-icons/react'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import SearchInput from './SearchInput/SearchInput'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { AnimatePresence, motion } from 'framer-motion'
 import { GlobalContext } from '../../Context/GlobalContext'
-import CustomInput from './../CustomForm/CustomInput'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import SearchDropDown from './SearchInput/SearchDropDown'
 import MobileSearchInput from './SearchInput/MobileSearchInput'
 
 const schema = z.object({
@@ -61,7 +59,7 @@ const Header = () => {
             )}
             <Link
                 draggable={false}
-                className={`relative size-full text-center text-sm leading-none tracking-wider text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
+                className={`r relative size-full text-center text-sm  leading-none text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
             >
                 {tab.label}
             </Link>

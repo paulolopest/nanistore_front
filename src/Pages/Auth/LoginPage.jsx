@@ -59,8 +59,8 @@ const LoginPage = () => {
                     </Link>
 
                     <div className="flexCol flex-center">
-                        <p className="text-2xl font-bold tracking-wide text-neutral-600">Entre</p>
-                        <p className="text-sm leading-none text-neutral-400">Para acessar a sua conta</p>
+                        <p className="text-2xl font-bold text-neutral-600">Entre</p>
+                        <p className="text-sm text-neutral-400">Para acessar a sua conta</p>
                     </div>
                 </motion.div>
 
@@ -91,7 +91,7 @@ const LoginPage = () => {
                             w={'25rem'}
                         />
 
-                        <p className="w-fit cursor-pointer text-xs text-neutral-400 underline hover:text-neutral-800">
+                        <p className="w-fit cursor-pointer text-xs text-neutral-400 underline hover:text-neutral-700">
                             Esqueci minha senha
                         </p>
                     </div>
@@ -109,7 +109,7 @@ const LoginPage = () => {
                 </motion.button>
 
                 <div className="relative my-4 h-tiny w-[25rem] bg-neutral-200">
-                    <p className="absolute -top-2 left-1/2 -translate-x-1/2 bg-white px-2 text-neutral-400">
+                    <p className="absolute -top-2 left-1/2 -translate-x-1/2 bg-white px-2 text-neutral-300">
                         Ou
                     </p>
                 </div>
@@ -121,7 +121,7 @@ const LoginPage = () => {
 
                     <p className="w-full text-center text-sm text-neutral-400">
                         Não tem uma conta?{' '}
-                        <Link to={'/signup'} className="hover:text-neutral-800 hover:underline">
+                        <Link to={'/signup'} className="hover:text-neutral-700 hover:underline">
                             Crie uma conta
                         </Link>
                     </p>

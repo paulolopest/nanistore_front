@@ -59,8 +59,8 @@ const SignupPage = () => {
                     </Link>
 
                     <div className="flexCol flex-center">
-                        <p className="text-2xl font-bold tracking-wide text-neutral-600">Cadastre</p>
-                        <p className="text-sm leading-none text-neutral-400">Para fazer compras no site</p>
+                        <p className="text-2xl font-bold   text-neutral-600">Cadastre</p>
+                        <p className="text-sm text-neutral-400">Para fazer compras no site</p>
                     </div>
                 </motion.div>
 
@@ -123,7 +123,7 @@ const SignupPage = () => {
 
                     <p className="w-full text-center text-sm text-neutral-400">
                         Ja tem uma conta?{' '}
-                        <Link to={'/login'} className="hover:text-neutral-800 hover:underline">
+                        <Link to={'/login'} className="hover:text-neutral-700 hover:underline">
                             Entre na sua conta
                         </Link>
                     </p>

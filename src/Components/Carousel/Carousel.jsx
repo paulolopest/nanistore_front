@@ -43,7 +43,7 @@ const Carousel = ({ title }) => {
                 </Link>
             ))
         ) : (
-            <div className="text-center text-gray-500">Carregando itens...</div>
+            <div className="text-center text-neutral-600">Carregando itens...</div>
         )
 
     return (
@@ -54,7 +54,7 @@ const Carousel = ({ title }) => {
             className="flex w-full flex-col"
         >
             <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-semibold uppercase tracking-wide max-md:text-base">{title}</h1>
+                <h1 className="text-2xl font-semibold uppercase max-md:text-base">{title}</h1>
                 <div className="flex cursor-pointer items-center gap-2  text-neutral-400 max-460:text-sm max-460:leading-none">
                     <p>Ver mais</p>
                     <Icon.ArrowRight />

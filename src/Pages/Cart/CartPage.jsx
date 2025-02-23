@@ -9,8 +9,8 @@ import Carousel from './../../Components/Carousel/Carousel'
 const CartPage = () => {
     return (
         <Wrapper className={'flex flex-col gap-14 py-40'}>
-            <div className="flex w-full flex-col gap-4">
-                <h1 className="text-2xl font-semibold leading-none">Meu carrinho</h1>
+            <div className="flex w-full flex-col gap-4 text-neutral-600">
+                <h1 className="text-2xl font-bold leading-none">Meu carrinho</h1>
 
                 <section className="flex w-full justify-between">
                     <motion.div
@@ -35,24 +35,24 @@ const CartPage = () => {
                         className="flex h-[30rem] w-[28rem] flex-col justify-between rounded-lg bg-white p-8 shadow-default"
                     >
                         <div className="flex flex-col gap-8">
-                            <p className="text-xl font-bold uppercase tracking-wide">Resumo</p>
+                            <p className="text-xl font-bold uppercase  ">Resumo</p>
 
                             <div className="flex flex-col gap-4">
-                                <div className="flex w-full items-center justify-between border border-x-0 border-t-0 border-solid border-b-neutral-100 pb-5 text-neutral-500">
+                                <div className="flex w-full items-center justify-between border border-x-0 border-t-0 border-solid border-b-neutral-100 pb-5">
                                     <p>Valor dos produtos</p>
                                     <p>R$ 219,99</p>
                                 </div>
 
-                                <div className="flex w-full items-center justify-between border border-x-0 border-t-0 border-solid border-b-neutral-100 pb-5 text-neutral-500">
+                                <div className="flex w-full items-center justify-between border border-x-0 border-t-0 border-solid border-b-neutral-100 pb-5">
                                     <p>Descontos e cupons</p>
                                     <p>R$ 70,00</p>
                                 </div>
 
-                                <p className="w-fit bg-neutral-200 p-1 text-sm uppercase text-neutral-600">
+                                <p className="w-fit bg-neutral-200 p-1 text-sm uppercase">
                                     pix/cartão recebe 3 dias antes
                                 </p>
 
-                                <div className="flex w-full items-center justify-between border border-x-0 border-t-0 border-solid border-b-neutral-100 pb-5 text-neutral-500">
+                                <div className="flex w-full items-center justify-between border border-x-0 border-t-0 border-solid border-b-neutral-100 pb-5">
                                     <p>Total</p>
                                     <p className="text-xl font-extrabold text-green-500">R$ 149,99</p>
                                 </div>
@@ -64,7 +64,7 @@ const CartPage = () => {
                                 initial={{ y: 20 }}
                                 animate={{ y: 0 }}
                                 transition={{ delay: 0.15 }}
-                                className="h-16 w-full rounded-md bg-neutral-800 text-center font-semibold uppercase tracking-wider text-neutral-200 hover:bg-neutral-700"
+                                className="h-16 w-full rounded-md bg-neutral-800 text-center font-semibold  uppercase text-neutral-100 hover:bg-neutral-700"
                             >
                                 Finalizar Compra
                             </motion.button>
@@ -73,7 +73,7 @@ const CartPage = () => {
                                 initial={{ y: 20 }}
                                 animate={{ y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className="h-16 w-full rounded-md border border-neutral-500 text-center font-semibold uppercase tracking-wider text-neutral-500 hover:border-black hover:text-black"
+                                className="h-16 w-full rounded-md border border-neutral-400 text-center font-semibold  uppercase text-neutral-400 hover:border-neutral-600 hover:text-neutral-600"
                             >
                                 Continuar comprando
                             </motion.button>

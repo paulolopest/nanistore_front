@@ -45,8 +45,8 @@ const Footer = () => {
                             <div className="flex flex-col justify-end">
                                 <p className="font-semibold uppercase">Site desenvolvido por:</p>
 
-                                <div className="flex items-center gap-4 text-body ">
-                                    <p className="max-[359px]:text-wrap text-nowrap">
+                                <div className="flex items-center gap-4 text-neutral-400">
+                                    <p className="text-nowrap max-[359px]:text-wrap">
                                         Paulo Tarso - Desenvolvedor Full Stack
                                     </p>
 
