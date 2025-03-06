@@ -59,7 +59,7 @@ const Header = () => {
             )}
             <Link
                 draggable={false}
-                className={`r relative size-full text-center text-sm  leading-none text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
+                className={`relative size-full text-center text-sm  leading-none text-neutral-600 ${tab.id === activeTab && 'text-white'}`}
             >
                 {tab.label}
             </Link>
@@ -104,14 +104,10 @@ const Header = () => {
                                 className="size-full"
                                 onClick={() => openDropDown('cart')}
                             />
-
-                            <AnimatePresence>{cartDropDown && <CartModal />}</AnimatePresence>
                         </div>
 
                         <div className="relative size-6 cursor-pointer max-540:size-5">
                             <Icon.User className="size-full" onClick={() => openDropDown('profile')} />
-
-                            <AnimatePresence>{profileDropDown && <ProfileModal />}</AnimatePresence>
                         </div>
                     </nav>
                 </div>
@@ -120,6 +116,11 @@ const Header = () => {
                     {tabMap}
                 </nav>
             </Wrapper>
+
+            <AnimatePresence>
+                {cartDropDown && <CartModal />}
+                {profileDropDown && <ProfileModal />}
+            </AnimatePresence>
         </motion.header>
     )
 }

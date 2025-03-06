@@ -8,7 +8,7 @@ const GlobalStorage = ({ children }) => {
     const [theme, setTheme] = React.useState('start')
     const [cartDropDown, setCartDropDown] = React.useState(false)
     const [searchDropDown, setSearchDropDown] = React.useState(false)
-    const [profileDropDown, setProfileCartDropDown] = React.useState(false)
+    const [profileDropDown, setProfileDropDown] = React.useState(false)
 
     const smScreen = useMediaQuery('(max-width: 541px)')
     const mdScreen = useMediaQuery('(max-width: 769px)')
@@ -19,13 +19,13 @@ const GlobalStorage = ({ children }) => {
         if (dropDown === 'cart') {
             setCartDropDown(!cartDropDown)
             setSearchDropDown(false)
-            setProfileCartDropDown(false)
+            setProfileDropDown(false)
         } else if (dropDown === 'search') {
             setSearchDropDown(!searchDropDown)
             setCartDropDown(false)
-            setProfileCartDropDown(false)
+            setProfileDropDown(false)
         } else if (dropDown === 'profile') {
-            setProfileCartDropDown(!profileDropDown)
+            setProfileDropDown(!profileDropDown)
             setSearchDropDown(false)
             setCartDropDown(false)
         }
@@ -43,6 +43,7 @@ const GlobalStorage = ({ children }) => {
                 changeTheme,
                 openDropDown,
                 setSearchDropDown,
+                setProfileDropDown,
                 theme,
                 smScreen,
                 mdScreen,
