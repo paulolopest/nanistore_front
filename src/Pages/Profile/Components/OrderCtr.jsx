@@ -11,9 +11,9 @@ const OrderCtr = () => {
             <motion.div
                 layout
                 onClick={() => setShowOrder(!showOrder)}
-                className="flex h-fit w-full cursor-pointer justify-between p-4"
+                className="flex h-fit w-full cursor-pointer justify-between p-4 max-844:flex-col"
             >
-                <div className="flex h-fit gap-12">
+                <div className="flex h-fit gap-12 max-540:flex-col max-540:gap-4">
                     <div>
                         <h1 className="">Pedido realizado</h1>
                         <p className="text-sm text-neutral-400">1 de fevereiro de 2025</p>
@@ -28,7 +28,7 @@ const OrderCtr = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-end justify-between gap-4">
+                <div className="flex flex-col items-end justify-between gap-4 max-844:flex-col-reverse">
                     <h1 className="text-sm ">PEDIDO: 702-9710419-8019454</h1>
 
                     <div className="flex-center size-6">

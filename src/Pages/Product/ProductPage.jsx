@@ -101,14 +101,14 @@ const ProductPage = () => {
 
     return (
         <Wrapper className={'max-640:px-0'}>
-            <div className="flex w-full flex-col gap-12 py-36 text-neutral-600 max-1440:py-[8.5rem] max-844:py-40 max-680:py-20 max-640:py-14">
+            <div className="flex w-full flex-col gap-12 py-[8.5rem] text-neutral-600 max-1440:py-[8.5rem] max-844:py-40 max-680:py-20 max-640:py-14">
                 <motion.div ref={scope} className="flex w-full justify-between gap-8">
                     <motion.div
                         id="leftBox"
                         initial={{ opacity: 0, y: 20 }}
                         className="flex w-2/3 flex-col gap-10 max-1280:w-full"
                     >
-                        <motion.div className="flexCol h-[48rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm max-640:p-5 max-460:gap-8 max-460:rounded-none">
+                        <motion.div className="flexCol h-[49rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm max-640:p-5 max-460:gap-8 max-460:rounded-none">
                             <div className="flex size-full items-center justify-between gap-10 max-1280:justify-normal max-1024:h-fit max-1024:items-start max-640:flex-col-reverse max-460:items-center max-460:gap-6">
                                 <div className="flex h-full flex-col gap-y-10 max-1024:h-fit max-640:w-full max-640:flex-row max-640:justify-between max-460:hidden">
                                     {srcMap}

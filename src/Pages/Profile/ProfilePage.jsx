@@ -2,12 +2,14 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import OrderCtr from './Components/OrderCtr'
 import * as Icon from '@phosphor-icons/react'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { motion, useAnimate } from 'framer-motion'
 import AddressModal from './Components/AddressModal'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import CustomInput from '../../Components/CustomForm/CustomInput'
+import { GlobalContext } from '../../Context/GlobalContext'
+import AddressCard from './Components/AddressCard'
 
 const schema = z.object({
     name: z.string(),
@@ -25,6 +27,8 @@ const ProfilePage = () => {
     const [showOrdersLayer, setShowOrdersLayer] = useState(true)
     const [showAddressLayer, setShowAddressLayer] = useState(false)
     const [showHistoryLayer, setShowHistoryLayer] = useState(false)
+
+    const { smScreen } = useContext(GlobalContext)
 
     const {
         register,
@@ -50,22 +54,25 @@ const ProfilePage = () => {
 
     return (
         <>
-            <Wrapper className={'pb-[30rem] pt-40'}>
-                <motion.div ref={scope} className="flex w-full justify-between gap-8 text-neutral-600">
+            <Wrapper className={'pb-[30rem] pt-40 max-680:pt-20 max-460:px-0 max-460:pt-20'}>
+                <motion.div
+                    ref={scope}
+                    className="flex w-full justify-between gap-8 text-neutral-600 max-1280:flex-col"
+                >
                     <motion.div
                         layout
                         id="userInfoSection"
                         initial={{ opacity: 0, y: 20 }}
-                        className="h-fit min-w-[36rem] rounded-xl bg-white shadow-md"
+                        className="h-fit min-w-[36rem] rounded-xl bg-white shadow-md max-680:min-w-full max-460:rounded-none max-460:shadow-sm"
                     >
                         <motion.div
                             layout="preserve-aspect"
                             className="flex items-center gap-2 border-x-0 border-b-1 border-t-0 border-solid border-neutral-200 p-4"
                         >
-                            <Icon.User className="size-12 rounded-full bg-neutral-200 p-2" />
+                            <Icon.User className="size-9 rounded-full bg-neutral-200 p-2" />
 
                             <div className="flex flex-col">
-                                <p className="text-lg">Meus dados</p>
+                                <p className="">Meus dados</p>
 
                                 <p className="text-xs text-neutral-400">
                                     Sempre mantenha seus dados verídicos e atualizados
@@ -77,14 +84,14 @@ const ProfilePage = () => {
                             <form
                                 id="basicForm"
                                 onSubmit={handleSubmit(onSubmit)}
-                                className="flex flex-wrap justify-between gap-y-6 pb-4"
+                                className="flex flex-wrap justify-between gap-y-6 pb-4 max-460:flex-col"
                             >
                                 <CustomInput
                                     register={register}
                                     errors={errors}
                                     id={'name'}
                                     placeholder={'Nome'}
-                                    w="48%"
+                                    w={`${smScreen ? '100%' : '48%'}`}
                                     h="3rem"
                                 />
                                 <CustomInput
@@ -93,7 +100,7 @@ const ProfilePage = () => {
                                     id={'number'}
                                     placeholder={'Telefone'}
                                     type={'number'}
-                                    w="48%"
+                                    w={`${smScreen ? '100%' : '48%'}`}
                                     h="3rem"
                                 />
                                 <CustomInput
@@ -101,7 +108,7 @@ const ProfilePage = () => {
                                     errors={errors}
                                     id={'lastName'}
                                     placeholder={'Sobrenome'}
-                                    w="48%"
+                                    w={`${smScreen ? '100%' : '48%'}`}
                                     h="3rem"
                                 />
                                 <CustomInput
@@ -109,7 +116,7 @@ const ProfilePage = () => {
                                     errors={errors}
                                     id={'email'}
                                     placeholder={'E-mail'}
-                                    w="48%"
+                                    w={`${smScreen ? '100%' : '48%'}`}
                                     h="3rem"
                                 />
                             </form>
@@ -138,15 +145,18 @@ const ProfilePage = () => {
                                         id="passwordForm"
                                         exit={{ opacity: 0 }}
                                         onSubmit={handleSubmit(onSubmit)}
-                                        className="flex w-full flex-col justify-between gap-8 px-4 pb-4"
+                                        className="flex w-full flex-col justify-between gap-8 px-4 pb-4 "
                                     >
-                                        <motion.div layout className="flex w-full justify-between">
+                                        <motion.div
+                                            layout
+                                            className="flex w-full justify-between gap-4 max-540:flex-col"
+                                        >
                                             <CustomInput
                                                 register={register}
                                                 errors={errors}
                                                 id={'password'}
                                                 placeholder={'Senha atual'}
-                                                w="48%"
+                                                w={`${smScreen ? '100%' : '48%'}`}
                                                 h="3rem"
                                             />
                                             <CustomInput
@@ -154,7 +164,7 @@ const ProfilePage = () => {
                                                 errors={errors}
                                                 id={'newPassword'}
                                                 placeholder={'Confirmar nova senha'}
-                                                w="48%"
+                                                w={`${smScreen ? '100%' : '48%'}`}
                                                 h="3rem"
                                             />
                                         </motion.div>
@@ -196,45 +206,13 @@ const ProfilePage = () => {
                                 {showAddressLayer && (
                                     <motion.div
                                         layout
-                                        className="flex flex-wrap justify-between gap-y-6 px-4 pb-4"
+                                        className="flex flex-wrap justify-between gap-y-6 px-4 pb-4 max-540:flex-col"
                                     >
-                                        <div className="flex w-[48%] flex-col gap-2 rounded-xl bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
-                                            <p className="text-base">Casa</p>
-
-                                            <div>
-                                                <p>Rua Esmeralda, 421</p>
-                                                <p>Lote 32, Quadra 89</p>
-                                                <p>CEP: 24211232 - São Bernardo, RJ</p>
-                                            </div>
-
-                                            <div className="flex w-full items-center justify-between pt-2 text-neutral-300">
-                                                <p className="cursor-pointer hover:text-neutral-600 hover:underline">
-                                                    Editar
-                                                </p>
-                                                <p className="cursor-pointer hover:text-red-500 hover:underline">
-                                                    Remover
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex w-[48%] flex-col gap-2 rounded-lg bg-neutral-100 px-4 py-2 text-sm text-neutral-400">
-                                            <p className="text-base text-neutral-600">Trabalho</p>
-
-                                            <div>
-                                                <p>Rua Esmeralda, 421</p>
-                                                <p>Lote 32, Quadra 89</p>
-                                                <p>CEP: 24211232 - São Bernardo, RJ</p>
-                                            </div>
-
-                                            <div className="flex w-full items-center justify-between pt-2 text-neutral-300">
-                                                <p className="cursor-pointer hover:text-neutral-600 hover:underline">
-                                                    Editar
-                                                </p>
-                                                <p className="cursor-pointer hover:text-red-500 hover:underline">
-                                                    Remover
-                                                </p>
-                                            </div>
-                                        </div>
+                                        <AddressCard
+                                            name={'Rua Esmeralda, 421'}
+                                            address={'Lote 32, Quadra 89'}
+                                            cep={'CEP: 24211232 - São Bernardo, RJ'}
+                                        />
 
                                         <button
                                             onClick={() => setAddressModal(true)}
@@ -268,7 +246,7 @@ const ProfilePage = () => {
                             layout
                             id="userOrder"
                             initial={{ opacity: 0, y: 20 }}
-                            className="h-fit w-full overflow-hidden rounded-xl bg-white shadow-sm"
+                            className="h-fit w-full overflow-hidden rounded-xl bg-white shadow-sm max-460:rounded-none max-460:shadow-sm"
                         >
                             <motion.div
                                 layout="preserve-aspect"
@@ -298,7 +276,7 @@ const ProfilePage = () => {
                             layout
                             id="userHistory"
                             initial={{ opacity: 0, y: 20 }}
-                            className="h-fit w-full overflow-hidden rounded-xl bg-white shadow-sm"
+                            className="h-fit w-full overflow-hidden rounded-xl bg-white shadow-sm max-460:rounded-none max-460:shadow-sm"
                         >
                             <motion.div
                                 layout
