@@ -7,7 +7,7 @@ import MobileProductCard from '../ProductCard/MobileProductCard'
 import ProductCard from './../ProductCard/ProductCard'
 import useMediaQuery from '../../Hooks/useMediaQuery'
 
-const Carousel = ({ title }) => {
+const Carousel = ({ title, style }) => {
     const [isDragging, setIsDragging] = useState(false)
 
     const isMobile = useMediaQuery('(max-width: 768px)')
@@ -51,7 +51,7 @@ const Carousel = ({ title }) => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex w-full flex-col"
+            className={`flex w-full flex-col ${style}`}
         >
             <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-semibold uppercase max-md:text-base">{title}</h1>

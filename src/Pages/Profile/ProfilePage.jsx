@@ -80,7 +80,7 @@ const ProfilePage = () => {
                             </div>
                         </motion.div>
 
-                        <div className="flex flex-col gap-8 p-5">
+                        <motion.div layout className="flex flex-col gap-8 p-5">
                             <form
                                 id="basicForm"
                                 onSubmit={handleSubmit(onSubmit)}
@@ -127,7 +127,7 @@ const ProfilePage = () => {
                                 className={`flex w-full flex-col gap-4 overflow-hidden rounded-lg border border-solid border-neutral-200  ${showPassForm && 'border-neutral-600'}`}
                             >
                                 <motion.div
-                                    layout="size"
+                                    layout
                                     onClick={() => setShowPassForm(!showPassForm)}
                                     className="flex size-full cursor-pointer items-center justify-between p-4 max-640:p-3 max-640:text-sm"
                                 >
@@ -142,6 +142,7 @@ const ProfilePage = () => {
 
                                 {showPassForm && (
                                     <motion.form
+                                        layout
                                         id="passwordForm"
                                         exit={{ opacity: 0 }}
                                         onSubmit={handleSubmit(onSubmit)}
@@ -169,13 +170,13 @@ const ProfilePage = () => {
                                             />
                                         </motion.div>
 
-                                        <button
+                                        <motion.button
                                             form="passwordForm"
                                             type="form"
                                             className="w-full rounded-lg bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
                                         >
                                             Confirmar
-                                        </button>
+                                        </motion.button>
                                     </motion.form>
                                 )}
                             </motion.div>
@@ -238,7 +239,7 @@ const ProfilePage = () => {
                                     Excluir conta
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     <motion.div className="flex w-full flex-col gap-4 overflow-hidden">
