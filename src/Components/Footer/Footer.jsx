@@ -34,23 +34,22 @@ const Footer = () => {
                                 <Icon.TiktokLogo className="size-full" />
                             </Link>
                         </div>
-                        <div className="flex flex-col justify-between">
-                            <p className="text-center text-xs">
-                                Copyright ATELIER DO SICKO LTDA - 15802576000140 - 2023. Todos os direitos
-                                reservados.
-                            </p>
-                        </div>
+
+                        <p className="text-center text-xs">
+                            Copyright ATELIER DO SICKO LTDA - 15802576000140 - 2023. Todos os direitos
+                            reservados.
+                        </p>
 
                         <div className="flex items-end justify-end text-sm">
-                            <div className="flex flex-col justify-end">
+                            <div className="flex flex-col justify-end max-460:text-xs">
                                 <p className="font-semibold uppercase">Site desenvolvido por:</p>
 
-                                <div className="flex items-center gap-4 text-neutral-400">
+                                <div className="max-420:flexCol flex items-center gap-4 text-neutral-400">
                                     <p className="text-nowrap max-[359px]:text-wrap">
                                         Paulo Tarso - Desenvolvedor Full Stack
                                     </p>
 
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 max-420:gap-8">
                                         <Link className="size-6">
                                             <Icon.GithubLogo className="size-full" />
                                         </Link>

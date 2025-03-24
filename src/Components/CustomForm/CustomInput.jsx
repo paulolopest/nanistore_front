@@ -24,13 +24,13 @@ const CustomInput = ({ id, placeholder, register, errors, type, style, w, h }) =
                 onBlur={handleBlur}
                 onFocus={() => setActive(true)}
                 layoutId={`${[id]}InputAnimation`}
-                className={`size-full rounded-md border border-solid pl-2 text-neutral-600 ${active ? 'border-blue-400' : 'border-neutral-300'} ${errors[id] && 'border-red-500'} ${style}`}
+                className={`size-full rounded-md border border-solid pl-2 text-neutral-600 max-640:text-sm ${active ? 'border-blue-400' : 'border-neutral-300'} ${errors[id] && 'border-red-500'} ${style}`}
             />
 
             <motion.label
                 layoutId={`${[id]}PlaceHolderAnimation`}
                 transition={{ duration: 0.1, ease: 'easeIn' }}
-                className={`pointer-events-none absolute left-3  bg-white text-neutral-400 ${active ? '-top-2 left-4 px-1 text-xs' : 'top-[33%]'}`}
+                className={`pointer-events-none absolute left-3  bg-white text-neutral-400 ${active ? '-top-2 left-4 px-1 text-xs max-540:-top-3' : 'top-[33%] max-540:top-1/4'} max-640:text-sm `}
             >
                 {placeholder}
             </motion.label>

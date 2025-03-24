@@ -57,7 +57,7 @@ const ProfilePage = () => {
             <Wrapper className={'pb-[30rem] pt-40 max-680:pt-20 max-460:px-0 max-460:pt-20'}>
                 <motion.div
                     ref={scope}
-                    className="flex w-full justify-between gap-8 text-neutral-600 max-1280:flex-col"
+                    className="flex w-full justify-between gap-8 font-light text-neutral-600 max-1280:flex-col max-640:text-sm"
                 >
                     <motion.div
                         layout
@@ -92,7 +92,7 @@ const ProfilePage = () => {
                                     id={'name'}
                                     placeholder={'Nome'}
                                     w={`${smScreen ? '100%' : '48%'}`}
-                                    h="3rem"
+                                    h={`${smScreen ? '2.5rem' : '3rem'}`}
                                 />
                                 <CustomInput
                                     register={register}
@@ -101,7 +101,7 @@ const ProfilePage = () => {
                                     placeholder={'Telefone'}
                                     type={'number'}
                                     w={`${smScreen ? '100%' : '48%'}`}
-                                    h="3rem"
+                                    h={`${smScreen ? '2.5rem' : '3rem'}`}
                                 />
                                 <CustomInput
                                     register={register}
@@ -109,7 +109,7 @@ const ProfilePage = () => {
                                     id={'lastName'}
                                     placeholder={'Sobrenome'}
                                     w={`${smScreen ? '100%' : '48%'}`}
-                                    h="3rem"
+                                    h={`${smScreen ? '2.5rem' : '3rem'}`}
                                 />
                                 <CustomInput
                                     register={register}
@@ -117,7 +117,7 @@ const ProfilePage = () => {
                                     id={'email'}
                                     placeholder={'E-mail'}
                                     w={`${smScreen ? '100%' : '48%'}`}
-                                    h="3rem"
+                                    h={`${smScreen ? '2.5rem' : '3rem'}`}
                                 />
                             </form>
 
@@ -129,7 +129,7 @@ const ProfilePage = () => {
                                 <motion.div
                                     layout="size"
                                     onClick={() => setShowPassForm(!showPassForm)}
-                                    className="flex size-full cursor-pointer items-center justify-between p-4"
+                                    className="flex size-full cursor-pointer items-center justify-between p-4 max-640:p-3 max-640:text-sm"
                                 >
                                     <p className={`select-none  ${!showPassForm && 'text-neutral-400'}`}>
                                         Alterar senha
@@ -157,7 +157,7 @@ const ProfilePage = () => {
                                                 id={'password'}
                                                 placeholder={'Senha atual'}
                                                 w={`${smScreen ? '100%' : '48%'}`}
-                                                h="3rem"
+                                                h={`${smScreen ? '2.5rem' : '3rem'}`}
                                             />
                                             <CustomInput
                                                 register={register}
@@ -165,7 +165,7 @@ const ProfilePage = () => {
                                                 id={'newPassword'}
                                                 placeholder={'Confirmar nova senha'}
                                                 w={`${smScreen ? '100%' : '48%'}`}
-                                                h="3rem"
+                                                h={`${smScreen ? '2.5rem' : '3rem'}`}
                                             />
                                         </motion.div>
 
@@ -192,7 +192,7 @@ const ProfilePage = () => {
                                 <motion.div
                                     layout
                                     onClick={() => setShowAddressLayer(!showAddressLayer)}
-                                    className="flex size-full cursor-pointer items-center justify-between p-4"
+                                    className="flex size-full cursor-pointer items-center justify-between p-4 max-640:p-3 max-640:text-sm"
                                 >
                                     <p className={`select-none  ${!showAddressLayer && 'text-neutral-400'}`}>
                                         Endereços
@@ -216,7 +216,7 @@ const ProfilePage = () => {
 
                                         <button
                                             onClick={() => setAddressModal(true)}
-                                            className="w-full rounded-lg bg-neutral-800 py-3 text-neutral-100 hover:bg-neutral-700"
+                                            className="w-full rounded-lg bg-neutral-800 py-3 text-neutral-100 hover:bg-neutral-700 max-640:p-2"
                                         >
                                             Adicionar endereço
                                         </button>
@@ -229,12 +229,12 @@ const ProfilePage = () => {
                                     disabled={isSubmitting}
                                     form="basicForm"
                                     type="submit"
-                                    className="transitionIn w-full rounded-lg border border-solid border-neutral-800 bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700"
+                                    className="transitionIn w-full rounded-lg border border-solid border-neutral-800 bg-neutral-800 p-3 text-neutral-100 hover:bg-neutral-700 max-640:p-2 max-640:text-sm"
                                 >
                                     Atualizar dados
                                 </button>
 
-                                <button className="transitionIn w-full rounded-lg border border-solid border-neutral-400 p-3 text-neutral-400 hover:border-red-500 hover:bg-red-500 hover:text-neutral-100">
+                                <button className="transitionIn w-full rounded-lg border border-solid border-neutral-400 p-3 text-neutral-400 hover:border-red-500 hover:bg-red-500 hover:text-neutral-100 max-640:p-2 max-640:text-sm">
                                     Excluir conta
                                 </button>
                             </div>

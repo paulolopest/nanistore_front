@@ -9,7 +9,7 @@ const MobileProfileModal = () => {
     const { theme, setTheme, setProfileDropDown } = useContext(GlobalContext)
 
     return (
-        <motion.div className="absolute top-0 z-50 flex h-screen w-full justify-end text-neutral-600 backdrop-brightness-50">
+        <motion.div className="absolute top-0 z-50 flex h-screen w-full justify-end font-light text-neutral-500 backdrop-brightness-50">
             <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}

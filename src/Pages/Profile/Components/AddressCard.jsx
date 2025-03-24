@@ -2,7 +2,7 @@ import React from 'react'
 
 const AddressCard = ({ name, address, cep }) => {
     return (
-        <div className="flex w-[48%] flex-col gap-2 rounded-xl bg-neutral-100 px-4 py-2 text-sm text-neutral-400 max-540:w-full">
+        <div className="flex w-[48%] flex-col gap-2 rounded-xl bg-neutral-100 px-4 py-2 text-sm text-neutral-400 max-640:text-sm max-540:w-full">
             <p className="text-base">Casa</p>
 
             <div>
@@ -11,7 +11,7 @@ const AddressCard = ({ name, address, cep }) => {
                 <p>{cep}</p>
             </div>
 
-            <div className="flex w-full items-center justify-between pt-2 text-neutral-300">
+            <div className="flex w-full items-center justify-between pt-2 text-neutral-300 max-640:text-sm">
                 <p className="cursor-pointer hover:text-neutral-600 hover:underline">Editar</p>
                 <p className="cursor-pointer hover:text-red-500 hover:underline">Remover</p>
             </div>

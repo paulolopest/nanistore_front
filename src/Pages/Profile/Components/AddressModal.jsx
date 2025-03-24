@@ -1,10 +1,11 @@
 import { z } from 'zod'
-import React from 'react'
+import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import * as Icon from '@phosphor-icons/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import CustomInput from '../../../Components/CustomForm/CustomInput'
+import { GlobalContext } from '../../../Context/GlobalContext'
 
 const schema = z.object({
     city: z.string().nonempty(),
@@ -30,21 +31,25 @@ const AddressModal = ({ setState }) => {
         console.log(data)
     }
 
+    const { smScreen } = useContext(GlobalContext)
+
     return (
-        <div className="absolute left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-black/30 backdrop-blur-md">
+        <div className="fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-black/30 backdrop-blur-md max-640:px-4 max-640:text-sm">
             <motion.div
                 layout
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flexCol relative w-[40rem] items-center gap-8 rounded-lg bg-white p-8 shadow-md"
             >
-                <h1 className="text-xl font-bold leading-none text-neutral-600">Adicionar endereço</h1>
+                <h1 className="text-xl font-bold leading-none text-neutral-600 max-640:text-lg">
+                    Adicionar endereço
+                </h1>
 
                 <motion.form
                     layout
                     onSubmit={handleSubmit(onSubmit)}
                     id="addressForm"
-                    className="grid w-full grid-cols-2 gap-4"
+                    className="grid w-full grid-cols-2 gap-4 max-640:grid-cols-1"
                 >
                     <CustomInput
                         register={register}
@@ -52,7 +57,7 @@ const AddressModal = ({ setState }) => {
                         id={'nickname'}
                         placeholder={'Identificação'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -60,7 +65,7 @@ const AddressModal = ({ setState }) => {
                         id={'zipCode'}
                         placeholder={'CEP'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -68,7 +73,7 @@ const AddressModal = ({ setState }) => {
                         id={'street'}
                         placeholder={'Logradouro'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -76,7 +81,7 @@ const AddressModal = ({ setState }) => {
                         id={'addressNumber'}
                         placeholder={'Número'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -84,7 +89,7 @@ const AddressModal = ({ setState }) => {
                         id={'neighborhood'}
                         placeholder={'Bairro'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -92,7 +97,7 @@ const AddressModal = ({ setState }) => {
                         id={'city'}
                         placeholder={'Cidade'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -100,7 +105,7 @@ const AddressModal = ({ setState }) => {
                         id={'state'}
                         placeholder={'Estado'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                     <CustomInput
                         register={register}
@@ -108,7 +113,7 @@ const AddressModal = ({ setState }) => {
                         id={'reference'}
                         placeholder={'Referencia'}
                         w="100%"
-                        h="3rem"
+                        h={`${smScreen ? '2.5rem' : '3rem'}`}
                     />
                 </motion.form>
 
@@ -116,7 +121,7 @@ const AddressModal = ({ setState }) => {
                     type="submit"
                     form="addressForm"
                     onClick={() => setState(false)}
-                    className="w-full rounded-md bg-neutral-800 py-4 text-neutral-100 hover:bg-neutral-700"
+                    className="w-full rounded-md bg-neutral-800 py-4 text-neutral-100 hover:bg-neutral-700 max-640:py-3"
                 >
                     Cadastrar endereço
                 </button>
