@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { Link } from 'react-router-dom'
 import Wrapper from '../Wrapper/Wrapper'
-import ProfileModal from './ProfileModal'
 import Logo from '../IconsComponent/Logo'
 import { useForm } from 'react-hook-form'
 import { tabs } from './../../Utils/Extra'
@@ -13,6 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AnimatePresence, motion } from 'framer-motion'
 import { GlobalContext } from '../../Context/GlobalContext'
 import MobileSearchInput from './SearchInput/MobileSearchInput'
+import ProfileModal from './ProfileModal/ProfileModal'
 
 const schema = z.object({
     name: z.string(),
