@@ -1,8 +1,8 @@
-import image1 from './../Assets/images/berserkskull.png'
-import image2 from './../Assets/images/BEHIND1.png'
-import image3 from './../Assets/images/CAQUETA6.png'
 import image4 from './../Assets/images/REI.png'
 import image5 from './../Assets/images/SMASHF.png'
+import image2 from './../Assets/images/BEHIND1.png'
+import image3 from './../Assets/images/CAQUETA6.png'
+import image1 from './../Assets/images/berserkskull.png'
 
 export const formatPrice = (price) => {
     return (price - 0.01).toLocaleString('pt-BR', { minimumFractionDigits: 2 })

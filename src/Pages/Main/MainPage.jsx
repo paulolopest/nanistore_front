@@ -1,5 +1,5 @@
 import React from 'react'
-import Banner1 from '../../Assets/images/banner1.jpg'
+import Banner1 from '../../Assets/images/banner1.webp'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import Carousel from '../../Components/Carousel/Carousel'
 import BannerBig from '../../Components/Banners/BannerBig'
@@ -16,7 +16,7 @@ const MainPage = () => {
 
                 <Carousel title={'Vistos por último'} />
 
-                <DoubleBanner img1={MiniBanner1} img2={MiniBanner2} />
+                <DoubleBanner img1={MiniBanner2} img2={MiniBanner1} />
 
                 <Carousel title={'Mais vendidos'} />
 
@@ -24,7 +24,7 @@ const MainPage = () => {
 
                 <Carousel title={'Lançamentos'} />
 
-                <DoubleBanner img1={MiniBanner2} img2={MiniBanner1} />
+                <DoubleBanner img1={MiniBanner1} img2={MiniBanner2} />
 
                 <Carousel title={'Dry-fit'} />
 

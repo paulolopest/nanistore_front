@@ -35,7 +35,7 @@ const CustomInput = ({ id, placeholder, register, errors, type, style, w, h }) =
                 {placeholder}
             </motion.label>
 
-            {errors[id] && <p className="h-fit w-full pb-1 text-sm text-red-500">{errors[id].message}</p>}
+            {errors[id] && <p className="   h-fit w-full pb-1 text-sm text-red-500">{errors[id].message}</p>}
         </motion.div>
     )
 }

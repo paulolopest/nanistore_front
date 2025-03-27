@@ -6,6 +6,7 @@ import Sorter from './../../Components/SearchPage/Sorter'
 import ProductCard from '../../Components/ProductCard/ProductCard'
 import CustomSelect from '../../Components/CustomForm/CustomSelect'
 import { motion, useAnimate } from 'framer-motion'
+import MobileProductCard from '../../Components/ProductCard/MobileProductCard'
 
 const SearchPage = () => {
     const [scope, animate] = useAnimate()
@@ -16,7 +17,7 @@ const SearchPage = () => {
             transition={{ delay: index / 10 }}
             key={item.id}
         >
-            <ProductCard item={item} className={'h-[30rem] w-[275px]'} />
+            <MobileProductCard item={item} style={'h-80 w-full max-580:h-72 max-540:h-64'} />
         </motion.div>
     ))
 
@@ -34,8 +35,8 @@ const SearchPage = () => {
 
     return (
         <Wrapper>
-            <motion.div ref={scope} className="flex w-full gap-8 py-40 text-neutral-600">
-                <div className="flex h-full w-60 flex-col gap-4 border ">
+            <motion.div ref={scope} className="flex w-full gap-8 py-36 text-neutral-600 max-680:py-20">
+                <div className="flex h-full w-60 flex-col gap-4 border max-1024:hidden">
                     <motion.div layout id="typeSorte" initial={{ opacity: 0, y: 20 }}>
                         <Sorter title={'Tipo'} list={['Oversized', 'Dry-fit', 'Camiseta']} />
                     </motion.div>
@@ -79,7 +80,9 @@ const SearchPage = () => {
                         </div>
                     </header>
 
-                    <div className="grid grid-cols-4 gap-x-2 gap-y-8 ">{productMap}</div>
+                    <div className="grid grid-cols-4 gap-5 max-1280:grid-cols-3 max-768:grid-cols-2 max-500:gap-3">
+                        {productMap}
+                    </div>
                 </div>
             </motion.div>
         </Wrapper>

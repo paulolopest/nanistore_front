@@ -81,7 +81,6 @@ const SignupPage = () => {
                         style={'rounded-lg'}
                         h={'3rem'}
                         w={`100%`}
-                        icon={<Icon.Envelope />}
                     />
 
                     <CustomInput
