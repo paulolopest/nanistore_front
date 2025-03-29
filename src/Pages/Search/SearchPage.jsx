@@ -4,10 +4,11 @@ import * as Icon from '@phosphor-icons/react'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import Sorter from './../../Components/SearchPage/Sorter'
 import CustomSelect from '../../Components/CustomForm/CustomSelect'
-import { motion, useAnimate } from 'framer-motion'
+import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import MobileProductCard from '../../Components/ProductCard/MobileProductCard'
 import ProductCard from '../../Components/ProductCard/ProductCard'
 import useMediaQuery from '../../Hooks/useMediaQuery'
+import SearchFilter from '../../Components/Filter/SearchFilter'
 
 const SearchPage = () => {
     const [scope, animate] = useAnimate()
@@ -110,14 +111,7 @@ const SearchPage = () => {
                 </div>
             </motion.div>
 
-            {smScreen && (
-                <div className="absolute h-screen w-full">
-                    <div className="fixed bottom-10 right-5 flex items-center gap-2 rounded-2xl bg-neutral-700 px-4 py-2 text-neutral-100 shadow-md">
-                        <p>Filtrar</p>
-                        <Icon.Funnel />
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>{smScreen && <SearchFilter />}</AnimatePresence>
         </Wrapper>
     )
 }
