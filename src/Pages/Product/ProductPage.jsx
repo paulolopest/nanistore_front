@@ -108,7 +108,7 @@ const ProductPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         className="flex w-2/3 flex-col gap-10 max-1280:w-full"
                     >
-                        <motion.div className="flexCol h-[49rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-[1600px]:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm max-640:p-5 max-460:gap-8 max-460:rounded-none">
+                        <motion.div className="flexCol h-[49rem] w-full gap-16 rounded-xl bg-white p-8 shadow-md max-1600:h-[45rem] max-2xl:h-[43rem] max-1366:h-[38rem] max-1280:h-[35rem] max-1024:h-fit max-844:shadow-sm max-640:p-4 max-460:gap-8 max-460:rounded-none">
                             <div className="flex size-full items-center justify-between gap-10 max-1280:justify-normal max-1024:h-fit max-1024:items-start max-640:flex-col-reverse max-460:items-center max-460:gap-6">
                                 <div className="flex h-full flex-col gap-y-10 max-1024:h-fit max-640:w-full max-640:flex-row max-640:justify-between max-460:hidden">
                                     {srcMap}
@@ -225,7 +225,7 @@ const ProductPage = () => {
                     )}
                 </motion.div>
 
-                <div className="flexCol gap-12 max-640:px-5">
+                <div className="flexCol gap-12 max-640:px-4">
                     <Carousel title={'Vistos por último'} />
 
                     <Carousel title={'Talvez você goste'} />

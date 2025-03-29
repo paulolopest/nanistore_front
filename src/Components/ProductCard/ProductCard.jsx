@@ -9,7 +9,7 @@ const ProductCard = ({ item, className }) => {
         <motion.div
             whileHover={{ y: -8 }}
             onHoverEnd={() => setSrcIndex(0)}
-            className={`flex h-[32rem] w-[313px] shrink-0 cursor-pointer select-none flex-col justify-center gap-2 overflow-hidden rounded-2xl bg-white p-2 text-neutral-600 shadow-md transition-shadow duration-150 ease-linear hover:shadow-hover ${className}`}
+            className={`${className} flex h-[32rem] w-[19rem] shrink-0 cursor-pointer select-none flex-col justify-center gap-2 overflow-hidden rounded-2xl bg-white p-2 text-neutral-600 shadow-md transition-shadow duration-150 ease-linear hover:shadow-hover`}
         >
             <div className="relative flex h-80 w-full items-center justify-center">
                 <motion.img
@@ -19,7 +19,7 @@ const ProductCard = ({ item, className }) => {
                     animate={{ opacity: 1 }}
                     src={item.src[srcIndex]}
                     alt={`Foto do item ${item.name}`}
-                    className="size-[90%] select-none rounded-md object-cover"
+                    className="size-[90%] select-none rounded-md object-contain"
                 />
 
                 <div className="absolute left-0 top-0 z-10 flex size-full">

@@ -15,7 +15,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
             )}
             <p
                 onClick={() => setSize({ activeSize: tab.label, sizeId: tab.id })}
-                className={`relative z-10 flex cursor-pointer select-none rounded-md border border-solid p-3 transition duration-200 ease-linear hover:border-neutral-800 max-1280:py-2 max-1024:px-3 ${tab.id === size.sizeId ? 'border-neutral-800 bg-neutral-800 font-bold text-neutral-100' : 'border-neutral-200 text-neutral-400'}`}
+                className={`relative z-10 flex cursor-pointer select-none rounded-md border border-solid p-3 transition duration-200 ease-linear hover:border-neutral-800 max-1280:py-2 max-1024:px-3 max-360:px-2 max-360:py-1 ${tab.id === size.sizeId ? 'border-neutral-800 bg-neutral-800 font-bold text-neutral-100' : 'border-neutral-200 text-neutral-400'}`}
             >
                 {tab.label}
             </p>
@@ -90,7 +90,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                     id="buyButton"
                     initial={{ opacity: 0, y: 20 }}
                     transition={{ ease: 'easeInOut' }}
-                    className="w-full rounded-lg bg-neutral-800 text-xl font-semibold uppercase leading-none text-white hover:bg-neutral-700 max-1366:text-lg"
+                    className="w-full rounded-lg bg-neutral-800 text-xl font-semibold uppercase leading-none text-white hover:bg-neutral-700 max-1366:text-lg max-460:text-base"
                 >
                     Comprar agora
                 </motion.button>
@@ -98,7 +98,7 @@ const ProductInfo = ({ item, size, setSize, quantity, setQuantity, controls }) =
                 <motion.button
                     id="cartButton"
                     initial={{ opacity: 0, y: 20 }}
-                    className="w-full rounded-lg border border-solid border-neutral-800 text-xl font-semibold uppercase leading-none hover:border-red-600 hover:bg-red-500 hover:text-white max-1366:text-lg"
+                    className="w-full rounded-lg border border-solid border-neutral-800 text-xl font-semibold uppercase leading-none hover:border-red-600 hover:bg-red-500 hover:text-white max-1366:text-lg max-460:text-base"
                 >
                     Adicionar ao carrinho
                 </motion.button>
